@@ -1,0 +1,1985 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paired & Prepared — Wireframe</title>
+<style>
+  :root {
+    --bg: #F7F6F2;
+    --white: #FFFFFF;
+    --border: #D0CFC9;
+    --text: #1A1A1A;
+    --text-2: #6B6B6B;
+    --text-3: #9B9B9B;
+    --accent: #2D3B8E;
+    --tag-research: #3B5BDB;
+    --tag-interview: #2F9E44;
+    --tag-execution: #E67700;
+    --tag-archive: #868E96;
+    --wire-fill: #E8E7E3;
+    --wire-img: #D4D3CE;
+    --nav-h: 56px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+    background: #ECEAE4;
+    color: var(--text);
+    font-size: 14px;
+  }
+
+  /* ── Tab Navigation ── */
+  .tab-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: #1A1A1A;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 0 20px;
+    height: 44px;
+    overflow-x: auto;
+  }
+
+  .tab-bar span {
+    color: #888;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-right: 12px;
+    white-space: nowrap;
+  }
+
+  .tab-btn {
+    background: transparent;
+    border: none;
+    color: #999;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+    letter-spacing: 0.03em;
+  }
+
+  .tab-btn:hover { color: #fff; background: #333; }
+  .tab-btn.active { color: #fff; background: #2D3B8E; }
+
+  /* ── Page Wrapper ── */
+  .page { display: none; padding-top: 44px; }
+  .page.active { display: block; }
+
+  /* ── Annotation system ── */
+  .anno {
+    position: relative;
+  }
+  .anno-label {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(45, 59, 142, 0.12);
+    color: var(--accent);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    padding: 3px 7px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  /* ── Global Nav ── */
+  .global-nav {
+    position: sticky;
+    top: 44px;
+    z-index: 900;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    height: var(--nav-h);
+  }
+
+  .nav-logo {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+  }
+
+  .nav-link {
+    font-size: 13px;
+    color: var(--text-2);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: all 0.15s;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--text);
+    border-bottom-color: var(--text);
+  }
+
+  /* ── Sections ── */
+  .section {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .section-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 80px 60px;
+  }
+
+  .section-inner.compact { padding: 56px 60px; }
+  .section-inner.tight { padding: 40px 60px; }
+
+  /* section label */
+  .section-tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-tag::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--text-3);
+  }
+
+  /* ── Typography ── */
+  .display { font-size: 72px; font-weight: 700; line-height: 1.0; letter-spacing: -0.03em; }
+  .h1 { font-size: 48px; font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+  .h2 { font-size: 32px; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+  .h3 { font-size: 22px; font-weight: 600; line-height: 1.3; }
+  .h4 { font-size: 16px; font-weight: 600; line-height: 1.4; }
+  .body-lg { font-size: 18px; line-height: 1.7; color: var(--text-2); }
+  .body { font-size: 15px; line-height: 1.7; color: var(--text-2); }
+  .small { font-size: 12px; color: var(--text-3); }
+  .serif { font-family: Georgia, 'Times New Roman', serif; }
+
+  .mt-8 { margin-top: 8px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-32 { margin-top: 32px; }
+  .mt-48 { margin-top: 48px; }
+  .mt-56 { margin-top: 56px; }
+
+  /* ── Wireframe placeholders ── */
+  .wire-box {
+    background: var(--wire-fill);
+    border: 1.5px dashed var(--border);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-3);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .wire-img {
+    background: var(--wire-img);
+    border: 1.5px dashed #BDBCB7;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9B9A95;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 11px 22px;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--text);
+    color: var(--white);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1.5px solid var(--text);
+  }
+
+  .btn-link {
+    background: transparent;
+    color: var(--text);
+    padding: 0;
+    font-size: 13px;
+    border-bottom: 1px solid var(--text);
+    border-radius: 0;
+  }
+
+  /* ── Tags ── */
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 2px;
+    color: white;
+  }
+
+  .tag-research { background: var(--tag-research); }
+  .tag-interview { background: var(--tag-interview); }
+  .tag-execution { background: var(--tag-execution); }
+  .tag-archive { background: var(--tag-archive); color: white; }
+  .tag-issue { background: transparent; color: var(--text-2); border: 1px solid var(--border); color: var(--text); }
+
+  .status-dot {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: var(--text-3);
+  }
+
+  .status-dot::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #2F9E44;
+  }
+
+  /* ── Grid ── */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .grid-12 { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+
+  /* ── Cards ── */
+  .project-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+
+  .card-thesis {
+    font-size: 13px;
+    color: var(--text-2);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+  }
+
+  .card-author { font-size: 12px; color: var(--text-3); }
+
+  /* ── People Card ── */
+  .people-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 24px;
+  }
+
+  .people-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--wire-img);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-3);
+  }
+
+  /* ── Divider ── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Filter bar ── */
+  .filter-bar {
+    display: flex;
+    gap: 4px;
+    padding: 16px 60px;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: calc(44px + var(--nav-h));
+    z-index: 800;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+
+  .filter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-2);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+
+  .filter-btn:hover { border-color: var(--text); color: var(--text); }
+  .filter-btn.active { background: var(--text); color: white; border-color: var(--text); }
+
+  /* ── CTA section ── */
+  .cta-section {
+    background: #1A1A1A;
+    color: white;
+  }
+
+  .cta-section .section-tag { color: #666; }
+  .cta-section .section-tag::before { background: #666; }
+
+  .cta-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .cta-link-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 11px 22px;
+    border-radius: 2px;
+    cursor: pointer;
+    border: 1.5px solid #444;
+    color: white;
+    background: transparent;
+    transition: all 0.15s;
+  }
+
+  .cta-link-btn:hover { border-color: white; background: white; color: #1A1A1A; }
+
+  /* ── Article Detail ── */
+  .article-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    max-width: 1000px;
+  }
+
+  .toc-sidebar {
+    position: sticky;
+    top: calc(44px + var(--nav-h) + 40px);
+    height: fit-content;
+  }
+
+  .toc-item {
+    display: block;
+    font-size: 12px;
+    color: var(--text-3);
+    padding: 6px 0 6px 12px;
+    border-left: 2px solid var(--border);
+    text-decoration: none;
+    margin-bottom: 2px;
+    transition: all 0.15s;
+    cursor: pointer;
+  }
+
+  .toc-item:hover, .toc-item.active {
+    color: var(--text);
+    border-left-color: var(--accent);
+  }
+
+  .article-body { max-width: 760px; }
+
+  .block-standard {
+    margin-bottom: 28px;
+  }
+
+  .block-data {
+    background: var(--wire-fill);
+    border: 1.5px dashed var(--border);
+    border-radius: 4px;
+    padding: 32px;
+    margin-bottom: 28px;
+    text-align: center;
+    color: var(--text-3);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .block-quote {
+    border-left: 3px solid var(--text);
+    padding: 20px 0 20px 28px;
+    margin: 32px 0;
+  }
+
+  .block-quote p {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--text);
+  }
+
+  .block-quote footer {
+    font-size: 12px;
+    color: var(--text-3);
+    margin-top: 10px;
+  }
+
+  .block-insight {
+    border-left: 3px solid var(--accent);
+    background: rgba(45, 59, 142, 0.05);
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .block-insight p { font-size: 14px; color: var(--text); line-height: 1.6; }
+
+  .summary-block {
+    background: var(--wire-fill);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 28px;
+    margin-bottom: 48px;
+  }
+
+  .summary-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .summary-row:last-child { border-bottom: none; }
+  .summary-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); padding-top: 2px; }
+  .summary-value { font-size: 13px; color: var(--text); line-height: 1.6; }
+
+  /* ── Structure diagram ── */
+  .structure-diagram {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding: 40px 0;
+  }
+
+  .diagram-node {
+    flex-shrink: 0;
+    text-align: center;
+    padding: 20px 24px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    min-width: 130px;
+  }
+
+  .diagram-node-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .diagram-node-sub {
+    font-size: 11px;
+    color: var(--text-3);
+    line-height: 1.4;
+  }
+
+  .diagram-arrow {
+    flex-shrink: 0;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-3);
+    font-size: 18px;
+  }
+
+  /* ── Issue cover ── */
+  .issue-cover {
+    background: #1A1A1A;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 80px 60px;
+    position: relative;
+    color: white;
+  }
+
+  .issue-cover-meta {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 16px;
+  }
+
+  .issue-cover-title {
+    font-size: 96px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+    margin-bottom: 32px;
+  }
+
+  .issue-cover-tagline {
+    font-size: 18px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.7);
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+
+  .issue-scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .issue-scroll-hint::after {
+    content: '↓';
+    font-size: 16px;
+  }
+
+  /* ── Reading guide ── */
+  .reading-guide-item {
+    display: grid;
+    grid-template-columns: 120px 1fr 100px 80px;
+    gap: 20px;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .reading-guide-item:last-child { border-bottom: none; }
+
+  .chapter-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    padding: 4px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 24px;
+    margin-bottom: 12px;
+    width: 100%;
+  }
+
+  /* ── About page ── */
+  .venn-diagram {
+    width: 320px;
+    height: 260px;
+    position: relative;
+    margin: 0 auto;
+  }
+
+  .venn-circle {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    opacity: 0.15;
+  }
+
+  .venn-circle-1 { background: #3B5BDB; top: 0; left: 20px; }
+  .venn-circle-2 { background: #2F9E44; top: 0; right: 20px; }
+  .venn-circle-3 { background: #E67700; bottom: 0; left: 80px; }
+
+  .venn-label {
+    position: absolute;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    text-align: center;
+  }
+
+  .venn-label-1 { top: 40px; left: 0; }
+  .venn-label-2 { top: 40px; right: 0; }
+  .venn-label-3 { bottom: 10px; left: 50%; transform: translateX(-50%); }
+  .venn-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 11px; font-weight: 800; letter-spacing: 0.08em; color: var(--accent); text-align: center; }
+
+  /* ── Info box ── */
+  .info-row {
+    display: flex;
+    gap: 60px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .info-row:last-child { border-bottom: none; }
+
+  .info-label {
+    flex-shrink: 0;
+    width: 180px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    padding-top: 3px;
+  }
+
+  .info-content { flex: 1; }
+
+  /* ── Alumni list ── */
+  .alumni-item {
+    display: grid;
+    grid-template-columns: 180px 1fr 120px;
+    gap: 20px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: center;
+  }
+
+  .alumni-item:last-child { border-bottom: none; }
+
+  /* ── Scroll notice ── */
+  .scroll-notice {
+    background: rgba(45, 59, 142, 0.06);
+    border: 1px solid rgba(45, 59, 142, 0.15);
+    border-radius: 4px;
+    padding: 10px 16px;
+    font-size: 11px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+</style>
+</head>
+<body>
+
+<!-- Tab Bar -->
+<div class="tab-bar">
+  <span>Paired & Prepared — Wireframe</span>
+  <button class="tab-btn active" onclick="showPage('main')">Main</button>
+  <button class="tab-btn" onclick="showPage('projects')">Projects</button>
+  <button class="tab-btn" onclick="showPage('issue00')">Issue 00: Mobility</button>
+  <button class="tab-btn" onclick="showPage('article')">Article Detail</button>
+  <button class="tab-btn" onclick="showPage('people')">People</button>
+  <button class="tab-btn" onclick="showPage('about')">About</button>
+</div>
+
+
+<!-- ══════════════════════════════════════
+     PAGE: MAIN
+══════════════════════════════════════ -->
+<div class="page active" id="page-main">
+
+  <!-- Global Nav -->
+  <nav class="global-nav anno">
+    <div class="anno-label">Global Header — Sticky</div>
+    <div class="nav-logo">Paired & Prepared</div>
+    <div class="nav-links">
+      <a class="nav-link active">Main</a>
+      <a class="nav-link">Projects</a>
+      <a class="nav-link">People</a>
+      <a class="nav-link">About</a>
+    </div>
+  </nav>
+
+  <!-- S01: Institutional Hero -->
+  <section class="section anno" style="min-height: 92vh; display: flex; align-items: flex-end; padding-bottom: 0;">
+    <div class="anno-label">S01 · Institutional Hero — 92vh, Static, No image</div>
+    <div class="section-inner" style="padding-top: 0; width: 100%;">
+      <div class="section-tag">Paired & Prepared</div>
+      <h1 class="display" style="max-width: 860px; margin-bottom: 28px;">
+        A project-based<br>research archive.
+      </h1>
+      <p class="body-lg" style="max-width: 560px; margin-bottom: 40px;">
+        At the intersection of Business, Design, and Data — we conduct, structure, and publish cross-disciplinary projects semi-annually, cumulatively, and with institutional intent.
+      </p>
+      <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 80px;">
+        <button class="btn btn-primary">Explore Projects →</button>
+        <button class="btn btn-secondary">About Paired</button>
+        <span style="margin-left: 24px; font-size: 12px; color: var(--text-3);">Issue 00: Mobility — Now Live &nbsp; <span style="color: var(--accent); font-weight: 600;">↗</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- S02: Research Identity -->
+  <section class="section anno">
+    <div class="anno-label">S02 · Research Identity — Static, 3-col</div>
+    <div class="section-inner compact">
+      <div class="section-tag">Where we operate</div>
+      <div class="grid-3" style="margin-top: 32px;">
+        <div style="padding-right: 40px; border-right: 1px solid var(--border);">
+          <div class="h4" style="margin-bottom: 10px;">Business</div>
+          <div class="body">Strategy, market analysis, organizational design, competitive intelligence.</div>
+        </div>
+        <div style="padding: 0 40px; border-right: 1px solid var(--border);">
+          <div class="h4" style="margin-bottom: 10px;">Design</div>
+          <div class="body">UX, systems design, brand communication, experience architecture.</div>
+        </div>
+        <div style="padding-left: 40px;">
+          <div class="h4" style="margin-bottom: 10px;">Data & Engineering</div>
+          <div class="body">Analytics, modeling, AI research, quantitative methods.</div>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <p style="font-size: 13px; color: var(--text-3); font-style: italic;">Not a student club. Not a consulting firm. A structured project archive.</p>
+    </div>
+  </section>
+
+  <!-- S03: Current Featured Issue -->
+  <section class="section anno">
+    <div class="anno-label">S03 · Featured Issue — CMS: Issues (featured=true)</div>
+    <div class="section-inner compact">
+      <div class="section-tag">Latest Issue</div>
+      <div class="grid-2" style="gap: 60px; margin-top: 32px; align-items: center;">
+        <div class="wire-img" style="height: 340px; border-radius: 4px; flex-direction: column; gap: 12px;">
+          <span style="font-size: 32px; font-weight: 800; letter-spacing: -0.02em; color: #9B9A95;">MOBILITY</span>
+          <span>Issue Cover Image</span>
+        </div>
+        <div>
+          <div class="tag tag-issue" style="margin-bottom: 16px;">Issue 00</div>
+          <div class="h2 serif" style="margin-bottom: 12px;">Mobility</div>
+          <p class="body" style="margin-bottom: 24px;">Examining the paradigm shift in mobility — from racing culture to EV economics, platform dynamics to AI optimization.</p>
+          <div style="display: flex; gap: 16px; font-size: 12px; color: var(--text-3); margin-bottom: 24px;">
+            <span>6 Articles</span>
+            <span>·</span>
+            <span>5 Contributors</span>
+            <span>·</span>
+            <span>May 2026</span>
+          </div>
+          <div style="border-top: 1px solid var(--border); padding-top: 20px; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px;">
+            <div style="font-size: 13px; color: var(--text-2);">↳ Racing as R&D: How Motorsport Built the Modern Automobile</div>
+            <div style="font-size: 13px; color: var(--text-2);">↳ The Luxury Pivot: Redefining Premium in the SDV Era</div>
+            <div style="font-size: 13px; color: var(--text-2);">↳ The Real Math: Hybrid vs. EV Ownership Costs</div>
+            <div style="font-size: 12px; color: var(--text-3);">+ 3 more articles</div>
+          </div>
+          <button class="btn btn-primary">Read Issue 00 →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S04: Featured Projects -->
+  <section class="section anno">
+    <div class="anno-label">S04 · Featured Projects — CMS: Projects (featured=true)</div>
+    <div class="section-inner compact">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px;">
+        <div>
+          <div class="section-tag">From the Archive</div>
+          <div class="h2" style="margin-top: 8px;">Selected Projects</div>
+        </div>
+        <button class="btn btn-link">Browse All Projects →</button>
+      </div>
+      <div class="grid-3">
+        <div class="project-card">
+          <div class="card-meta">
+            <span class="tag tag-research">Research</span>
+            <span class="tag tag-issue">Issue 00</span>
+          </div>
+          <div class="card-title">Racing as R&D: How Motorsport Built the Modern Automobile</div>
+          <div class="card-thesis">카레이싱은 자동차 산업의 기술·마케팅·브랜딩 발전을 이끈 핵심 R&D 플랫폼이었다.</div>
+          <div class="card-footer">
+            <div class="card-author">Kim Jiwon · 12 min</div>
+            <div class="status-dot">Published</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="card-meta">
+            <span class="tag tag-execution">Execution</span>
+            <span class="tag tag-issue">Issue 00</span>
+          </div>
+          <div class="card-title">The Real Math: Hybrid vs. EV Ownership Costs by Driver Profile</div>
+          <div class="card-thesis">실제 구매 경제성은 운전자 유형과 사용 패턴에 따라 하이브리드가 유리한 경우가 명확히 존재한다.</div>
+          <div class="card-footer">
+            <div class="card-author">Park Soyeon · 14 min</div>
+            <div class="status-dot">Published</div>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="card-meta">
+            <span class="tag tag-interview">Interview</span>
+            <span class="tag tag-issue">Issue 00</span>
+          </div>
+          <div class="card-title">Dispatch Intelligence: How AI Is Rewiring the Economics of Ride-Hailing</div>
+          <div class="card-thesis">AI 배차 최적화는 플랫폼 수익성을 높이지만 새로운 운영 제약을 만들어낸다.</div>
+          <div class="card-footer">
+            <div class="card-author">Lee Minjun · 13 min</div>
+            <div class="status-dot">Published</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S05: People Preview -->
+  <section class="section anno">
+    <div class="anno-label">S05 · People Preview — CMS: People (role filter)</div>
+    <div class="section-inner compact">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px;">
+        <div>
+          <div class="section-tag">The Team</div>
+          <div class="h2" style="margin-top: 8px;">Current Members · Alumni · Advisors</div>
+        </div>
+        <button class="btn btn-link">Meet Everyone →</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 0;">
+        <div class="info-row" style="padding: 20px 0;">
+          <div class="info-label">Current</div>
+          <div class="info-content">
+            <span style="font-size: 14px; color: var(--text);">Kim Jiwon &nbsp;·&nbsp; Park Soyeon &nbsp;·&nbsp; Lee Minjun &nbsp;·&nbsp; Choi Dayeon &nbsp;·&nbsp; Jung Seungho</span>
+          </div>
+        </div>
+        <div class="info-row" style="padding: 20px 0;">
+          <div class="info-label">Alumni</div>
+          <div class="info-content">
+            <span style="font-size: 14px; color: var(--text-2);">12 alumni across graduate programs and industry &nbsp;·&nbsp; <span style="color: var(--text);">Oh Jungmin, Han Eunji, Bae Sunwoo</span> + 9 more</span>
+          </div>
+        </div>
+        <div class="info-row" style="padding: 20px 0;">
+          <div class="info-label">Advisors</div>
+          <div class="info-content">
+            <span style="font-size: 14px; color: var(--text);">Prof. Kim Youngsoo</span> <span style="color: var(--text-3); font-size: 13px;">(SNU, Business)</span>
+            &nbsp;&nbsp;&nbsp;
+            <span style="font-size: 14px; color: var(--text);">Prof. Lee Jaehyun</span> <span style="color: var(--text-3); font-size: 13px;">(KAIST, Design)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S06: Structure Diagram -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S06 · Structure Diagram — Static SVG component</div>
+    <div class="section-inner compact">
+      <div class="section-tag">How Paired Works</div>
+      <div class="h2" style="margin-top: 8px; margin-bottom: 8px;">From community to archive to institution</div>
+      <p class="body" style="margin-bottom: 40px;">A long-term platform where projects, people, and institutional linkages accumulate over time.</p>
+      <div class="structure-diagram">
+        <div class="diagram-node">
+          <div class="diagram-node-title">GRU Community</div>
+          <div class="diagram-node-sub">Origin<br>community</div>
+        </div>
+        <div class="diagram-arrow">→</div>
+        <div class="diagram-node" style="border-color: var(--accent); background: rgba(45,59,142,0.04);">
+          <div class="diagram-node-title" style="color: var(--accent);">Paired</div>
+          <div class="diagram-node-sub">Research &<br>project team</div>
+        </div>
+        <div class="diagram-arrow">→</div>
+        <div class="diagram-node">
+          <div class="diagram-node-title">Projects &<br>Issues</div>
+          <div class="diagram-node-sub">Semi-annual<br>output</div>
+        </div>
+        <div class="diagram-arrow">→</div>
+        <div class="diagram-node">
+          <div class="diagram-node-title">Archive</div>
+          <div class="diagram-node-sub">Cumulative<br>knowledge base</div>
+        </div>
+        <div class="diagram-arrow">→</div>
+        <div class="diagram-node">
+          <div class="diagram-node-title">Graduate /<br>Research Lab</div>
+          <div class="diagram-node-sub">Institutional<br>linkage</div>
+        </div>
+        <div class="diagram-arrow">→</div>
+        <div class="diagram-node">
+          <div class="diagram-node-title">Collaboration</div>
+          <div class="diagram-node-sub">Industry &<br>academia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S07: CTA -->
+  <section class="section cta-section anno">
+    <div class="anno-label">S07 · Collaboration CTA — Static</div>
+    <div class="section-inner compact">
+      <div class="section-tag">Work With Us</div>
+      <div class="h2" style="color: white; margin-top: 8px; margin-bottom: 12px;">Work with Paired</div>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.6); max-width: 520px;">We welcome collaboration, project inquiry, interview requests, and research partnerships.</p>
+      <div class="cta-links">
+        <button class="cta-link-btn">Collaborate</button>
+        <button class="cta-link-btn">Submit a Project Idea</button>
+        <button class="cta-link-btn">Get in Touch</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-main -->
+
+
+<!-- ══════════════════════════════════════
+     PAGE: PROJECTS
+══════════════════════════════════════ -->
+<div class="page" id="page-projects">
+
+  <nav class="global-nav">
+    <div class="nav-logo">Paired & Prepared</div>
+    <div class="nav-links">
+      <a class="nav-link">Main</a>
+      <a class="nav-link active">Projects</a>
+      <a class="nav-link">People</a>
+      <a class="nav-link">About</a>
+    </div>
+  </nav>
+
+  <!-- S01: Archive Hero -->
+  <section class="section anno">
+    <div class="anno-label">S01 · Archive Hero — Static, animated counter optional</div>
+    <div class="section-inner compact">
+      <div class="h1" style="margin-bottom: 16px;">Projects</div>
+      <p class="body-lg" style="max-width: 600px; margin-bottom: 32px;">A cumulative archive of research, analysis, and structured inquiry across strategy, design, and data.</p>
+      <div style="display: flex; gap: 48px;">
+        <div>
+          <div style="font-size: 40px; font-weight: 800; letter-spacing: -0.02em;">01</div>
+          <div class="small">Issues Published</div>
+        </div>
+        <div>
+          <div style="font-size: 40px; font-weight: 800; letter-spacing: -0.02em;">06</div>
+          <div class="small">Articles</div>
+        </div>
+        <div>
+          <div style="font-size: 40px; font-weight: 800; letter-spacing: -0.02em;">05</div>
+          <div class="small">Contributors</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S02: Latest Issue Feature -->
+  <section class="section anno" style="background: #1A1A1A;">
+    <div class="anno-label">S02 · Latest Issue Feature — CMS: Issues (featured=true). Editorial treatment allowed.</div>
+    <div class="section-inner tight">
+      <div style="color: rgba(255,255,255,0.4); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;"><span style="display:inline-block;width:20px;height:1px;background:rgba(255,255,255,0.4);"></span> Current Issue</div>
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;">
+        <div>
+          <div style="font-size: 11px; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 8px;">Issue 00</div>
+          <div style="font-size: 56px; font-weight: 800; letter-spacing: -0.03em; color: white; line-height: 1; margin-bottom: 16px;">Mobility</div>
+          <p style="font-size: 15px; color: rgba(255,255,255,0.6); max-width: 480px;">6 articles · 5 contributors · Published May 2026</p>
+        </div>
+        <button class="btn" style="background: white; color: #1A1A1A; flex-shrink: 0;">Open Issue 00 →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- S03: Issue Browser -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S03 · Issue Browser — CMS: Issues, horizontal scroll</div>
+    <div class="section-inner tight">
+      <div class="section-tag">All Issues</div>
+      <div style="display: flex; gap: 16px; overflow-x: auto; padding-bottom: 8px; margin-top: 16px;">
+        <div style="flex-shrink: 0; width: 160px; border: 2px solid var(--text); border-radius: 4px; padding: 20px; background: var(--text); color: white;">
+          <div style="font-size: 11px; opacity: 0.6; margin-bottom: 8px;">Issue 00</div>
+          <div style="font-size: 18px; font-weight: 700;">Mobility</div>
+          <div style="font-size: 11px; opacity: 0.5; margin-top: 8px;">May 2026 · 6 articles</div>
+        </div>
+        <div style="flex-shrink: 0; width: 160px; border: 1px dashed var(--border); border-radius: 4px; padding: 20px; background: var(--wire-fill);">
+          <div style="font-size: 11px; color: var(--text-3); margin-bottom: 8px;">Issue 01</div>
+          <div style="font-size: 18px; font-weight: 700; color: var(--text-3);">TBD</div>
+          <div style="font-size: 11px; color: var(--text-3); margin-top: 8px;">Fall 2026 · Upcoming</div>
+        </div>
+        <div style="flex-shrink: 0; width: 160px; border: 1px dashed var(--border); border-radius: 4px; padding: 20px; background: var(--wire-fill);">
+          <div style="font-size: 11px; color: var(--text-3); margin-bottom: 8px;">Issue 02</div>
+          <div style="font-size: 18px; font-weight: 700; color: var(--text-3);">TBD</div>
+          <div style="font-size: 11px; color: var(--text-3); margin-top: 8px;">2027 · Planned</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S04: Filter -->
+  <div class="filter-bar anno">
+    <div class="anno-label" style="right: auto; left: 8px; top: 50%; transform: translateY(-50%);">S04 · Category Filter — Framer CMS filter</div>
+    <button class="filter-btn active">All</button>
+    <button class="filter-btn">Issues</button>
+    <button class="filter-btn">Research</button>
+    <button class="filter-btn">Interview</button>
+    <button class="filter-btn">Execution</button>
+    <button class="filter-btn">Archive</button>
+  </div>
+
+  <!-- S05: Project Cards -->
+  <section class="section anno">
+    <div class="anno-label">S05 · Project Cards — CMS: Projects, filtered by category</div>
+    <div class="section-inner compact">
+      <div class="grid-3">
+        <div class="project-card">
+          <div class="card-meta"><span class="tag tag-research">Research</span><span class="tag tag-issue">Issue 00</span></div>
+          <div class="card-title">Racing as R&D: How Motorsport Built the Modern Automobile</div>
+          <div class="card-thesis">카레이싱은 자동차 산업의 기술·마케팅·브랜딩 발전을 이끈 핵심 R&D 플랫폼이었다.</div>
+          <div class="card-footer"><div class="card-author">Kim Jiwon · 12 min</div><div class="status-dot">Published</div></div>
+        </div>
+        <div class="project-card">
+          <div class="card-meta"><span class="tag tag-research">Research</span><span class="tag tag-issue">Issue 00</span></div>
+          <div class="card-title">The Luxury Pivot: How Automakers Are Redefining Premium in the SDV Era</div>
+          <div class="card-thesis">SDV 전환으로 자동차 럭셔리의 중심은 차량 내부 경험과 소프트웨어 생태계로 이동하고 있다.</div>
+          <div class="card-footer"><div class="card-author">Choi Dayeon · 10 min</div><div class="status-dot">Published</div></div>
+        </div>
+        <div class="project-card">
+          <div class="card-meta"><span class="tag tag-execution">Execution</span><span class="tag tag-issue">Issue 00</span></div>
+          <div class="card-title">The Real Math: Hybrid vs. EV Ownership Costs by Driver Profile</div>
+          <div class="card-thesis">실제 구매 경제성은 운전자 유형과 사용 패턴에 따라 하이브리드가 유리한 경우가 존재한다.</div>
+          <div class="card-footer"><div class="card-author">Park Soyeon · 14 min</div><div class="status-dot">Published</div></div>
+        </div>
+        <div class="project-card">
+          <div class="card-meta"><span class="tag tag-research">Research</span><span class="tag tag-issue">Issue 00</span></div>
+          <div class="card-title">The Three-Body Problem: Riders, Drivers, and Platforms in Mobility Markets</div>
+          <div class="card-thesis">세 주체의 목적함수 충돌이 수익 구조와 운영 방식의 차이를 만든다.</div>
+          <div class="card-footer"><div class="card-author">Jung Seungho · 11 min</div><div class="status-dot">Published</div></div>
+        </div>
+        <div class="project-card">
+          <div class="card-meta"><span class="tag tag-execution">Execution</span><span class="tag tag-issue">Issue 00</span></div>
+          <div class="card-title">Dispatch Intelligence: How AI Is Rewiring the Economics of Ride-Hailing</div>
+          <div class="card-thesis">AI 기반 배차 최적화는 플랫폼 수익성을 높이지만 새로운 제약을 만들어낸다.</div>
+          <div class="card-footer"><div class="card-author">Lee Minjun · 13 min</div><div class="status-dot">Published</div></div>
+        </div>
+        <div class="project-card">
+          <div class="card-meta"><span class="tag tag-research">Research</span><span class="tag tag-issue">Issue 00</span></div>
+          <div class="card-title">Green by Design or Green by Marketing? Sustainability in the Mobility Industry</div>
+          <div class="card-thesis">친환경 전환은 실제 기술 혁신과 마케팅 내러티브 사이의 간극이 크다.</div>
+          <div class="card-footer"><div class="card-author">Kim Jiwon · 10 min</div><div class="status-dot">Published</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S06: Methodology -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S06 · Methodology Block — Static</div>
+    <div class="section-inner tight">
+      <div class="section-tag">Our Approach</div>
+      <div class="grid-3" style="margin-top: 24px; grid-template-columns: repeat(4, 1fr);">
+        <div style="padding-right: 24px; border-right: 1px solid var(--border);">
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;">01</div>
+          <div class="h4" style="margin-bottom: 6px;">Desk Research</div>
+          <div class="body">Literature, industry reports, public data.</div>
+        </div>
+        <div style="padding: 0 24px; border-right: 1px solid var(--border);">
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;">02</div>
+          <div class="h4" style="margin-bottom: 6px;">Interview</div>
+          <div class="body">Domain experts, practitioners, users.</div>
+        </div>
+        <div style="padding: 0 24px; border-right: 1px solid var(--border);">
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;">03</div>
+          <div class="h4" style="margin-bottom: 6px;">Modeling</div>
+          <div class="body">Quantitative analysis, simulation, framework.</div>
+        </div>
+        <div style="padding-left: 24px;">
+          <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;">04</div>
+          <div class="h4" style="margin-bottom: 6px;">Structured Output</div>
+          <div class="body">Published article, archived in the platform.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section anno">
+    <div class="anno-label">S08 · CTA — Static (reused component)</div>
+    <div class="section-inner tight">
+      <div class="section-tag">Work With Us</div>
+      <div class="h2" style="color: white; margin-top: 8px; margin-bottom: 12px;">Collaborate or contribute</div>
+      <p style="font-size: 16px; color: rgba(255,255,255,0.6); max-width: 480px;">Open to project collaboration, interview requests, and research partnerships.</p>
+      <div class="cta-links">
+        <button class="cta-link-btn">Collaborate</button>
+        <button class="cta-link-btn">Get in Touch</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-projects -->
+
+
+<!-- ══════════════════════════════════════
+     PAGE: ISSUE 00
+══════════════════════════════════════ -->
+<div class="page" id="page-issue00">
+
+  <nav class="global-nav">
+    <div class="nav-logo">Paired & Prepared</div>
+    <div class="nav-links">
+      <a class="nav-link">Main</a>
+      <a class="nav-link active">Projects</a>
+      <a class="nav-link">People</a>
+      <a class="nav-link">About</a>
+    </div>
+  </nav>
+
+  <!-- S01: Issue Cover -->
+  <div class="issue-cover anno" style="position: relative;">
+    <div class="anno-label" style="color: rgba(45,59,142,0.9); background: rgba(255,255,255,0.15);">S01 · Issue Cover — 90vh, CMS: Issues. Full editorial treatment.</div>
+    <div style="position: absolute; top: 60px; left: 60px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4);">Paired & Prepared</div>
+    <div class="issue-cover-meta">Issue 00 · 2026 · Vol. 1</div>
+    <div class="issue-cover-title">Mobility</div>
+    <div class="issue-cover-tagline">Examining the paradigm shift in mobility — from racing culture to EV economics, platform dynamics to AI optimization.</div>
+    <button class="btn" style="background: white; color: #1A1A1A; display: inline-flex;">Read Issue →</button>
+    <div class="issue-scroll-hint">Scroll to explore</div>
+  </div>
+
+  <!-- S02: Editor's Note -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S02 · Editor's Note — CMS: Issues (editor_note field). Serif, max-width 720px.</div>
+    <div class="section-inner">
+      <div class="section-tag">Editor's Note</div>
+      <div style="max-width: 720px; margin-top: 24px;">
+        <p class="serif" style="font-size: 20px; line-height: 1.7; color: var(--text); margin-bottom: 20px;">
+          Mobility is one of the most contested industrial frontiers of our time. What began as a story about engines and speed has become a story about software, platforms, sustainability, and the fundamental economics of how people move.
+        </p>
+        <p class="body" style="margin-bottom: 16px;">
+          In Issue 00, we examine six dimensions of this transformation — from the unlikely role of motorsport in shaping modern automotive technology, to the quiet revolution in luxury branding that SDV is forcing upon established automakers. We model the real economics of owning an EV versus a hybrid, dissect the three-way tension between riders, drivers, and platform operators, trace how AI is rewiring dispatch logic, and ask whether the industry's green pivot is genuine or performative.
+        </p>
+        <p class="body">
+          This is our first issue. It is also, by design, a proof of structure — a test of the archive we intend to build over many issues and many years.
+        </p>
+        <div style="margin-top: 32px; font-size: 13px; color: var(--text-3);">— The Editors, Paired & Prepared · May 2026</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S03: Reading Guide -->
+  <section class="section anno">
+    <div class="anno-label">S03 · Reading Guide — CMS: Projects (filtered by issue=00). Visual index.</div>
+    <div class="section-inner compact">
+      <div class="section-tag">In This Issue</div>
+      <div style="margin-top: 24px;">
+
+        <div class="chapter-label">01 &nbsp;·&nbsp; Culture & Brand</div>
+        <div class="reading-guide-item">
+          <div><span class="tag tag-research" style="margin-bottom: 6px; display: inline-block;">Research</span></div>
+          <div>
+            <div style="font-size: 14px; font-weight: 600; margin-bottom: 2px;">Racing as R&D</div>
+            <div style="font-size: 12px; color: var(--text-3);">How Motorsport Built the Modern Automobile</div>
+          </div>
+          <div style="font-size: 12px; color: var(--text-3);">Kim Jiwon</div>
+          <div style="font-size: 12px; color: var(--text-3);">12 min</div>
+        </div>
+        <div class="reading-guide-item">
+          <div><span class="tag tag-research" style="margin-bottom: 6px; display: inline-block;">Research</span></div>
+          <div>
+            <div style="font-size: 14px; font-weight: 600; margin-bottom: 2px;">The Luxury Pivot</div>
+            <div style="font-size: 12px; color: var(--text-3);">Redefining Premium in the SDV Era</div>
+          </div>
+          <div style="font-size: 12px; color: var(--text-3);">Choi Dayeon</div>
+          <div style="font-size: 12px; color: var(--text-3);">10 min</div>
+        </div>
+
+        <div class="chapter-label">02 &nbsp;·&nbsp; Product & Economics</div>
+        <div class="reading-guide-item">
+          <div><span class="tag tag-execution" style="margin-bottom: 6px; display: inline-block;">Execution</span></div>
+          <div>
+            <div style="font-size: 14px; font-weight: 600; margin-bottom: 2px;">The Real Math</div>
+            <div style="font-size: 12px; color: var(--text-3);">Hybrid vs. EV Ownership Costs by Driver Profile</div>
+          </div>
+          <div style="font-size: 12px; color: var(--text-3);">Park Soyeon</div>
+          <div style="font-size: 12px; color: var(--text-3);">14 min</div>
+        </div>
+
+        <div class="chapter-label">03 &nbsp;·&nbsp; Platform & Operation</div>
+        <div class="reading-guide-item">
+          <div><span class="tag tag-research" style="margin-bottom: 6px; display: inline-block;">Research</span></div>
+          <div>
+            <div style="font-size: 14px; font-weight: 600; margin-bottom: 2px;">The Three-Body Problem</div>
+            <div style="font-size: 12px; color: var(--text-3);">Riders, Drivers, and Platforms in Mobility Markets</div>
+          </div>
+          <div style="font-size: 12px; color: var(--text-3);">Jung Seungho</div>
+          <div style="font-size: 12px; color: var(--text-3);">11 min</div>
+        </div>
+
+        <div class="chapter-label">04 &nbsp;·&nbsp; AI & Data</div>
+        <div class="reading-guide-item">
+          <div><span class="tag tag-execution" style="margin-bottom: 6px; display: inline-block;">Execution</span></div>
+          <div>
+            <div style="font-size: 14px; font-weight: 600; margin-bottom: 2px;">Dispatch Intelligence</div>
+            <div style="font-size: 12px; color: var(--text-3);">How AI Is Rewiring the Economics of Ride-Hailing</div>
+          </div>
+          <div style="font-size: 12px; color: var(--text-3);">Lee Minjun</div>
+          <div style="font-size: 12px; color: var(--text-3);">13 min</div>
+        </div>
+
+        <div class="chapter-label">05 &nbsp;·&nbsp; Sustainability</div>
+        <div class="reading-guide-item">
+          <div><span class="tag tag-research" style="margin-bottom: 6px; display: inline-block;">Research</span></div>
+          <div>
+            <div style="font-size: 14px; font-weight: 600; margin-bottom: 2px;">Green by Design or Green by Marketing?</div>
+            <div style="font-size: 12px; color: var(--text-3);">Sustainability in the Mobility Industry</div>
+          </div>
+          <div style="font-size: 12px; color: var(--text-3);">Kim Jiwon</div>
+          <div style="font-size: 12px; color: var(--text-3);">10 min</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- S04: Article Sequence -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S04–08 · Article Sequence — CMS: Projects (by issue + chapter). Editorial layout.</div>
+    <div class="section-inner compact">
+      <div style="border-top: 2px solid var(--text); padding-top: 24px; margin-bottom: 40px;">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 4px;">Chapter 01</div>
+        <div class="h3">Culture & Brand</div>
+        <p class="body" style="margin-top: 8px; max-width: 600px;">From the track to the showroom: how cultural artifacts like motorsport shaped industrial trajectories and brand architectures that persist today.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+        <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 32px;">
+          <div class="card-meta" style="margin-bottom: 16px;"><span class="tag tag-research">Research</span></div>
+          <div style="font-size: 22px; font-weight: 700; line-height: 1.25; margin-bottom: 8px;" class="serif">Racing as R&D</div>
+          <div style="font-size: 14px; color: var(--text-2); margin-bottom: 16px;">How Motorsport Built the Modern Automobile</div>
+          <p style="font-size: 13px; color: var(--text-3); line-height: 1.6; margin-bottom: 24px;">카레이싱은 자동차 산업의 기술·마케팅·브랜딩 발전을 이끈 핵심 R&D 플랫폼이었다.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 16px;">
+            <span style="font-size: 12px; color: var(--text-3);">Kim Jiwon · 12 min</span>
+            <button class="btn btn-link" style="font-size: 12px;">Read →</button>
+          </div>
+        </div>
+        <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 4px; padding: 32px;">
+          <div class="card-meta" style="margin-bottom: 16px;"><span class="tag tag-research">Research</span></div>
+          <div style="font-size: 22px; font-weight: 700; line-height: 1.25; margin-bottom: 8px;" class="serif">The Luxury Pivot</div>
+          <div style="font-size: 14px; color: var(--text-2); margin-bottom: 16px;">How Automakers Are Redefining Premium in the SDV Era</div>
+          <p style="font-size: 13px; color: var(--text-3); line-height: 1.6; margin-bottom: 24px;">SDV 전환으로 자동차 럭셔리의 중심은 차량 내부 경험과 소프트웨어 생태계로 이동하고 있다.</p>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 16px;">
+            <span style="font-size: 12px; color: var(--text-3);">Choi Dayeon · 10 min</span>
+            <button class="btn btn-link" style="font-size: 12px;">Read →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S10: Contributors -->
+  <section class="section anno">
+    <div class="anno-label">S10 · Contributors — CMS: People (filtered by issues_contributed=00)</div>
+    <div class="section-inner compact">
+      <div class="section-tag">Contributors</div>
+      <div class="grid-3" style="margin-top: 24px; grid-template-columns: repeat(5, 1fr); gap: 16px;">
+        <div style="text-align: center;">
+          <div class="people-avatar" style="margin: 0 auto 10px;">KJ</div>
+          <div style="font-size: 13px; font-weight: 600;">Kim Jiwon</div>
+          <div style="font-size: 11px; color: var(--text-3);">Lead / Research</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="people-avatar" style="margin: 0 auto 10px;">PS</div>
+          <div style="font-size: 13px; font-weight: 600;">Park Soyeon</div>
+          <div style="font-size: 11px; color: var(--text-3);">Data / Execution</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="people-avatar" style="margin: 0 auto 10px;">LM</div>
+          <div style="font-size: 13px; font-weight: 600;">Lee Minjun</div>
+          <div style="font-size: 11px; color: var(--text-3);">Research</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="people-avatar" style="margin: 0 auto 10px;">CD</div>
+          <div style="font-size: 13px; font-weight: 600;">Choi Dayeon</div>
+          <div style="font-size: 11px; color: var(--text-3);">Design / Research</div>
+        </div>
+        <div style="text-align: center;">
+          <div class="people-avatar" style="margin: 0 auto 10px;">JS</div>
+          <div style="font-size: 13px; font-weight: 600;">Jung Seungho</div>
+          <div style="font-size: 11px; color: var(--text-3);">Strategy</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S11: Next Issue -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S11 · Next Issue Teaser — Static placeholder</div>
+    <div class="section-inner tight" style="display: flex; justify-content: space-between; align-items: center;">
+      <div>
+        <div class="section-tag">What's Next</div>
+        <div class="h3" style="margin-top: 8px;">Issue 01 — Coming Fall 2026</div>
+        <div class="body" style="margin-top: 4px;">Theme to be announced</div>
+      </div>
+      <button class="btn btn-secondary">Back to Projects →</button>
+    </div>
+  </section>
+
+</div><!-- /page-issue00 -->
+
+
+<!-- ══════════════════════════════════════
+     PAGE: ARTICLE DETAIL
+══════════════════════════════════════ -->
+<div class="page" id="page-article">
+
+  <nav class="global-nav">
+    <div class="nav-logo">Paired & Prepared</div>
+    <div class="nav-links">
+      <a class="nav-link">Main</a>
+      <a class="nav-link active">Projects</a>
+      <a class="nav-link">People</a>
+      <a class="nav-link">About</a>
+    </div>
+  </nav>
+
+  <!-- S01: Hero -->
+  <section class="section anno">
+    <div class="anno-label">S01 · Detail Hero — CMS: Projects (all metadata fields). No hero image required.</div>
+    <div class="section-inner compact">
+      <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 20px;">
+        <span class="tag tag-research">Research</span>
+        <span class="tag tag-issue">Issue 00</span>
+        <span style="font-size: 12px; color: var(--text-3);">Chapter 01 · Culture & Brand</span>
+      </div>
+      <h1 class="h1 serif" style="max-width: 720px; margin-bottom: 16px; font-size: 44px;">Racing as R&D: How Motorsport Built the Modern Automobile</h1>
+      <p style="font-size: 17px; color: var(--text-2); max-width: 640px; line-height: 1.6; margin-bottom: 24px; font-style: italic;" class="serif">From lap times to showroom floors — the hidden transfer of technology, culture, and capital</p>
+      <div style="display: flex; flex-direction: column; gap: 8px; padding: 20px; background: rgba(45,59,142,0.05); border-left: 3px solid var(--accent); border-radius: 0 4px 4px 0; max-width: 640px; margin-bottom: 28px;">
+        <div style="font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);">Thesis</div>
+        <div style="font-size: 15px; color: var(--text); line-height: 1.6;">카레이싱은 단순 스포츠가 아니라 자동차 산업의 기술·마케팅·브랜딩 발전을 이끈 핵심 R&D 플랫폼이었다.</div>
+      </div>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); align-items: center;">
+        <span>By <strong style="color: var(--text);">Kim Jiwon</strong></span>
+        <span>·</span>
+        <span>May 2026</span>
+        <span>·</span>
+        <span>12 min read</span>
+        <span>·</span>
+        <span style="display: flex; gap: 6px;">
+          <span style="background: var(--wire-fill); padding: 2px 8px; border-radius: 2px; font-size: 11px; color: var(--text-2);">#Racing</span>
+          <span style="background: var(--wire-fill); padding: 2px 8px; border-radius: 2px; font-size: 11px; color: var(--text-2);">#Automotive</span>
+          <span style="background: var(--wire-fill); padding: 2px 8px; border-radius: 2px; font-size: 11px; color: var(--text-2);">#Technology</span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- S02: Summary Block -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S02 · Summary Block — CMS: Projects (summary fields group). Bordered card.</div>
+    <div class="section-inner tight">
+      <div class="summary-block">
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 20px;">Executive Summary</div>
+        <p style="font-size: 14px; color: var(--text); line-height: 1.7; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border);">카레이싱은 100년 이상 자동차 기술 혁신의 최전선이었으며, 타이어 기술부터 공기역학, 브레이크 시스템까지 트랙의 혁신이 양산차에 이전되어왔다. 그 과정에서 브랜드 아이덴티티와 마케팅 언어 역시 레이싱 문화와 깊이 결합되었다.</p>
+        <div class="summary-row"><div class="summary-label">Key Question</div><div class="summary-value">카레이싱이 자동차 산업 발전에 미친 영향은 기술·마케팅·브랜딩 중 어디서 가장 크게 나타났는가?</div></div>
+        <div class="summary-row"><div class="summary-label">Hypothesis</div><div class="summary-value">레이싱 → 양산차 기술 이전은 단순한 R&D 부산물이 아니라, 의도적인 브랜드 전략과 결합된 구조적 채널이었다.</div></div>
+        <div class="summary-row"><div class="summary-label">Method</div><div class="summary-value">산업사 분석, 기업 연보 및 특허 데이터, 레이싱 기술 이전 사례 비교</div></div>
+        <div class="summary-row"><div class="summary-label">Conclusion</div><div class="summary-value">레이싱은 브랜딩과 기술의 교차점에서 자동차 산업의 진화를 이끈 핵심 메커니즘이었다. EV 시대에 이 역할은 변형되고 있다.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S03–06: Article Body with TOC -->
+  <section class="section anno">
+    <div class="anno-label">S03–06 · Body + Sticky TOC — Desktop: 2-col (200px TOC + 760px body). Mobile: single col.</div>
+    <div class="section-inner">
+      <div class="article-grid">
+
+        <!-- TOC -->
+        <div class="toc-sidebar">
+          <div style="font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 12px;">Contents</div>
+          <a class="toc-item active">01 · Introduction</a>
+          <a class="toc-item">02 · Racing as a Laboratory</a>
+          <a class="toc-item">03 · Technology Transfer</a>
+          <a class="toc-item">04 · Brand Architecture</a>
+          <a class="toc-item">05 · The EV Transition</a>
+          <a class="toc-item">06 · Conclusion</a>
+          <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border);">
+            <div style="font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 8px;">Methodology</div>
+            <a class="toc-item">Method Note</a>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="article-body">
+
+          <div class="block-standard">
+            <p style="font-size: 17px; line-height: 1.75; color: var(--text);">
+              When a car wins at Le Mans, something more than a trophy changes hands. The technology that shaved 0.3 seconds off a lap time typically finds its way into a production vehicle within seven years — not because of luck, but because of a deliberate industrial logic that has governed motorsport since the early twentieth century.
+            </p>
+          </div>
+
+          <div class="block-standard">
+            <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; padding-top: 20px; border-top: 1px solid var(--border);">02 · Racing as a Laboratory</h2>
+            <p style="font-size: 16px; line-height: 1.75; color: var(--text-2);">
+              [Body copy block — Lorem ipsum placeholder. 본문 단락 텍스트가 여기에 위치합니다. Framer CMS rich text field에서 렌더링됩니다.]
+            </p>
+          </div>
+
+          <div class="block-data">
+            Chart / Data Visualization Block<br>
+            <span style="font-size: 10px; display: block; margin-top: 4px; color: var(--text-3);">예: F1 팀 예산 vs 양산차 R&D 예산 비교 (2000–2024) · Source: FIA, Company Filings</span>
+          </div>
+
+          <div class="block-quote">
+            <p>"The racetrack is the world's greatest laboratory — it is the only place where engineers are forced to be right, immediately."</p>
+            <footer>— Attributed to Enzo Ferrari</footer>
+          </div>
+
+          <div class="block-standard">
+            <h2 style="font-size: 20px; font-weight: 700; margin-bottom: 12px; padding-top: 20px; border-top: 1px solid var(--border);">03 · Technology Transfer</h2>
+            <p style="font-size: 16px; line-height: 1.75; color: var(--text-2);">
+              [본문 계속 — 기술 이전 메커니즘 분석 섹션. Framer rich text로 렌더링.]
+            </p>
+          </div>
+
+          <div class="block-data" style="height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            Framework Diagram<br>
+            <span style="font-size: 10px; display: block; margin-top: 4px; color: var(--text-3);">Track → Road: 기술 이전 경로 다이어그램</span>
+          </div>
+
+          <div class="block-insight">
+            <div style="font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px;">Key Finding</div>
+            <p>항공역학, 타이어 컴파운드, 브레이크 기술의 경우 F1 → 양산차 이전 주기가 평균 4–7년으로 단축되었다. 이는 1980년대 대비 절반 수준이다.</p>
+          </div>
+
+          <!-- S05: Methodology -->
+          <div style="background: var(--wire-fill); border-radius: 4px; padding: 28px; margin: 32px 0;">
+            <div style="font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 20px;">Methodology</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div><div class="h4" style="margin-bottom: 6px; font-size: 13px;">Desk Research</div><p class="body" style="font-size: 12px;">FIA 기술 규정 변천사, 제조사 연보, 기술 특허 데이터베이스, 산업사 문헌</p></div>
+              <div><div class="h4" style="margin-bottom: 6px; font-size: 13px;">Case Analysis</div><p class="body" style="font-size: 12px;">Mercedes, Ferrari, Toyota 3개 브랜드 레이싱 → 양산차 기술 이전 경로 추적</p></div>
+              <div><div class="h4" style="margin-bottom: 6px; font-size: 13px;">Limitation</div><p class="body" style="font-size: 12px;">비공개 R&D 데이터 접근 불가. 브랜드별 이전 속도는 추정치 기반.</p></div>
+              <div><div class="h4" style="margin-bottom: 6px; font-size: 13px;">Period</div><p class="body" style="font-size: 12px;">1950–2024, F1 / WEC / Rally 중심</p></div>
+            </div>
+          </div>
+
+          <!-- S06: Closing Insight -->
+          <div style="background: var(--bg); border-top: 2px solid var(--text); padding: 32px 0;">
+            <div style="font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 20px;">So What?</div>
+            <div style="display: grid; grid-template-columns: 1fr; gap: 16px;">
+              <div><div style="font-size: 12px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">For Industry</div><p style="font-size: 14px; color: var(--text); line-height: 1.6;">EV 시대에 레이싱의 기술 이전 역할은 Formula E를 통해 지속되지만, 그 형태는 배터리 및 소프트웨어 중심으로 재편되고 있다.</p></div>
+              <div><div style="font-size: 12px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">For Strategy & Brand</div><p style="font-size: 14px; color: var(--text); line-height: 1.6;">레이싱 DNA를 SDV 브랜드 언어로 전환하는 기업만이 EV 시대에도 퍼포먼스 헤리티지를 자산으로 유지할 수 있다.</p></div>
+              <div><div style="font-size: 12px; font-weight: 700; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Open Question</div><p style="font-size: 14px; color: var(--text); line-height: 1.6;">소프트웨어가 퍼포먼스의 중심이 될 때, 레이싱은 여전히 R&D 플랫폼으로 작동할 수 있는가?</p></div>
+            </div>
+          </div>
+
+        </div><!-- /article-body -->
+      </div><!-- /article-grid -->
+    </div>
+  </section>
+
+  <!-- S07: Related -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S07 · Related Projects — CMS: Projects (same issue, exclude current). 3 cards.</div>
+    <div class="section-inner tight">
+      <div class="section-tag">Related in Issue 00</div>
+      <div class="grid-3" style="margin-top: 20px;">
+        <div class="project-card">
+          <div class="card-meta"><span class="tag tag-research">Research</span></div>
+          <div class="card-title">The Luxury Pivot</div>
+          <div class="card-thesis">SDV 전환으로 럭셔리의 중심이 이동하고 있다.</div>
+          <div class="card-footer"><div class="card-author">Choi Dayeon · 10 min</div></div>
+        </div>
+        <div class="project-card">
+          <div class="card-meta"><span class="tag tag-execution">Execution</span></div>
+          <div class="card-title">The Real Math: EV vs Hybrid</div>
+          <div class="card-thesis">실제 구매 경제성은 더 복잡하다.</div>
+          <div class="card-footer"><div class="card-author">Park Soyeon · 14 min</div></div>
+        </div>
+        <div class="project-card">
+          <div class="card-meta"><span class="tag tag-research">Research</span></div>
+          <div class="card-title">Green by Design or Green by Marketing?</div>
+          <div class="card-thesis">친환경 전환의 실체를 해부한다.</div>
+          <div class="card-footer"><div class="card-author">Kim Jiwon · 10 min</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S08–09: Author + Sources -->
+  <section class="section anno">
+    <div class="anno-label">S08 · Author — CMS: People (relation). S09 · Sources — CMS: Projects (sources field).</div>
+    <div class="section-inner tight">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+        <div>
+          <div class="section-tag" style="margin-bottom: 16px;">Author</div>
+          <div style="display: flex; gap: 16px; align-items: flex-start;">
+            <div class="people-avatar" style="flex-shrink: 0;">KJ</div>
+            <div>
+              <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Kim Jiwon</div>
+              <div style="font-size: 12px; color: var(--text-3); margin-bottom: 8px;">Lead Researcher · Paired & Prepared</div>
+              <p style="font-size: 13px; color: var(--text-2); line-height: 1.6;">Business strategy and automotive industry focus. Currently pursuing graduate studies in management.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="section-tag" style="margin-bottom: 16px;">Sources & Citations</div>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="font-size: 12px; color: var(--text-2); line-height: 1.5;">[1] FIA Technical Regulations Archive, 1950–2024</div>
+            <div style="font-size: 12px; color: var(--text-2); line-height: 1.5;">[2] Mercedes-AMG Petronas Formula One Team, Annual Report 2023</div>
+            <div style="font-size: 12px; color: var(--text-2); line-height: 1.5;">[3] Ayres, R.U. (1988). "Technology as a driver of economic change." Futures.</div>
+            <div style="font-size: 12px; color: var(--text-3);">+ 14 more sources</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-article -->
+
+
+<!-- ══════════════════════════════════════
+     PAGE: PEOPLE
+══════════════════════════════════════ -->
+<div class="page" id="page-people">
+
+  <nav class="global-nav">
+    <div class="nav-logo">Paired & Prepared</div>
+    <div class="nav-links">
+      <a class="nav-link">Main</a>
+      <a class="nav-link">Projects</a>
+      <a class="nav-link active">People</a>
+      <a class="nav-link">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="section anno">
+    <div class="anno-label">S01 · Page Hero — Static. Institutional tone.</div>
+    <div class="section-inner compact">
+      <div class="h1" style="margin-bottom: 16px;">People</div>
+      <p class="body-lg" style="max-width: 560px;">The researchers, practitioners, and advisors behind Paired — connected by projects, not just affiliation.</p>
+    </div>
+  </section>
+
+  <!-- Current Members -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S02 · Current Members — CMS: People (role=current). 3-col card grid.</div>
+    <div class="section-inner compact">
+      <div class="section-tag">Current Members</div>
+      <div class="grid-3" style="margin-top: 28px;">
+        <div class="people-card">
+          <div class="people-avatar">KJ</div>
+          <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Kim Jiwon</div>
+          <div style="font-size: 12px; color: var(--accent); font-weight: 600; margin-bottom: 8px;">Lead · Business Strategy</div>
+          <div style="font-size: 12px; color: var(--text-3); margin-bottom: 12px;">Platform strategy, automotive industry</div>
+          <div style="font-size: 11px; color: var(--text-3); margin-bottom: 12px;">Yonsei University</div>
+          <div style="border-top: 1px solid var(--border); padding-top: 12px;">
+            <div style="font-size: 11px; color: var(--text-3); margin-bottom: 4px;">Featured Work</div>
+            <div style="font-size: 12px; color: var(--text); font-weight: 500;">Racing as R&D →</div>
+          </div>
+        </div>
+        <div class="people-card">
+          <div class="people-avatar">PS</div>
+          <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Park Soyeon</div>
+          <div style="font-size: 12px; color: var(--accent); font-weight: 600; margin-bottom: 8px;">Researcher · Data & Execution</div>
+          <div style="font-size: 12px; color: var(--text-3); margin-bottom: 12px;">Quantitative analysis, economics</div>
+          <div style="font-size: 11px; color: var(--text-3); margin-bottom: 12px;">KAIST</div>
+          <div style="border-top: 1px solid var(--border); padding-top: 12px;">
+            <div style="font-size: 11px; color: var(--text-3); margin-bottom: 4px;">Featured Work</div>
+            <div style="font-size: 12px; color: var(--text); font-weight: 500;">The Real Math: EV vs Hybrid →</div>
+          </div>
+        </div>
+        <div class="people-card">
+          <div class="people-avatar">LM</div>
+          <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Lee Minjun</div>
+          <div style="font-size: 12px; color: var(--accent); font-weight: 600; margin-bottom: 8px;">Researcher · AI & Platforms</div>
+          <div style="font-size: 12px; color: var(--text-3); margin-bottom: 12px;">AI systems, platform economics</div>
+          <div style="font-size: 11px; color: var(--text-3); margin-bottom: 12px;">SNU</div>
+          <div style="border-top: 1px solid var(--border); padding-top: 12px;">
+            <div style="font-size: 11px; color: var(--text-3); margin-bottom: 4px;">Featured Work</div>
+            <div style="font-size: 12px; color: var(--text); font-weight: 500;">Dispatch Intelligence →</div>
+          </div>
+        </div>
+        <div class="people-card">
+          <div class="people-avatar">CD</div>
+          <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Choi Dayeon</div>
+          <div style="font-size: 12px; color: var(--accent); font-weight: 600; margin-bottom: 8px;">Researcher · Design & Brand</div>
+          <div style="font-size: 12px; color: var(--text-3); margin-bottom: 12px;">Brand strategy, UX research</div>
+          <div style="font-size: 11px; color: var(--text-3); margin-bottom: 12px;">Hongik University</div>
+          <div style="border-top: 1px solid var(--border); padding-top: 12px;">
+            <div style="font-size: 11px; color: var(--text-3); margin-bottom: 4px;">Featured Work</div>
+            <div style="font-size: 12px; color: var(--text); font-weight: 500;">The Luxury Pivot →</div>
+          </div>
+        </div>
+        <div class="people-card">
+          <div class="people-avatar">JS</div>
+          <div style="font-size: 15px; font-weight: 700; margin-bottom: 4px;">Jung Seungho</div>
+          <div style="font-size: 12px; color: var(--accent); font-weight: 600; margin-bottom: 8px;">Researcher · Strategy</div>
+          <div style="font-size: 12px; color: var(--text-3); margin-bottom: 12px;">Market analysis, competitive strategy</div>
+          <div style="font-size: 11px; color: var(--text-3); margin-bottom: 12px;">Korea University</div>
+          <div style="border-top: 1px solid var(--border); padding-top: 12px;">
+            <div style="font-size: 11px; color: var(--text-3); margin-bottom: 4px;">Featured Work</div>
+            <div style="font-size: 12px; color: var(--text); font-weight: 500;">The Three-Body Problem →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alumni -->
+  <section class="section anno">
+    <div class="anno-label">S03 · Alumni Network — CMS: People (role=alumni). List view, compact.</div>
+    <div class="section-inner compact">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px;">
+        <div class="section-tag">Alumni Network</div>
+      </div>
+      <p class="body" style="margin-bottom: 28px;">12 alumni currently active in graduate programs, industry, and research — each connected to Paired's growing archive.</p>
+      <div style="border-top: 1px solid var(--border);">
+        <div class="alumni-item">
+          <div style="font-size: 14px; font-weight: 600;">Oh Jungmin</div>
+          <div style="font-size: 13px; color: var(--text-2);">MBA Candidate · Stanford GSB · Strategy & Innovation</div>
+          <div style="font-size: 12px; color: var(--text-3);">Issue 00 Contributor</div>
+        </div>
+        <div class="alumni-item">
+          <div style="font-size: 14px; font-weight: 600;">Han Eunji</div>
+          <div style="font-size: 13px; color: var(--text-2);">Design Researcher · Samsung Design · UX</div>
+          <div style="font-size: 12px; color: var(--text-3);">Issue 00 Contributor</div>
+        </div>
+        <div class="alumni-item">
+          <div style="font-size: 14px; font-weight: 600;">Bae Sunwoo</div>
+          <div style="font-size: 13px; color: var(--text-2);">Data Scientist · Kakao · Platform Analytics</div>
+          <div style="font-size: 12px; color: var(--text-3);">Issue 00 Contributor</div>
+        </div>
+        <div style="padding: 14px 0; font-size: 12px; color: var(--text-3); font-style: italic;">+ 9 more alumni</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advisors -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S04 · Advisors & Supervisors — CMS: People (role=advisor). 2-col, larger blocks.</div>
+    <div class="section-inner compact">
+      <div class="section-tag">Advisors & Supervisors</div>
+      <div class="grid-2" style="margin-top: 28px; gap: 24px;">
+        <div style="border: 1px solid var(--border); border-radius: 4px; padding: 28px;">
+          <div style="font-size: 17px; font-weight: 700; margin-bottom: 4px;">Prof. Kim Youngsoo</div>
+          <div style="font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 12px;">Professor of Management · Seoul National University</div>
+          <div style="font-size: 13px; color: var(--text-2); margin-bottom: 16px; line-height: 1.6;">Research area: Platform strategy, digital transformation, technology management</div>
+          <div style="font-size: 12px; color: var(--text-3); padding-top: 14px; border-top: 1px solid var(--border);">Connection to Paired: Research advisor, strategic mentor</div>
+        </div>
+        <div style="border: 1px solid var(--border); border-radius: 4px; padding: 28px;">
+          <div style="font-size: 17px; font-weight: 700; margin-bottom: 4px;">Prof. Lee Jaehyun</div>
+          <div style="font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 12px;">Associate Professor · KAIST Design</div>
+          <div style="font-size: 13px; color: var(--text-2); margin-bottom: 16px; line-height: 1.6;">Research area: Human-centered design, future mobility experience, design research methods</div>
+          <div style="font-size: 12px; color: var(--text-3); padding-top: 14px; border-top: 1px solid var(--border);">Connection to Paired: Design methodology advisor</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-people -->
+
+
+<!-- ══════════════════════════════════════
+     PAGE: ABOUT
+══════════════════════════════════════ -->
+<div class="page" id="page-about">
+
+  <nav class="global-nav">
+    <div class="nav-logo">Paired & Prepared</div>
+    <div class="nav-links">
+      <a class="nav-link">Main</a>
+      <a class="nav-link">Projects</a>
+      <a class="nav-link">People</a>
+      <a class="nav-link active">About</a>
+    </div>
+  </nav>
+
+  <!-- S01: About Paired -->
+  <section class="section anno">
+    <div class="anno-label">S01 · About Paired — Static. Institutional tone, generous spacing.</div>
+    <div class="section-inner">
+      <div class="h1" style="margin-bottom: 32px; max-width: 640px;">About Paired & Prepared</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 960px;">
+        <div>
+          <p class="body" style="margin-bottom: 20px;">Paired & Prepared is a project-based research archive operating at the intersection of business strategy, design, and data engineering. We conduct structured, cross-disciplinary projects and publish the results as semi-annual Issues.</p>
+          <p class="body" style="margin-bottom: 20px;">Each issue is not an endpoint — it is a node in a growing archive of analysis, structured inquiry, and institutional knowledge.</p>
+          <p class="body">We are a team of practitioners and researchers connected by a shared commitment to rigorous, accumulative work.</p>
+        </div>
+        <div>
+          <div style="display: flex; flex-direction: column; gap: 0;">
+            <div class="info-row" style="padding: 16px 0;">
+              <div class="info-label" style="width: 120px;">Founded</div>
+              <div class="info-content" style="font-size: 14px; color: var(--text);">2026</div>
+            </div>
+            <div class="info-row" style="padding: 16px 0;">
+              <div class="info-label" style="width: 120px;">Issues</div>
+              <div class="info-content" style="font-size: 14px; color: var(--text);">Semi-annual</div>
+            </div>
+            <div class="info-row" style="padding: 16px 0;">
+              <div class="info-label" style="width: 120px;">Focus</div>
+              <div class="info-content" style="font-size: 14px; color: var(--text);">Business · Design · Data</div>
+            </div>
+            <div class="info-row" style="padding: 16px 0;">
+              <div class="info-label" style="width: 120px;">Origin</div>
+              <div class="info-content" style="font-size: 14px; color: var(--text);">GRU Community</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S02: Why We Started -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S02 · Why We Started — Static. Serif pull quote + body text.</div>
+    <div class="section-inner compact">
+      <div class="section-tag">Why We Started</div>
+      <div class="block-quote" style="margin: 24px 0 28px;">
+        <p>"Most project work disappears. It gets done, presented, and forgotten — never structured, never archived, never built upon."</p>
+      </div>
+      <p class="body" style="max-width: 640px; margin-bottom: 16px;">We started Paired because we believed that the quality of analysis being done in our community deserved a more permanent, structured form. Not a blog. Not a portfolio. An archive.</p>
+      <p class="body" style="max-width: 640px;">Each issue is a deliberate act of knowledge accumulation — designed not just for this moment, but for the researchers and practitioners who will build on it in the years to come.</p>
+    </div>
+  </section>
+
+  <!-- S03: From GRU -->
+  <section class="section anno">
+    <div class="anno-label">S03 · From GRU — Static. Simple lineage diagram.</div>
+    <div class="section-inner compact">
+      <div class="section-tag">From GRU</div>
+      <div style="display: flex; gap: 60px; align-items: center; margin-top: 24px;">
+        <div style="max-width: 480px;">
+          <div class="h3" style="margin-bottom: 12px;">Rooted in a community of practice</div>
+          <p class="body">Paired emerged from GRU — a community where students and practitioners across disciplines shared work, challenged assumptions, and built a culture of structured inquiry. GRU is where the instinct to go deeper originated. Paired is how that instinct became a platform.</p>
+        </div>
+        <div style="flex-shrink: 0; display: flex; align-items: center; gap: 16px;">
+          <div class="diagram-node" style="min-width: 120px; text-align: center;">
+            <div class="diagram-node-title">GRU</div>
+            <div class="diagram-node-sub">Community<br>of practice</div>
+          </div>
+          <div class="diagram-arrow">→</div>
+          <div class="diagram-node" style="min-width: 120px; text-align: center; border-color: var(--accent); background: rgba(45,59,142,0.04);">
+            <div class="diagram-node-title" style="color: var(--accent);">Paired</div>
+            <div class="diagram-node-sub">Research<br>archive</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S04: Three Axes -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S04 · Business × Design × Data — Static. Venn diagram + explanation.</div>
+    <div class="section-inner compact">
+      <div class="section-tag">Our Three Axes</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 24px;">
+        <div style="position: relative; height: 280px;">
+          <div class="venn-diagram" style="width: 100%; height: 100%; position: relative;">
+            <div class="venn-circle venn-circle-1" style="width: 180px; height: 180px;"></div>
+            <div class="venn-circle venn-circle-2" style="width: 180px; height: 180px;"></div>
+            <div class="venn-circle venn-circle-3" style="width: 180px; height: 180px;"></div>
+            <div class="venn-label venn-label-1">Business</div>
+            <div class="venn-label venn-label-2">Design</div>
+            <div class="venn-label venn-label-3">Data &amp; Eng.</div>
+            <div class="venn-center">PAIRED</div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div>
+            <div class="h4" style="margin-bottom: 6px; color: #3B5BDB;">Business</div>
+            <p class="body">Strategy, market structure, competitive dynamics, organizational design. We approach every project with a business logic that connects to real decisions and real outcomes.</p>
+          </div>
+          <div>
+            <div class="h4" style="margin-bottom: 6px; color: #2F9E44;">Design</div>
+            <p class="body">UX, systems design, brand architecture, experience research. We believe design is not decoration — it is a structural way of thinking about problems.</p>
+          </div>
+          <div>
+            <div class="h4" style="margin-bottom: 6px; color: #E67700;">Data & Engineering</div>
+            <p class="body">Quantitative methods, modeling, AI systems. We ground our analysis in evidence and make our methods explicit and reproducible.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S05: How We Work -->
+  <section class="section anno">
+    <div class="anno-label">S05 · Project / Issue / Archive Model — Static. Horizontal cycle diagram.</div>
+    <div class="section-inner compact">
+      <div class="section-tag">How We Work</div>
+      <div class="h2" style="margin-top: 8px; margin-bottom: 32px;">From topic to archive</div>
+      <div class="structure-diagram" style="gap: 0;">
+        <div class="diagram-node">
+          <div class="diagram-node-title">Topic Selection</div>
+          <div class="diagram-node-sub">Cross-disciplinary<br>problem framing</div>
+        </div>
+        <div class="diagram-arrow">→</div>
+        <div class="diagram-node">
+          <div class="diagram-node-title">Research</div>
+          <div class="diagram-node-sub">Desk research,<br>interviews,<br>modeling</div>
+        </div>
+        <div class="diagram-arrow">→</div>
+        <div class="diagram-node">
+          <div class="diagram-node-title">Production</div>
+          <div class="diagram-node-sub">Structured articles,<br>visual analysis</div>
+        </div>
+        <div class="diagram-arrow">→</div>
+        <div class="diagram-node">
+          <div class="diagram-node-title">Issue Publication</div>
+          <div class="diagram-node-sub">Semi-annual<br>release</div>
+        </div>
+        <div class="diagram-arrow">→</div>
+        <div class="diagram-node">
+          <div class="diagram-node-title">Archive</div>
+          <div class="diagram-node-sub">Permanent,<br>filterable,<br>growing</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S06: Graduate/Research Lab Linkage -->
+  <section class="section anno" style="background: var(--white);">
+    <div class="anno-label">S06 · Graduate / Research Lab Linkage — Static (expandable later via Organizations CMS).</div>
+    <div class="section-inner compact">
+      <div class="section-tag">Institutional Connections</div>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 24px;">
+        <div>
+          <div class="h3" style="margin-bottom: 16px;">Connected to graduate programs and research</div>
+          <p class="body" style="margin-bottom: 16px;">Paired is built on a network of alumni in graduate programs and faculty advisors in research institutions. As our archive grows, these connections deepen — transforming Paired into a bridge between student inquiry and institutional research.</p>
+          <p class="body">We are designing for a future in which Paired projects become the starting points for graduate theses, research papers, and lab collaborations.</p>
+        </div>
+        <div>
+          <div class="wire-box" style="height: 200px; flex-direction: column; gap: 12px; border-radius: 4px;">
+            <span>Organizational Linkage Diagram</span>
+            <span style="font-size: 10px;">GRU → Paired → Alumni → Graduate / Research Lab / Partners</span>
+            <span style="font-size: 10px; color: #AAA9A4;">Expandable as partnerships grow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S07: Collaboration / Contact -->
+  <section class="section cta-section anno">
+    <div class="anno-label">S07 · Collaboration / Contact — Static. Dark section.</div>
+    <div class="section-inner compact">
+      <div class="section-tag">Work With Us</div>
+      <div class="h2" style="color: white; margin-top: 8px; margin-bottom: 20px;">Open to collaboration</div>
+      <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 40px;">
+        <div>
+          <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); margin-bottom: 6px;">Project Collaboration</div>
+          <div style="font-size: 13px; color: rgba(255,255,255,0.7);">Joint research or project co-authorship</div>
+        </div>
+        <div>
+          <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); margin-bottom: 6px;">Interview Request</div>
+          <div style="font-size: 13px; color: rgba(255,255,255,0.7);">Domain expert interview for future issues</div>
+        </div>
+        <div>
+          <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); margin-bottom: 6px;">Advisory</div>
+          <div style="font-size: 13px; color: rgba(255,255,255,0.7);">Faculty or practitioner advisory relationship</div>
+        </div>
+        <div>
+          <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.4); margin-bottom: 6px;">Research Partnership</div>
+          <div style="font-size: 13px; color: rgba(255,255,255,0.7);">Lab or institutional research linkage</div>
+        </div>
+      </div>
+      <div class="cta-links">
+        <button class="cta-link-btn">Get in Touch</button>
+        <button class="cta-link-btn">paired@example.com</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-about -->
+
+
+<script>
+function showPage(name) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  event.target.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// Filter button toggle
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    this.closest('.filter-bar').querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+
+// TOC hover
+document.querySelectorAll('.toc-item').forEach(item => {
+  item.addEventListener('click', function() {
+    document.querySelectorAll('.toc-item').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

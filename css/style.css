@@ -1,11 +1,11 @@
 /* ─────────────────────────────────────────
-   Paired & Prepared — Global Stylesheet
+   Gru-Up — Global Stylesheet
    ───────────────────────────────────────── */
 
 :root {
-  --bg: #F7F6F2;
-  --white: #FFFFFF;
-  --border: #D0CFC9;
+  --bg: #EEF0F8;
+  --white: #F6F7FC;
+  --border: #C9CBE0;
   --text: #1A1A1A;
   --text-2: #6B6B6B;
   --text-3: #9B9B9B;

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>People — Paired & Prepared</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .alumni-list { border-top: 1px solid var(--border); }
+  .alumni-item {
+    display: grid; grid-template-columns: 180px 1fr 140px;
+    gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--border); align-items: center;
+  }
+  .alumni-item:last-child { border-bottom: none; }
+  .alumni-item__name { font-size: 14px; font-weight: 600; }
+  .alumni-item__current { font-size: 13px; color: var(--text-2); }
+  .alumni-item__issue { font-size: 12px; color: var(--text-3); text-align: right; }
+
+  .advisor-card {
+    background: var(--white); border: 1px solid var(--border); border-radius: 4px; padding: 28px;
+  }
+  .advisor-card__name { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  .advisor-card__title { font-size: 13px; color: var(--accent); font-weight: 600; margin-bottom: 14px; }
+  .advisor-card__research { font-size: 13px; color: var(--text-2); line-height: 1.6; margin-bottom: 16px; }
+  .advisor-card__connection { font-size: 12px; color: var(--text-3); padding-top: 14px; border-top: 1px solid var(--border); }
+
+  @media (max-width: 900px) {
+    .alumni-item { grid-template-columns: 1fr; gap: 4px; }
+    .alumni-item__issue { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="../index.html">Paired & Prepared</a>
+  <div class="nav__links">
+    <a class="nav__link" href="../index.html">Main</a>
+    <a class="nav__link" href="projects.html">Projects</a>
+    <a class="nav__link" href="people.html">People</a>
+    <a class="nav__link" href="about.html">About</a>
+  </div>
+  <div class="nav__menu"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- Hero -->
+<section class="section" style="padding: 80px 0 56px; border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <p class="label" style="margin-bottom: 16px;">Network</p>
+    <h1 class="h1">People</h1>
+    <p class="body-lg" style="max-width: 520px; margin-top: 12px;">The researchers, practitioners, and advisors behind Paired — connected by projects, not just affiliation.</p>
+  </div>
+</section>
+
+<!-- Current Members -->
+<section class="section section--white section-pad">
+  <div class="container">
+    <p class="label" style="margin-bottom: 28px;">Current Members</p>
+    <div class="grid-3">
+
+      <div class="people-card fade-up">
+        <div class="people-avatar">KJ</div>
+        <div class="people-card__name">Kim Jiwon</div>
+        <div class="people-card__role">Lead · Business Strategy</div>
+        <div class="people-card__track">Platform strategy, automotive industry</div>
+        <div class="people-card__affil">Yonsei University</div>
+        <div class="people-card__work">
+          <div class="people-card__work-label">Featured Work</div>
+          <a href="article.html">Racing as R&D →</a>
+        </div>
+      </div>
+
+      <div class="people-card fade-up">
+        <div class="people-avatar">PS</div>
+        <div class="people-card__name">Park Soyeon</div>
+        <div class="people-card__role">Researcher · Data & Execution</div>
+        <div class="people-card__track">Quantitative analysis, economics</div>
+        <div class="people-card__affil">KAIST</div>
+        <div class="people-card__work">
+          <div class="people-card__work-label">Featured Work</div>
+          <a href="article.html">The Real Math: EV vs Hybrid →</a>
+        </div>
+      </div>
+
+      <div class="people-card fade-up">
+        <div class="people-avatar">LM</div>
+        <div class="people-card__name">Lee Minjun</div>
+        <div class="people-card__role">Researcher · AI & Platforms</div>
+        <div class="people-card__track">AI systems, platform economics</div>
+        <div class="people-card__affil">Seoul National University</div>
+        <div class="people-card__work">
+          <div class="people-card__work-label">Featured Work</div>
+          <a href="article.html">Dispatch Intelligence →</a>
+        </div>
+      </div>
+
+      <div class="people-card fade-up">
+        <div class="people-avatar">CD</div>
+        <div class="people-card__name">Choi Dayeon</div>
+        <div class="people-card__role">Researcher · Design & Brand</div>
+        <div class="people-card__track">Brand strategy, UX research</div>
+        <div class="people-card__affil">Hongik University</div>
+        <div class="people-card__work">
+          <div class="people-card__work-label">Featured Work</div>
+          <a href="article.html">The Luxury Pivot →</a>
+        </div>
+      </div>
+
+      <div class="people-card fade-up">
+        <div class="people-avatar">JS</div>
+        <div class="people-card__name">Jung Seungho</div>
+        <div class="people-card__role">Researcher · Strategy</div>
+        <div class="people-card__track">Market analysis, competitive strategy</div>
+        <div class="people-card__affil">Korea University</div>
+        <div class="people-card__work">
+          <div class="people-card__work-label">Featured Work</div>
+          <a href="article.html">The Three-Body Problem →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Alumni -->
+<section class="section section-pad fade-up">
+  <div class="container">
+    <p class="label" style="margin-bottom: 12px;">Alumni Network</p>
+    <p class="body" style="max-width: 560px; margin-bottom: 32px;">12 alumni currently active in graduate programs, industry, and research — each connected to Paired's growing archive.</p>
+    <div class="alumni-list">
+      <div class="alumni-item">
+        <div class="alumni-item__name">Oh Jungmin</div>
+        <div class="alumni-item__current">MBA Candidate · Stanford GSB · Strategy & Innovation</div>
+        <div class="alumni-item__issue">Issue 00</div>
+      </div>
+      <div class="alumni-item">
+        <div class="alumni-item__name">Han Eunji</div>
+        <div class="alumni-item__current">Design Researcher · Samsung Design · UX</div>
+        <div class="alumni-item__issue">Issue 00</div>
+      </div>
+      <div class="alumni-item">
+        <div class="alumni-item__name">Bae Sunwoo</div>
+        <div class="alumni-item__current">Data Scientist · Kakao · Platform Analytics</div>
+        <div class="alumni-item__issue">Issue 00</div>
+      </div>
+      <div class="alumni-item" style="color: var(--text-3);">
+        <div style="font-size: 13px; font-style: italic; grid-column: 1 / -1;">+ 9 more alumni</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Advisors -->
+<section class="section section--white section-pad fade-up">
+  <div class="container">
+    <p class="label" style="margin-bottom: 28px;">Advisors & Supervisors</p>
+    <div class="grid-2">
+      <div class="advisor-card">
+        <div class="advisor-card__name">Prof. Kim Youngsoo</div>
+        <div class="advisor-card__title">Professor of Management · Seoul National University</div>
+        <div class="advisor-card__research">Research area: Platform strategy, digital transformation, technology management</div>
+        <div class="advisor-card__connection">Connection to Paired: Research advisor, strategic mentor</div>
+      </div>
+      <div class="advisor-card">
+        <div class="advisor-card__name">Prof. Lee Jaehyun</div>
+        <div class="advisor-card__title">Associate Professor · KAIST Design</div>
+        <div class="advisor-card__research">Research area: Human-centered design, future mobility experience, design research methods</div>
+        <div class="advisor-card__connection">Connection to Paired: Design methodology advisor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-dark section-pad">
+  <div class="container">
+    <p class="label" style="margin-bottom: 20px;">Join</p>
+    <h2 class="h2" style="color: white; margin-bottom: 12px;">Work with Paired</h2>
+    <p style="font-size: 16px; color: rgba(255,255,255,0.5); max-width: 480px; margin-bottom: 32px;">Interested in contributing to a future issue or joining as a collaborator?</p>
+    <div class="cta-row">
+      <a class="btn btn--ghost-white" href="about.html#contact">Get in Touch</a>
+      <a class="btn btn--ghost-white" href="projects.html">Browse Projects</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a class="footer__logo" href="../index.html">Paired & Prepared</a>
+  <div class="footer__links">
+    <a class="footer__link" href="../index.html">Main</a>
+    <a class="footer__link" href="projects.html">Projects</a>
+    <a class="footer__link" href="people.html">People</a>
+    <a class="footer__link" href="about.html">About</a>
+  </div>
+  <span class="footer__copy">© 2026 Paired & Prepared</span>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Paired & Prepared</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .archive-hero { padding: 80px 0 56px; border-bottom: 1px solid var(--border); }
+  .archive-stats { display: flex; gap: 56px; margin-top: 32px; }
+  .stat__num { font-size: 44px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+  .stat__label { font-size: 11px; color: var(--text-3); margin-top: 4px; letter-spacing: 0.04em; }
+
+  .issue-band {
+    background: #1A1A1A; padding: 36px 0; border-bottom: 1px solid #333;
+  }
+  .issue-band__inner {
+    display: flex; justify-content: space-between; align-items: center; gap: 40px;
+  }
+  .issue-band__left { display: flex; align-items: center; gap: 28px; }
+  .issue-band__num {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+  .issue-band__title { font-size: 40px; font-weight: 800; letter-spacing: -0.02em; color: white; }
+  .issue-band__meta { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+
+  .issue-browser { padding: 32px 0; background: var(--white); border-bottom: 1px solid var(--border); }
+  .issue-browser__label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; }
+  .issue-scroll { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 4px; }
+  .issue-chip {
+    flex-shrink: 0; padding: 16px 20px; border-radius: 4px;
+    border: 1px solid var(--border); min-width: 140px;
+    transition: all 0.15s; cursor: pointer;
+  }
+  .issue-chip.active { background: var(--text); border-color: var(--text); color: white; }
+  .issue-chip__num { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); margin-bottom: 6px; }
+  .issue-chip.active .issue-chip__num { color: rgba(255,255,255,0.4); }
+  .issue-chip__title { font-size: 16px; font-weight: 700; }
+  .issue-chip__date { font-size: 11px; color: var(--text-3); margin-top: 6px; }
+  .issue-chip.active .issue-chip__date { color: rgba(255,255,255,0.4); }
+  .issue-chip--upcoming { background: var(--bg); cursor: default; }
+  .issue-chip--upcoming .issue-chip__title { color: var(--text-3); }
+
+  .methodology {
+    background: var(--white); border-bottom: 1px solid var(--border); padding: 48px 0;
+  }
+  .method-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 28px; }
+  .method-step { padding-right: 32px; border-right: 1px solid var(--border); }
+  .method-step:last-child { border-right: none; padding-right: 0; }
+  .method-step:not(:first-child) { padding-left: 32px; }
+  .method-step__num {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--text-3); margin-bottom: 8px;
+  }
+
+  .cards-grid { margin-top: 40px; }
+
+  @media (max-width: 900px) {
+    .archive-stats { gap: 32px; }
+    .issue-band__inner { flex-direction: column; align-items: flex-start; }
+    .method-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .method-step { border-right: none; padding: 0 0 24px; border-bottom: 1px solid var(--border); }
+    .method-step:last-child { border-bottom: none; padding-bottom: 0; }
+    .method-step:not(:first-child) { padding-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="../index.html">Paired & Prepared</a>
+  <div class="nav__links">
+    <a class="nav__link" href="../index.html">Main</a>
+    <a class="nav__link" href="projects.html">Projects</a>
+    <a class="nav__link" href="people.html">People</a>
+    <a class="nav__link" href="about.html">About</a>
+  </div>
+  <div class="nav__menu"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- S01. Archive Hero -->
+<section class="section archive-hero">
+  <div class="container">
+    <p class="label" style="margin-bottom: 16px;">Archive</p>
+    <h1 class="h1">Projects</h1>
+    <p class="body-lg" style="max-width: 560px; margin-top: 12px;">A cumulative archive of research, analysis, and structured inquiry across strategy, design, and data.</p>
+    <div class="archive-stats">
+      <div><div class="stat__num">01</div><div class="stat__label">Issues Published</div></div>
+      <div><div class="stat__num">06</div><div class="stat__label">Articles</div></div>
+      <div><div class="stat__num">05</div><div class="stat__label">Contributors</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S02. Latest Issue Band -->
+<div class="issue-band">
+  <div class="container">
+    <div class="issue-band__inner">
+      <div class="issue-band__left">
+        <div>
+          <div class="issue-band__num">Current Issue · Issue 00</div>
+          <div class="issue-band__title">Mobility</div>
+          <div class="issue-band__meta">6 articles · 5 contributors · Published May 2026</div>
+        </div>
+      </div>
+      <a class="btn btn--ghost-white" href="issue00.html">Open Issue 00 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- S03. Issue Browser -->
+<div class="issue-browser">
+  <div class="container">
+    <div class="issue-browser__label">All Issues</div>
+    <div class="issue-scroll">
+      <a class="issue-chip active" href="issue00.html">
+        <div class="issue-chip__num">Issue 00</div>
+        <div class="issue-chip__title">Mobility</div>
+        <div class="issue-chip__date">May 2026 · 6 articles</div>
+      </a>
+      <div class="issue-chip issue-chip--upcoming">
+        <div class="issue-chip__num">Issue 01</div>
+        <div class="issue-chip__title">TBD</div>
+        <div class="issue-chip__date">Fall 2026 · Upcoming</div>
+      </div>
+      <div class="issue-chip issue-chip--upcoming">
+        <div class="issue-chip__num">Issue 02</div>
+        <div class="issue-chip__title">TBD</div>
+        <div class="issue-chip__date">2027 · Planned</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- S04. Filter -->
+<div class="filter-bar">
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="research">Research</button>
+  <button class="filter-btn" data-filter="interview">Interview</button>
+  <button class="filter-btn" data-filter="execution">Execution</button>
+  <button class="filter-btn" data-filter="archive">Archive</button>
+</div>
+
+<!-- S05. Cards -->
+<section class="section section-pad">
+  <div class="container">
+    <div class="grid-3 cards-grid">
+
+      <a class="card fade-up" href="article.html" data-category="research">
+        <div class="card__meta">
+          <span class="tag tag--research">Research</span>
+          <span class="tag tag--issue">Issue 00</span>
+        </div>
+        <div class="card__title">Racing as R&D: How Motorsport Built the Modern Automobile</div>
+        <div class="card__thesis">카레이싱은 자동차 산업의 기술·마케팅·브랜딩 발전을 이끈 핵심 R&D 플랫폼이었다.</div>
+        <div class="card__footer">
+          <span class="card__author">Kim Jiwon · 12 min</span>
+          <span class="status">Published</span>
+        </div>
+      </a>
+
+      <a class="card fade-up" href="article.html" data-category="research">
+        <div class="card__meta">
+          <span class="tag tag--research">Research</span>
+          <span class="tag tag--issue">Issue 00</span>
+        </div>
+        <div class="card__title">The Luxury Pivot: How Automakers Are Redefining Premium in the SDV Era</div>
+        <div class="card__thesis">SDV 전환으로 자동차 럭셔리의 중심은 차량 내부 경험과 소프트웨어 생태계로 이동하고 있다.</div>
+        <div class="card__footer">
+          <span class="card__author">Choi Dayeon · 10 min</span>
+          <span class="status">Published</span>
+        </div>
+      </a>
+
+      <a class="card fade-up" href="article.html" data-category="execution">
+        <div class="card__meta">
+          <span class="tag tag--execution">Execution</span>
+          <span class="tag tag--issue">Issue 00</span>
+        </div>
+        <div class="card__title">The Real Math: Hybrid vs. EV Ownership Costs by Driver Profile</div>
+        <div class="card__thesis">실제 구매 경제성은 운전자 유형과 사용 패턴에 따라 하이브리드가 유리한 경우가 명확히 존재한다.</div>
+        <div class="card__footer">
+          <span class="card__author">Park Soyeon · 14 min</span>
+          <span class="status">Published</span>
+        </div>
+      </a>
+
+      <a class="card fade-up" href="article.html" data-category="research">
+        <div class="card__meta">
+          <span class="tag tag--research">Research</span>
+          <span class="tag tag--issue">Issue 00</span>
+        </div>
+        <div class="card__title">The Three-Body Problem: Riders, Drivers, and Platforms in Mobility Markets</div>
+        <div class="card__thesis">세 주체의 목적함수 충돌이 수익 구조와 운영 방식의 차이를 만들어낸다.</div>
+        <div class="card__footer">
+          <span class="card__author">Jung Seungho · 11 min</span>
+          <span class="status">Published</span>
+        </div>
+      </a>
+
+      <a class="card fade-up" href="article.html" data-category="execution">
+        <div class="card__meta">
+          <span class="tag tag--execution">Execution</span>
+          <span class="tag tag--issue">Issue 00</span>
+        </div>
+        <div class="card__title">Dispatch Intelligence: How AI Is Rewiring the Economics of Ride-Hailing</div>
+        <div class="card__thesis">AI 기반 배차 최적화는 플랫폼 수익성을 높이지만 새로운 운영 제약을 만들어낸다.</div>
+        <div class="card__footer">
+          <span class="card__author">Lee Minjun · 13 min</span>
+          <span class="status">Published</span>
+        </div>
+      </a>
+
+      <a class="card fade-up" href="article.html" data-category="research">
+        <div class="card__meta">
+          <span class="tag tag--research">Research</span>
+          <span class="tag tag--issue">Issue 00</span>
+        </div>
+        <div class="card__title">Green by Design or Green by Marketing? Sustainability in the Mobility Industry</div>
+        <div class="card__thesis">친환경 전환은 실제 기술 혁신과 마케팅 내러티브 사이의 간극이 크다.</div>
+        <div class="card__footer">
+          <span class="card__author">Kim Jiwon · 10 min</span>
+          <span class="status">Published</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- S06. Methodology -->
+<section class="methodology">
+  <div class="container">
+    <p class="label" style="margin-bottom: 12px;">Our Approach</p>
+    <div class="method-steps">
+      <div class="method-step">
+        <div class="method-step__num">01</div>
+        <div class="h4" style="margin-bottom: 6px;">Desk Research</div>
+        <p class="body">Literature, industry reports, public datasets, and primary sources.</p>
+      </div>
+      <div class="method-step">
+        <div class="method-step__num">02</div>
+        <div class="h4" style="margin-bottom: 6px;">Interview</div>
+        <p class="body">Domain experts, practitioners, and relevant stakeholders.</p>
+      </div>
+      <div class="method-step">
+        <div class="method-step__num">03</div>
+        <div class="h4" style="margin-bottom: 6px;">Modeling</div>
+        <p class="body">Quantitative analysis, simulation, and framework development.</p>
+      </div>
+      <div class="method-step">
+        <div class="method-step__num">04</div>
+        <div class="h4" style="margin-bottom: 6px;">Structured Output</div>
+        <p class="body">Published article, peer-reviewed, archived in the platform.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta-dark section-pad">
+  <div class="container">
+    <p class="label" style="margin-bottom: 20px;">Work With Us</p>
+    <h2 class="h2" style="color: white; margin-bottom: 12px;">Collaborate or contribute</h2>
+    <p style="font-size: 16px; color: rgba(255,255,255,0.5); max-width: 480px; margin-bottom: 32px;">Open to project collaboration, interview requests, and research partnerships.</p>
+    <div class="cta-row">
+      <a class="btn btn--ghost-white" href="about.html#contact">Get in Touch</a>
+      <a class="btn btn--ghost-white" href="about.html">About Paired</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a class="footer__logo" href="../index.html">Paired & Prepared</a>
+  <div class="footer__links">
+    <a class="footer__link" href="../index.html">Main</a>
+    <a class="footer__link" href="projects.html">Projects</a>
+    <a class="footer__link" href="people.html">People</a>
+    <a class="footer__link" href="about.html">About</a>
+  </div>
+  <span class="footer__copy">© 2026 Paired & Prepared</span>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

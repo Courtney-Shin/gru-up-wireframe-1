@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Paired & Prepared</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  .about-hero { padding: 80px 0 64px; border-bottom: 1px solid var(--border); }
+  .about-hero__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 960px; margin-top: 40px; }
+  .about-facts { display: flex; flex-direction: column; }
+
+  /* Venn */
+  .venn-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .venn { position: relative; width: 280px; height: 260px; flex-shrink: 0; }
+  .venn__circle {
+    position: absolute; width: 160px; height: 160px; border-radius: 50%; opacity: 0.12;
+  }
+  .venn__circle--b { background: #3B5BDB; top: 0; left: 10px; }
+  .venn__circle--d { background: #2F9E44; top: 0; right: 10px; }
+  .venn__circle--e { background: #E67700; bottom: 0; left: 60px; }
+  .venn__label { position: absolute; font-size: 12px; font-weight: 700; color: var(--text); }
+  .venn__label--b { top: 36px; left: 0; }
+  .venn__label--d { top: 36px; right: 0; }
+  .venn__label--e { bottom: 10px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+  .venn__center {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); text-align: center; line-height: 1.3;
+  }
+
+  .axis-list { display: flex; flex-direction: column; gap: 24px; }
+  .axis-item__label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+  .axis-item__label--b { color: #3B5BDB; }
+  .axis-item__label--d { color: #2F9E44; }
+  .axis-item__label--e { color: #E67700; }
+
+  /* Cycle */
+  .cycle { display: flex; align-items: center; overflow-x: auto; padding: 32px 0 8px; gap: 0; }
+  .cycle-node {
+    flex-shrink: 0; text-align: center; padding: 16px 18px;
+    background: var(--white); border: 1px solid var(--border); border-radius: 4px; min-width: 110px;
+  }
+  .cycle-node__title { font-size: 12px; font-weight: 700; line-height: 1.3; margin-bottom: 4px; }
+  .cycle-node__sub { font-size: 10px; color: var(--text-3); line-height: 1.4; }
+  .cycle-arrow { flex-shrink: 0; width: 28px; text-align: center; color: var(--text-3); font-size: 14px; }
+
+  /* Linkage placeholder */
+  .linkage-placeholder {
+    background: var(--bg); border: 1.5px dashed var(--border); border-radius: 4px;
+    padding: 48px; text-align: center; color: var(--text-3); font-size: 13px; line-height: 1.8;
+  }
+
+  /* Contact */
+  .contact-types { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-bottom: 40px; }
+  .contact-type__label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.35); margin-bottom: 6px; }
+  .contact-type__desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+  @media (max-width: 900px) {
+    .about-hero__grid { grid-template-columns: 1fr; gap: 40px; }
+    .venn-wrap { grid-template-columns: 1fr; }
+    .venn { margin: 0 auto; }
+    .contact-types { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="../index.html">Paired & Prepared</a>
+  <div class="nav__links">
+    <a class="nav__link" href="../index.html">Main</a>
+    <a class="nav__link" href="projects.html">Projects</a>
+    <a class="nav__link" href="people.html">People</a>
+    <a class="nav__link" href="about.html">About</a>
+  </div>
+  <div class="nav__menu"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- S01. About Paired -->
+<section class="section about-hero">
+  <div class="container">
+    <p class="label" style="margin-bottom: 20px;">About</p>
+    <h1 class="h1" style="max-width: 640px;">About Paired & Prepared</h1>
+    <div class="about-hero__grid">
+      <div>
+        <p class="body" style="margin-bottom: 18px;">Paired & Prepared is a project-based research archive operating at the intersection of business strategy, design, and data engineering. We conduct structured, cross-disciplinary projects and publish the results as semi-annual Issues.</p>
+        <p class="body" style="margin-bottom: 18px;">Each issue is not an endpoint — it is a node in a growing archive of analysis, structured inquiry, and institutional knowledge.</p>
+        <p class="body">We are a team of practitioners and researchers connected by a shared commitment to rigorous, accumulative work.</p>
+      </div>
+      <div class="about-facts">
+        <div class="info-row"><div class="info-label">Founded</div><div class="info-content">2026</div></div>
+        <div class="info-row"><div class="info-label">Cadence</div><div class="info-content">Semi-annual Issues</div></div>
+        <div class="info-row"><div class="info-label">Focus</div><div class="info-content">Business · Design · Data</div></div>
+        <div class="info-row"><div class="info-label">Origin</div><div class="info-content">GRU Community</div></div>
+        <div class="info-row"><div class="info-label">Current Issue</div><div class="info-content"><a href="issue00.html" style="color: var(--accent); font-weight: 600;">Issue 00: Mobility →</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S02. Why We Started -->
+<section class="section section--white section-pad fade-up">
+  <div class="container">
+    <p class="label" style="margin-bottom: 24px;">Why We Started</p>
+    <div style="max-width: 760px;">
+      <div class="block-quote" style="margin: 0 0 28px;">
+        <p>"Most project work disappears. It gets done, presented, and forgotten — never structured, never archived, never built upon."</p>
+      </div>
+      <p class="body" style="margin-bottom: 16px;">We started Paired because we believed that the quality of analysis being done in our community deserved a more permanent, structured form. Not a blog. Not a portfolio. An archive.</p>
+      <p class="body">Each issue is a deliberate act of knowledge accumulation — designed not just for this moment, but for the researchers and practitioners who will build on it in the years to come.</p>
+    </div>
+  </div>
+</section>
+
+<!-- S03. From GRU -->
+<section class="section section-pad fade-up">
+  <div class="container">
+    <p class="label" style="margin-bottom: 24px;">Origin</p>
+    <div style="display: flex; gap: 80px; align-items: center; flex-wrap: wrap;">
+      <div style="max-width: 480px;">
+        <h2 class="h2" style="margin-bottom: 16px;">From GRU</h2>
+        <p class="body" style="margin-bottom: 16px;">Paired emerged from GRU — a community where students and practitioners across disciplines shared work, challenged assumptions, and built a culture of structured inquiry.</p>
+        <p class="body">GRU is where the instinct to go deeper originated. Paired is how that instinct became a platform.</p>
+      </div>
+      <div style="flex-shrink: 0;">
+        <div class="diagram" style="padding: 0;">
+          <div class="diagram__node">
+            <div class="diagram__node-title">GRU</div>
+            <div class="diagram__node-sub">Community<br>of practice</div>
+          </div>
+          <div class="diagram__arrow">→</div>
+          <div class="diagram__node diagram__node--accent">
+            <div class="diagram__node-title diagram__node-title--accent">Paired</div>
+            <div class="diagram__node-sub">Research<br>archive</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S04. Three Axes -->
+<section class="section section--white section-pad fade-up">
+  <div class="container">
+    <p class="label" style="margin-bottom: 24px;">Our Three Axes</p>
+    <div class="venn-wrap">
+      <div style="display: flex; justify-content: center;">
+        <div class="venn">
+          <div class="venn__circle venn__circle--b"></div>
+          <div class="venn__circle venn__circle--d"></div>
+          <div class="venn__circle venn__circle--e"></div>
+          <div class="venn__label venn__label--b">Business</div>
+          <div class="venn__label venn__label--d">Design</div>
+          <div class="venn__label venn__label--e">Data & Eng.</div>
+          <div class="venn__center">PAIRED</div>
+        </div>
+      </div>
+      <div class="axis-list">
+        <div class="axis-item">
+          <div class="axis-item__label axis-item__label--b">Business</div>
+          <p class="body">Strategy, market structure, competitive dynamics, organizational design. We approach every project with business logic connecting to real decisions and real outcomes.</p>
+        </div>
+        <div class="axis-item">
+          <div class="axis-item__label axis-item__label--d">Design</div>
+          <p class="body">UX, systems design, brand architecture, experience research. Design is not decoration — it is a structural way of thinking about problems.</p>
+        </div>
+        <div class="axis-item">
+          <div class="axis-item__label axis-item__label--e">Data & Engineering</div>
+          <p class="body">Quantitative methods, modeling, AI systems. We ground analysis in evidence and make our methods explicit and reproducible.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S05. How We Work -->
+<section class="section section-pad fade-up">
+  <div class="container">
+    <p class="label" style="margin-bottom: 12px;">Process</p>
+    <h2 class="h2" style="margin-bottom: 32px;">From topic to archive</h2>
+    <div style="overflow-x: auto; padding-bottom: 8px;">
+      <div class="cycle">
+        <div class="cycle-node">
+          <div class="cycle-node__title">Topic Selection</div>
+          <div class="cycle-node__sub">Cross-disciplinary problem framing</div>
+        </div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-node">
+          <div class="cycle-node__title">Research</div>
+          <div class="cycle-node__sub">Desk research, interviews, modeling</div>
+        </div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-node">
+          <div class="cycle-node__title">Production</div>
+          <div class="cycle-node__sub">Structured articles, visual analysis</div>
+        </div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-node">
+          <div class="cycle-node__title">Issue Publication</div>
+          <div class="cycle-node__sub">Semi-annual release</div>
+        </div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-node diagram__node--accent">
+          <div class="cycle-node__title" style="color: var(--accent);">Archive</div>
+          <div class="cycle-node__sub">Permanent, filterable, growing</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S06. Graduate/Research Lab -->
+<section class="section section--white section-pad fade-up">
+  <div class="container">
+    <p class="label" style="margin-bottom: 24px;">Institutional Connections</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px;">
+      <div>
+        <h2 class="h2" style="margin-bottom: 16px;">Connected to graduate programs and research</h2>
+        <p class="body" style="margin-bottom: 16px;">Paired is built on a network of alumni in graduate programs and faculty advisors in research institutions. As our archive grows, these connections deepen — transforming Paired into a bridge between student inquiry and institutional research.</p>
+        <p class="body">We are designing for a future where Paired projects become starting points for graduate theses, research papers, and lab collaborations.</p>
+      </div>
+      <div class="linkage-placeholder">
+        GRU → Paired → Alumni<br>
+        → Graduate Programs<br>
+        → Research Labs<br>
+        → Industry Partners<br>
+        <br>
+        <span style="font-size: 11px; color: var(--text-3);">Organizational diagram — expanding as partnerships grow</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- S07. Contact -->
+<section class="section cta-dark section-pad" id="contact">
+  <div class="container">
+    <p class="label" style="margin-bottom: 24px;">Work With Us</p>
+    <h2 class="h2" style="color: white; margin-bottom: 20px;">Open to collaboration</h2>
+    <div class="contact-types">
+      <div>
+        <div class="contact-type__label">Project Collaboration</div>
+        <div class="contact-type__desc">Joint research or project co-authorship</div>
+      </div>
+      <div>
+        <div class="contact-type__label">Interview Request</div>
+        <div class="contact-type__desc">Domain expert interview for future issues</div>
+      </div>
+      <div>
+        <div class="contact-type__label">Advisory</div>
+        <div class="contact-type__desc">Faculty or practitioner advisory relationship</div>
+      </div>
+      <div>
+        <div class="contact-type__label">Research Partnership</div>
+        <div class="contact-type__desc">Lab or institutional research linkage</div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn--ghost-white" href="mailto:paired@example.com">Get in Touch</a>
+      <a class="btn btn--ghost-white" href="projects.html">Browse Projects</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a class="footer__logo" href="../index.html">Paired & Prepared</a>
+  <div class="footer__links">
+    <a class="footer__link" href="../index.html">Main</a>
+    <a class="footer__link" href="projects.html">Projects</a>
+    <a class="footer__link" href="people.html">People</a>
+    <a class="footer__link" href="about.html">About</a>
+  </div>
+  <span class="footer__copy">© 2026 Paired & Prepared</span>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

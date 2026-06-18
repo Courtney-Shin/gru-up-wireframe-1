@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3-a. 피할 수 없다면 이용해라 — dots mag Issue 01</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body { background: #ffffff; font-family: 'Inter', sans-serif; }
+  .article-header { max-width: 1280px; margin: 0 auto; padding: 80px 60px 64px; border-bottom: 1px solid #ddd; }
+  .article-header__section { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 20px; }
+  .article-header__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 400; color: #1a1a1a; line-height: 1.1; margin-bottom: 16px; }
+  .article-header__subtitle { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: #888; margin-bottom: 40px; }
+  .article-meta { display: flex; gap: 40px; align-items: baseline; }
+  .article-meta__authors { font-size: 14px; color: #1a1a1a; }
+  .article-meta__date, .article-meta__time { font-size: 13px; color: #888; }
+  .article-body { max-width: 720px; margin: 0 auto; padding: 72px 60px; }
+  .article-body p { font-size: 17px; line-height: 1.9; color: #333; margin-bottom: 28px; }
+  .article-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: #1a1a1a; margin: 56px 0 24px; border-top: 1px solid #ddd; padding-top: 40px; }
+  .article-body h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+  .pullquote { margin: 48px -120px; padding: 40px 0; border-top: 2px solid #1a1a1a; border-bottom: 2px solid #1a1a1a; }
+  .pullquote__text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-style: italic; color: #1a1a1a; line-height: 1.45; }
+  .dataviz { margin: 48px -60px; background: #f5f5f3; border: 1px dashed #ddd; padding: 48px; text-align: center; }
+  .dataviz__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .dataviz__title { font-size: 15px; color: #444; }
+  .data-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 14px; }
+  .data-table th { text-align: left; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #888; padding: 12px 16px 12px 0; border-bottom: 1.5px solid #1a1a1a; }
+  .data-table td { padding: 12px 16px 12px 0; border-bottom: 1px solid #f0f0f0; color: #333; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .case-study { border: 1px solid #1a1a1a; padding: 32px; margin: 40px 0; }
+  .case-study__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 12px; }
+  .case-study__company { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: #1a1a1a; margin-bottom: 16px; }
+  .case-study__stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; border-top: 1px solid #f0f0f0; padding-top: 20px; margin-top: 20px; }
+  .case-stat__label { font-size: 11px; color: #888; margin-bottom: 4px; }
+  .case-stat__value { font-size: 18px; color: #1a1a1a; font-weight: 500; }
+  .footnotes { border-top: 1px solid #ddd; margin-top: 56px; padding-top: 32px; }
+  .footnotes__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+  .footnote { font-size: 12px; color: #888; line-height: 1.7; margin-bottom: 6px; }
+  .article-nav { max-width: 1280px; margin: 0 auto; padding: 48px 60px; border-top: 1px solid #ddd; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .article-nav__next { text-align: right; }
+  .article-nav__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .article-nav__title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #1a1a1a; text-decoration: none; }
+  .article-nav__title:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="../index.html">← dots mag</a>
+  <div class="nav__links">
+    <a class="nav__link" href="issues.html">issues</a>
+    <a class="nav__link" href="masthead.html">masthead</a>
+    <a class="nav__link" href="about.html">about</a>
+  </div>
+  <div class="nav__lang">
+    <button class="nav__lang-btn active" data-lang="ko">KO</button>
+    <span class="nav__lang-sep">/</span>
+    <button class="nav__lang-btn" data-lang="en">EN</button>
+  </div>
+</nav>
+
+<div class="article-header">
+  <div class="article-header__section">Section 3-a · Business × Engineering · Issue 01</div>
+  <div class="article-header__title">피할 수 없다면 이용해라</div>
+  <div class="article-header__subtitle">친환경 정책으로 돈 버는 기업들</div>
+  <div class="article-meta">
+    <div class="article-meta__authors">한미지, 이채경</div>
+    <div class="article-meta__date">2026.06</div>
+    <div class="article-meta__time">13 min read</div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <h2><span class="ko">친환경, 선택이 아니라 강제된 룰</span><span class="en">[EN] 친환경, 선택이 아니라 강제된 룰</span></h2>
+  <p><span class="ko">전 세계 전기차 판매량이 2025년에는 2,000만 대를 넘어서며 전년 대비 20% 넘게 증가했다. 친환경은 이제 특정 산업만의 흐름이 아닌 전 세계 산업 전반을 관통하는 핵심 트렌드로 확산되고 있다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">그런데 기업들에게 가장 우려되는 과제는 '비용 증가'다. '그린플레이션' — 환경 정책에 따라 원자재 가격이 상승하여 인플레이션이 발생하는 현상 — 이 현실이 됐다. 현대제철의 분석에 따르면 오염물질 저감 투자 없이 사업을 운영할 경우 2025년 배출권 구매액, 과징금 등에 의한 재무적 손실액은 최대 5,230억 원으로 추정된다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="pullquote">
+    <div class="pullquote__text"><span class="ko">그런데 어떤 기업들은 이 비용 부담에도 불구하고 친환경 투자를 새로운 시장 기회로 전환하고 있다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></div>
+  </div>
+
+  <h2><span class="ko">Part 1. 친환경은 진짜 돈이 될까? — 이벤트 스터디</span><span class="en">[EN] Part 1. 친환경은 진짜 돈이 될까? — 이벤트 스터디</span></h2>
+  <p><span class="ko">친환경 기술 도입을 발표한 날의 주가 반응을 분석했다. 대상은 자동차 친환경 소재·부품 제조 5개 기업.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">분석 방법: <strong>실제 수익률 − 정상 수익률 = 초과수익(AR)</strong>. 이벤트일 후 초과수익 − 이벤트일 전 초과수익 > 0이면 유의미한 주가 반응.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>기업</th>
+        <th>이벤트</th>
+        <th>결과</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>현대모비스</td><td>2021.12 탄소중립 로드맵 발표</td><td>유의미한 초과수익 없음 (−0.29%p)</td></tr>
+      <tr><td>에코프로비엠</td><td>2024.09 차세대 양극재 개발 성과</td><td>유의미한 초과수익 없음 (−2.05%p)</td></tr>
+      <tr><td>삼성 SDI</td><td>2022.03 전고체 배터리 양산 착공</td><td><strong>유의미한 초과수익 있음 (+2.64%p)</strong></td></tr>
+      <tr><td>SKC</td><td>2023.07 5조원 중장기 투자 계획</td><td><strong>유의미한 초과수익 있음 (+1.80%p)</strong></td></tr>
+      <tr><td>현대제철</td><td>2026.02 탄소저감강판 세계 최초 양산</td><td><strong>유의미한 초과수익 있음 (+2.47%p)</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h2><span class="ko">Part 1. 친환경은 진짜 돈이 될까? — 회귀분석</span><span class="en">[EN] Part 1. 친환경은 진짜 돈이 될까? — 회귀분석</span></h2>
+  <p><span class="ko">자동차 및 부품, 배터리, 소재 제조 기업 11곳 × 3개년(n=30)을 대상으로 친환경 전략이 영업이익률에 미치는 영향을 회귀분석했다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>독립변수</th>
+        <th>p-value</th>
+        <th>계수(β)</th>
+        <th>해석</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>ESG 등급(환경)</td><td>0.15–0.30</td><td>β₁ < 0.12 (양)</td><td>방향성은 보이나 결정 요인으로 보기 어려움</td></tr>
+      <tr><td>친환경 투자액</td><td>0.40 이상</td><td>β₂ < −0.05 (음)</td><td>단기적으로 영업이익률 낮추는 요인</td></tr>
+      <tr><td>친환경 매출 비중</td><td>0.01–0.04</td><td>β₃ < 0.28 (강한 양)</td><td><strong>영업이익률을 설명하는 가장 핵심 변수</strong></td></tr>
+    </tbody>
+  </table>
+
+  <p><span class="ko">단순히 투자를 많이 하는 것보다 실제 매출로 연결되는 비중이 기업의 실질적인 수익성을 결정짓는 핵심 변수로 작용했다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="case-study">
+    <div class="case-study__label">Case Study</div>
+    <div class="case-study__company">HL 만도 — 친환경 매출 비중과 영업이익률의 동반 상승</div>
+    <p style="font-size:14px; color:#555; line-height:1.7; margin:0 0 0 0;">2022년부터 2024년까지 전기차 플랫폼 수주 확대와 고객사 다변화 전략으로 친환경 사업 비중을 꾸준히 늘렸다. 북미 전기차 업체향 공급 물량 증가와 전장 부품 비중 확대가 성장을 견인했다.</div>
+    <div class="case-study__stats">
+      <div>
+        <div class="case-stat__label">친환경 매출 비중</div>
+        <div class="case-stat__value">50.1% → 53.6%</div>
+      </div>
+      <div>
+        <div class="case-stat__label">매출액</div>
+        <div class="case-stat__value">7.5조 → 8.8조</div>
+      </div>
+      <div>
+        <div class="case-stat__label">영업이익률</div>
+        <div class="case-stat__value">3.31% → 4.08%</div>
+      </div>
+    </div>
+  </div>
+
+  <h2><span class="ko">Part 2. 친환경은 어떻게 팔리는 가치가 되었나? — 소비자 인식조사</span><span class="en">[EN] Part 2. 친환경은 어떻게 팔리는 가치가 되었나? — 소비자 인식조사</span></h2>
+  <p><span class="ko">무려 전체 응답자의 77.5%가 자동차 구매 시 '친환경 요소'가 중요하다고 답했다. 즉, 소비자 10명 중 7명 이상은 자동차를 구매할 때 친환경 요소를 중요하게 고려하고 있다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">소비자들은 '친환경 소재를 실제로 사용하는 기업'을 가장 신뢰한다고 답했다. 반면 광고·캠페인은 약 8% 수준으로 가장 낮게 나타났다. 소비자는 행동을 본다, 말을 듣는 것이 아니라.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="dataviz">
+    <div class="dataviz__label">시각화</div>
+    <div class="dataviz__title">친환경 소비 시작 계기 응답 분포 / 기업 친환경 행동에 대한 신뢰도<br><span style="font-size:12px; color:#aaa;">n=164 응답자 대상 자체 설문</span></div>
+  </div>
+
+  <h2><span class="ko">결론: 인식에서 이윤으로, 친환경 규제가 만든 선순환</span><span class="en">[EN] 결론: 인식에서 이윤으로, 친환경 규제가 만든 선순환</span></h2>
+  <p><span class="ko">친환경 규제는 더 이상 기업에게 단순한 제약이나 부담으로만 작용하지 않는다. 규제가 소비자의 인식과 행동을 변화시키고, 그렇게 형성된 친환경 트렌드는 다시 기업의 전략과 투자 방향을 움직이는 동력이 된다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">핵심은 이 세 가지다. 첫째, 친환경 투자는 단기적으로 비용이지만 중장기적으로 수익 구조의 전환이다. 둘째, 소비자는 선언이 아니라 실제 소재와 제품을 본다. 셋째, 친환경 매출 비중을 높이는 기업이 이익률도 높인다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="footnotes">
+    <div class="footnotes__label">출처</div>
+    <div class="footnote">현대제철 2023 통합보고서, 37p</div>
+    <div class="footnote">MSCI 보고서 — ESG 등급과 수익률 상관관계</div>
+    <div class="footnote">한국ESG기준원 — ESG 등급 (2022–2024, 기업 11곳)</div>
+    <div class="footnote">HL 만도 연간 보고서 2022–2024</div>
+    <div class="footnote">현대모비스 공식 발표 — Green Transformation to 2045 Net Zero</div>
+    <div class="footnote">포스코모빌리티솔루션 IR 자료</div>
+  </div>
+
+</div>
+
+<div class="article-nav">
+  <div>
+    <div class="article-nav__label">← 이전</div>
+    <a class="article-nav__title" href="article-2b.html">2-b. 전기차 과연 경제적인가</a>
+  </div>
+  <div class="article-nav__next">
+    <div class="article-nav__label">다음 →</div>
+    <a class="article-nav__title" href="article-3b.html">3-b. AI 모빌리티</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer__main">
+    <div>
+      <div class="site-footer__brand-name">dots mag</div>
+      <div class="site-footer__brand-desc">everything starts from a dot</div>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Pages</div>
+      <nav class="site-footer__nav">
+        <a class="site-footer__nav-link" href="issues.html">Issues</a>
+        <a class="site-footer__nav-link" href="masthead.html">Masthead</a>
+        <a class="site-footer__nav-link" href="about.html">About</a>
+      </nav>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Contact</div>
+      <div class="site-footer__contact-email">contact@dotsmag.kr</div>
+      <div class="site-footer__contact-note"><span class="ko">협력 제안, 인터뷰 요청,<br>산학 파트너십 문의</span><span class="en">Collaboration, interview requests,<br>industry partnership inquiries</span></div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="site-footer__copy"><span class="ko">© 2026 dots mag · 반기 발간</span><span class="en">© 2026 dots mag · Semi-annual</span></div>
+    <div class="site-footer__origin"><span class="ko">GRU Alumni · 성균관대학교 서비스디자인 연구실 협력</span><span class="en">GRU Alumni · Sungkyunkwan University</span></div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Issues — dots mag</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body { background: #F7F6F2; font-family: 'Inter', sans-serif; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 60px; }
+
+  /* Hero */
+  .archive-hero { padding: 80px 0 56px; border-bottom: 1px solid #ddd; }
+  .archive-hero__eyebrow { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 20px; }
+  .archive-hero__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 400; color: #1a1a1a; line-height: 1.1; margin-bottom: 16px; }
+  .archive-hero__sub { font-size: 15px; color: #888; max-width: 480px; line-height: 1.7; margin-bottom: 40px; }
+  .archive-stats { display: flex; gap: 48px; }
+  .stat__num { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 400; color: #1a1a1a; line-height: 1; }
+  .stat__label { font-size: 11px; color: #888; margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* Issue banner */
+  .issue-banner { background: #1a1a1a; padding: 40px 0; }
+  .issue-banner__inner { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+  .issue-banner__num { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+  .issue-banner__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 400; color: #fff; margin-bottom: 8px; }
+  .issue-banner__meta { font-size: 13px; color: rgba(255,255,255,0.4); }
+  .issue-banner__btn { display: inline-block; font-size: 13px; color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 12px 24px; text-decoration: none; white-space: nowrap; transition: border-color 0.15s; }
+  .issue-banner__btn:hover { border-color: #fff; }
+
+  /* Article list */
+  .issue-section { margin: 48px 0 0; }
+  .issue-section__header { display: flex; align-items: baseline; gap: 16px; padding-bottom: 12px; border-bottom: 1.5px solid #1a1a1a; margin-bottom: 0; }
+  .issue-section__num { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; }
+  .issue-section__title { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #1a1a1a; }
+  .article-row { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 24px; padding: 20px 0; border-bottom: 1px solid #e8e8e8; text-decoration: none; color: inherit; transition: background 0.1s; }
+  .article-row:hover .article-row__title { text-decoration: underline; }
+  .article-row--placeholder { opacity: 0.4; pointer-events: none; }
+  .article-row__left { display: flex; flex-direction: column; gap: 4px; }
+  .article-row__title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #1a1a1a; line-height: 1.3; }
+  .article-row__sub { font-size: 13px; color: #888; }
+  .article-row__right { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; text-align: right; }
+  .article-row__author { font-size: 12px; color: #888; white-space: nowrap; }
+  .article-row__time { font-size: 12px; color: #bbb; }
+
+  /* Upcoming issues */
+  .upcoming-section { padding: 48px 0; border-top: 1px solid #ddd; }
+  .upcoming-section__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 24px; }
+  .upcoming-row { display: flex; gap: 16px; }
+  .upcoming-chip { border: 1px solid #ddd; padding: 20px 28px; min-width: 180px; opacity: 0.5; }
+  .upcoming-chip__num { font-size: 11px; color: #888; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+  .upcoming-chip__title { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #1a1a1a; margin-bottom: 4px; }
+  .upcoming-chip__date { font-size: 11px; color: #bbb; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="../index.html">← dots mag</a>
+  <div class="nav__links">
+    <a class="nav__link active" href="issues.html">issues</a>
+    <a class="nav__link" href="masthead.html">masthead</a>
+    <a class="nav__link" href="about.html">about</a>
+  </div>
+  <div class="nav__lang">
+    <button class="nav__lang-btn active" data-lang="ko">KO</button>
+    <span class="nav__lang-sep">/</span>
+    <button class="nav__lang-btn" data-lang="en">EN</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- Hero -->
+  <div class="archive-hero">
+    <div class="archive-hero__eyebrow">Archive</div>
+    <div class="archive-hero__title">Issues</div>
+    <div class="archive-hero__sub"><span class="ko">Business, Design, Engineering의 교차점에서 반기 단위로 발행하는 리서치 아카이브.</span><span class="en">A semi-annual research archive at the intersection of Business, Design, and Engineering.</span></div>
+    <div class="archive-stats">
+      <div><div class="stat__num">01</div><div class="stat__label">Issues</div></div>
+      <div><div class="stat__num">06</div><div class="stat__label">Articles</div></div>
+      <div><div class="stat__num">07</div><div class="stat__label">Contributors</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Issue 01 Banner -->
+<div class="issue-banner">
+  <div class="wrap">
+    <div class="issue-banner__inner">
+      <div>
+        <div class="issue-banner__num">Current Issue · Issue 01 · 2026.06</div>
+        <div class="issue-banner__title"><span class="ko">차량 산업 패러다임의 변화</span><span class="en">The Paradigm Shift in the Automotive Industry</span></div>
+        <div class="issue-banner__meta">6 articles · 7 contributors · Business × Design × Engineering</div>
+      </div>
+      <a class="issue-banner__btn" href="issue01.html"><span class="ko">Issue 01 열기 →</span><span class="en">Open Issue 01 →</span></a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- 서론 -->
+  <div class="issue-section">
+    <div class="issue-section__header">
+      <span class="issue-section__num"><span class="ko">서론</span><span class="en">Intro</span></span>
+      <span class="issue-section__title"><span class="ko">레드라인 너머의 산업 지도</span><span class="en">Beyond the Redline: Industry Map</span></span>
+    </div>
+    <a class="article-row" href="article-intro.html">
+      <div class="article-row__left">
+        <div class="article-row__title"><span class="ko">레드라인 너머의 산업 지도</span><span class="en">Beyond the Redline: Industry Map</span></div>
+        <div class="article-row__sub"><span class="ko">F1이 먼저 달린 모빌리티의 세계</span><span class="en">The mobility world F1 drove first</span></div>
+      </div>
+      <div class="article-row__right">
+        <span class="article-row__author">이채경, 강다연</span>
+        <span class="article-row__time">10 min</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="issue-section">
+    <div class="issue-section__header">
+      <span class="issue-section__num">Section 1</span>
+      <span class="issue-section__title"><span class="ko">Business — 역사 및 기업 사례</span><span class="en">Business — History & Corporate Cases</span></span>
+    </div>
+    <a class="article-row article-row--placeholder" href="article-1a.html">
+      <div class="article-row__left">
+        <div class="article-row__title"><span class="ko">1-a. 대량생산에서 플랫폼으로</span><span class="en">1-a. From Mass Production to Platform</span></div>
+        <div class="article-row__sub"><span class="ko">자동차 산업 구조 변화 · 공급망 · OEM</span><span class="en">Industry structure · Supply chain · OEM</span></div>
+      </div>
+      <div class="article-row__right">
+        <span class="article-row__author">TBD</span>
+        <span class="article-row__time">— min</span>
+      </div>
+    </a>
+    <a class="article-row article-row--placeholder" href="article-1b.html">
+      <div class="article-row__left">
+        <div class="article-row__title"><span class="ko">1-b. 기업혁신 — 브랜딩·EV·플랫폼</span><span class="en">1-b. Corporate Innovation — Branding·EV·Platform</span></div>
+        <div class="article-row__sub"><span class="ko">BMW·제네시스·현대·테슬라·우버 포지셔닝 비교</span><span class="en">BMW·Genesis·Hyundai·Tesla·Uber positioning</span></div>
+      </div>
+      <div class="article-row__right">
+        <span class="article-row__author">TBD</span>
+        <span class="article-row__time">— min</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="issue-section">
+    <div class="issue-section__header">
+      <span class="issue-section__num">Section 2</span>
+      <span class="issue-section__title"><span class="ko">Business × Design — 소비자 선택 국면</span><span class="en">Business × Design — Consumer Decision Making</span></span>
+    </div>
+    <a class="article-row" href="article-2a.html">
+      <div class="article-row__left">
+        <div class="article-row__title">2-a. Feeling Luxury</div>
+        <div class="article-row__sub"><span class="ko">자동차 브랜드가 '좋은 차'를 정의하는 방식의 변화</span><span class="en">How autobrands redefine what a "good car" means</span></div>
+      </div>
+      <div class="article-row__right">
+        <span class="article-row__author">강다연, 신지우</span>
+        <span class="article-row__time">12 min</span>
+      </div>
+    </a>
+    <a class="article-row" href="article-2b.html">
+      <div class="article-row__left">
+        <div class="article-row__title"><span class="ko">2-b. 전기차 과연 경제적인가</span><span class="en">2-b. Is the EV Actually Economical?</span></div>
+        <div class="article-row__sub"><span class="ko">하이브리드 및 전기차의 경제성 분석</span><span class="en">Cost analysis of hybrids vs. EVs</span></div>
+      </div>
+      <div class="article-row__right">
+        <span class="article-row__author">양대현, 유지영</span>
+        <span class="article-row__time">15 min</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="issue-section">
+    <div class="issue-section__header">
+      <span class="issue-section__num">Section 3</span>
+      <span class="issue-section__title"><span class="ko">Business × Engineering — 기술적 측면</span><span class="en">Business × Engineering — Technical Dimensions</span></span>
+    </div>
+    <a class="article-row" href="article-3a.html">
+      <div class="article-row__left">
+        <div class="article-row__title"><span class="ko">3-a. 피할 수 없다면 이용해라</span><span class="en">3-a. If You Can't Avoid It, Use It</span></div>
+        <div class="article-row__sub"><span class="ko">친환경 정책으로 돈 버는 기업들</span><span class="en">Companies profiting from green policy</span></div>
+      </div>
+      <div class="article-row__right">
+        <span class="article-row__author">한미지, 이채경</span>
+        <span class="article-row__time">13 min</span>
+      </div>
+    </a>
+    <a class="article-row" href="article-3b.html">
+      <div class="article-row__left">
+        <div class="article-row__title"><span class="ko">3-b. AI 모빌리티</span><span class="en">3-b. AI Mobility</span></div>
+        <div class="article-row__sub"><span class="ko">AI 기반 최적화 택시에 소비자는 얼마까지 지불할까</span><span class="en">How much will consumers pay for AI-optimized rides?</span></div>
+      </div>
+      <div class="article-row__right">
+        <span class="article-row__author">유지영, 한미지</span>
+        <span class="article-row__time">14 min</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="issue-section">
+    <div class="issue-section__header">
+      <span class="issue-section__num">Section 4</span>
+      <span class="issue-section__title"><span class="ko">최종 제언</span><span class="en">Final Remarks</span></span>
+    </div>
+    <a class="article-row" href="article-4a.html">
+      <div class="article-row__left">
+        <div class="article-row__title"><span class="ko">4-a. 스스로 생각하고 달리는 차가 온다</span><span class="en">4-a. The Self-Driving Car Is Coming</span></div>
+        <div class="article-row__sub"><span class="ko">SDV · 자율주행 · 플랫폼 전쟁</span><span class="en">SDV · Autonomous driving · Platform war</span></div>
+      </div>
+      <div class="article-row__right">
+        <span class="article-row__author">신지우, 양대현</span>
+        <span class="article-row__time">16 min</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- 부록 -->
+  <div class="issue-section">
+    <div class="issue-section__header">
+      <span class="issue-section__num"><span class="ko">부록</span><span class="en">Appendix</span></span>
+      <span class="issue-section__title"><span class="ko">케이스 스터디</span><span class="en">Case Studies</span></span>
+    </div>
+    <a class="article-row" href="appendix.html#case1">
+      <div class="article-row__left">
+        <div class="article-row__title">Case 1. 지쿠</div>
+        <div class="article-row__sub">공유 킥보드 플랫폼 수익 구조 분석</div>
+      </div>
+      <div class="article-row__right">
+        <span class="article-row__author">—</span>
+      </div>
+    </a>
+    <a class="article-row" href="appendix.html#case2">
+      <div class="article-row__left">
+        <div class="article-row__title">Case 2. 모빌리티 플랫폼 3개 비교</div>
+        <div class="article-row__sub">카카오T · 쏘카 · 타다</div>
+      </div>
+      <div class="article-row__right">
+        <span class="article-row__author">—</span>
+      </div>
+    </a>
+  </div>
+
+  <!-- Upcoming -->
+  <div class="upcoming-section">
+    <div class="upcoming-section__label">Coming Up</div>
+    <div class="upcoming-row">
+      <div class="upcoming-chip">
+        <div class="upcoming-chip__num">Issue 02</div>
+        <div class="upcoming-chip__title">TBD</div>
+        <div class="upcoming-chip__date">2026 하반기 · 예정</div>
+      </div>
+      <div class="upcoming-chip">
+        <div class="upcoming-chip__num">Issue 03</div>
+        <div class="upcoming-chip__title">TBD</div>
+        <div class="upcoming-chip__date">2027 상반기 · 예정</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer__main">
+    <div>
+      <div class="site-footer__brand-name">dots mag</div>
+      <div class="site-footer__brand-desc">everything starts from a dot</div>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Pages</div>
+      <nav class="site-footer__nav">
+        <a class="site-footer__nav-link" href="issues.html">Issues</a>
+        <a class="site-footer__nav-link" href="masthead.html">Masthead</a>
+        <a class="site-footer__nav-link" href="about.html">About</a>
+      </nav>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Contact</div>
+      <div class="site-footer__contact-email">contact@dotsmag.kr</div>
+      <div class="site-footer__contact-note"><span class="ko">협력 제안, 인터뷰 요청,<br>산학 파트너십 문의</span><span class="en">Collaboration, interview requests,<br>industry partnership inquiries</span></div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="site-footer__copy"><span class="ko">© 2026 dots mag · 반기 발간</span><span class="en">© 2026 dots mag · Semi-annual</span></div>
+    <div class="site-footer__origin"><span class="ko">GRU Alumni · 성균관대학교 서비스디자인 연구실 협력</span><span class="en">GRU Alumni · Sungkyunkwan University</span></div>
+  </div>
+</footer>
+
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3-b. AI 모빌리티 — dots mag Issue 01</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body { background: #ffffff; font-family: 'Inter', sans-serif; }
+  .article-header { max-width: 1280px; margin: 0 auto; padding: 80px 60px 64px; border-bottom: 1px solid #ddd; }
+  .article-header__section { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 20px; }
+  .article-header__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 400; color: #1a1a1a; line-height: 1.1; margin-bottom: 16px; }
+  .article-header__subtitle { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: #888; margin-bottom: 40px; }
+  .article-meta { display: flex; gap: 40px; align-items: baseline; }
+  .article-meta__authors { font-size: 14px; color: #1a1a1a; }
+  .article-meta__date, .article-meta__time { font-size: 13px; color: #888; }
+  .article-body { max-width: 720px; margin: 0 auto; padding: 72px 60px; }
+  .article-body p { font-size: 17px; line-height: 1.9; color: #333; margin-bottom: 28px; }
+  .article-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: #1a1a1a; margin: 56px 0 24px; border-top: 1px solid #ddd; padding-top: 40px; }
+  .article-body h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+  .pullquote { margin: 48px -120px; padding: 40px 0; border-top: 2px solid #1a1a1a; border-bottom: 2px solid #1a1a1a; }
+  .pullquote__text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-style: italic; color: #1a1a1a; line-height: 1.45; }
+  .dataviz { margin: 48px -60px; background: #f5f5f3; border: 1px dashed #ddd; padding: 48px; text-align: center; }
+  .dataviz__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .dataviz__title { font-size: 15px; color: #444; }
+  .data-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 14px; }
+  .data-table th { text-align: left; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #888; padding: 12px 16px 12px 0; border-bottom: 1.5px solid #1a1a1a; }
+  .data-table td { padding: 12px 16px 12px 0; border-bottom: 1px solid #f0f0f0; color: #333; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .psm-result { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin: 32px 0; }
+  .psm-card { border: 1px solid #ddd; padding: 24px; }
+  .psm-card__type { font-size: 11px; color: #888; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 12px; }
+  .psm-card__ipp { font-family: 'Cormorant Garamond', serif; font-size: 32px; color: #1a1a1a; margin-bottom: 4px; }
+  .psm-card__label { font-size: 12px; color: #888; }
+  .psm-card__range { font-size: 14px; color: #555; margin-top: 12px; padding-top: 12px; border-top: 1px solid #f0f0f0; }
+  .footnotes { border-top: 1px solid #ddd; margin-top: 56px; padding-top: 32px; }
+  .footnotes__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+  .footnote { font-size: 12px; color: #888; line-height: 1.7; margin-bottom: 6px; }
+  .article-nav { max-width: 1280px; margin: 0 auto; padding: 48px 60px; border-top: 1px solid #ddd; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .article-nav__next { text-align: right; }
+  .article-nav__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .article-nav__title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #1a1a1a; text-decoration: none; }
+  .article-nav__title:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="../index.html">← dots mag</a>
+  <div class="nav__links">
+    <a class="nav__link" href="issues.html">issues</a>
+    <a class="nav__link" href="masthead.html">masthead</a>
+    <a class="nav__link" href="about.html">about</a>
+  </div>
+  <div class="nav__lang">
+    <button class="nav__lang-btn active" data-lang="ko">KO</button>
+    <span class="nav__lang-sep">/</span>
+    <button class="nav__lang-btn" data-lang="en">EN</button>
+  </div>
+</nav>
+
+<div class="article-header">
+  <div class="article-header__section">Section 3-b · Business × Engineering · Issue 01</div>
+  <div class="article-header__title">AI 모빌리티</div>
+  <div class="article-header__subtitle">AI 기반 최적화 택시에 소비자는 얼마까지 지불할까</div>
+  <div class="article-meta">
+    <div class="article-meta__authors">유지영, 한미지</div>
+    <div class="article-meta__date">2026.06</div>
+    <div class="article-meta__time">14 min read</div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <h2><span class="ko">이동 시간을 가격화하다</span><span class="en">[EN] 이동 시간을 가격화하다</span></h2>
+  <p><span class="ko">밤 11시, 공연장 앞 풍경은 매번 묘하게 닮아 있다. 조금 전까지 같은 노래를 따라 부르던 사람들이 일제히 같은 동작을 시작한다. 핸드폰을 꺼내, 택시 호출 버튼을 누른다. 누군가는 두 번, 세 번 새로고침을 누르고, 누군가는 '잠시 후 다시 시도해주세요'라는 메시지를 노려보며 표정이 굳는다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">또 다른 풍경. 아침 8시 40분. 9시 수업이 있는 대학생이 침대에서 화들짝 깨어났다. 도보로는 30분, 대중교통으로는 25분. 손가락은 자동으로 택시 앱을 누른다. 평소라면 8,000원짜리 길이지만, 지금은 10,000원이 떠도 결제 버튼을 누를 것이다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">두 장면 모두, 누군가가 평소보다 기꺼이 더 많은 돈을 낼 준비가 되어 있다는 신호이기도 하다. 본 연구는 이 한 줄짜리 질문에 데이터로 답하기 위해 시작되었다: AI 기반 모빌리티 서비스에 대해, 소비자는 얼마까지 지불할 의향이 있는가?</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <h2><span class="ko">다이내믹 프라이싱과 AI 배차 최적화</span><span class="en">[EN] 다이내믹 프라이싱과 AI 배차 최적화</span></h2>
+  <p><span class="ko">모빌리티 플랫폼은 단순히 차량을 연결하는 서비스를 넘어, 이용자의 위치, 목적지, 시간대, 주변 차량, 도로 상황을 실시간으로 분석해 이동 경험 전체를 설계하는 방향으로 진화하고 있다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">Uber의 서지 프라이싱, Grab의 동적 가격이 해외 대표 사례다. 국내에서는 운임 변동 폭이 제한적이어서, 다이내믹 프라이싱은 운임보다 호출료·사전확정요금·기사 인센티브 형태로 구현된다. 카카오모빌리티는 2025년 카카오 T 택시 10주년 발표에서 평균 배차 시간 6.6초, 탑승 성공률 94%를 공개했다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="pullquote">
+    <div class="pullquote__text"><span class="ko">소비자는 AI에 돈을 내는 것이 아니라, AI가 실제로 줄여주는 대기 시간과 지각 위험에 비용을 지불한다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></div>
+  </div>
+
+  <h2><span class="ko">연구 설계: PSM으로 소비자 가격 수용도 측정</span><span class="en">[EN] 연구 설계: PSM으로 소비자 가격 수용도 측정</span></h2>
+  <p><span class="ko">총 202명 대상 온라인 설문. 최근 1개월 내 택시 호출 앱 이용 경험자는 80.7%였다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">시나리오: 역에서 학교/직장까지 약 3.1km 이동. 출근·등교 시간대 도심 정체 상황.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>구분</th>
+        <th>일반 택시</th>
+        <th>AI 최적화 택시</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>예상 대기 시간</td><td>약 7분</td><td>약 3분</td></tr>
+      <tr><td>예상 이동 시간</td><td>약 25분</td><td>약 18분</td></tr>
+      <tr><td>총 소요 시간</td><td>32분</td><td>21분 (11분 절약)</td></tr>
+      <tr><td>이동 결과</td><td>지각 가능성 존재</td><td>약속 시간에 맞춰 도착 가능성 증가</td></tr>
+    </tbody>
+  </table>
+
+  <p><span class="ko">분석 방법: PSM(Price Sensitivity Meter) — 너무 싸다, 저렴하다, 비싸다, 너무 비싸다 4개 질문으로 수용 가능 가격 범위 추정.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <h2><span class="ko">분석 결과</span><span class="en">[EN] 분석 결과</span></h2>
+
+  <div class="psm-result">
+    <div class="psm-card">
+      <div class="psm-card__type">일반 택시</div>
+      <div class="psm-card__ipp">8,190원</div>
+      <div class="psm-card__label">IPP (무차별 가격점)</div>
+      <div class="psm-card__range">수용 가능 범위: 7,316–9,000원</div>
+    </div>
+    <div class="psm-card">
+      <div class="psm-card__type">AI 최적화 택시</div>
+      <div class="psm-card__ipp">8,403원</div>
+      <div class="psm-card__label">IPP (무차별 가격점)</div>
+      <div class="psm-card__range">수용 가능 범위: 7,350–8,933원</div>
+    </div>
+  </div>
+
+  <p><span class="ko">AI 최적화 택시의 IPP는 일반 택시보다 약 213원 높다. 강한 프리미엄 수용층(AI 택시가 더 비싸도 이용 의향)은 32.2%에 그쳤지만, 조건부 수용층(보통 이상 응답)까지 포함하면 61.4%였다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="dataviz">
+    <div class="dataviz__label">시각화</div>
+    <div class="dataviz__title">일반 택시 vs AI 최적화 택시 PSM 곡선<br><span style="font-size:12px; color:#aaa;">음영 구간 = 수용가능 가격 범위 · n=202</span></div>
+  </div>
+
+  <h2><span class="ko">택시 이용 시 주요 고려 요소</span><span class="en">[EN] 택시 이용 시 주요 고려 요소</span></h2>
+  <p><span class="ko">가장 중요하게 고려하는 요소는 요금(38.1%)이 1위, 이어 대기 시간(24.8%), 배차 성공 여부(16.8%), 이동 시간(7.9%) 순이었다. 가격이 여전히 1순위지만, 대기 시간과 배차 성공 여부 역시 핵심 판단 기준으로 작동한다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <h2><span class="ko">결론: AI 모빌리티의 가격 결정권</span><span class="en">[EN] 결론: AI 모빌리티의 가격 결정권</span></h2>
+  <p><span class="ko">AI 모빌리티의 가격 결정권은 기술 자체에서 나오지 않는다. 소비자가 체감하는 시간 절약, 이동 확실성, 지각 회피 가능성이 가격 인상의 합리적 근거로 제시될 때 비로소 AI 최적화가 프리미엄으로 전환될 수 있다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">213원의 차이는 작아 보인다. 하지만 이것이 의미하는 바는 명확하다 — '11분'이라는 시간 절약이 소비자에게 약 2.6%의 추가 지불 의사로 전환됐다. AI 모빌리티 서비스가 더 설득력 있는 '시간 가격화' 논리를 만들수록, 이 숫자는 달라질 수 있다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="footnotes">
+    <div class="footnotes__label">출처 및 방법론</div>
+    <div class="footnote">설문 대상: 202명 (남성 98명/여성 104명, 30대 33.7%/40대 30.2%/50대 이상 18.3%)</div>
+    <div class="footnote">분석 방법: PSM (Price Sensitivity Meter) — 4개 질문 기반 누적분포 교차점 도출</div>
+    <div class="footnote">카카오모빌리티 카카오 T 택시 10주년 발표 (2025)</div>
+    <div class="footnote">Uber 공식 문서 — Surge Pricing, Upfront Pricing 설명</div>
+    <div class="footnote">Grab 공식 문서 — 동적 가격 및 수요 예측 설명</div>
+    <div class="footnote">AWS 기술 블로그 — 티머니GO 온다택시 ML 모델 사례</div>
+    <div class="footnote">국토교통부, 심야 택시난 완화 대책 (2022)</div>
+  </div>
+
+</div>
+
+<div class="article-nav">
+  <div>
+    <div class="article-nav__label">← 이전</div>
+    <a class="article-nav__title" href="article-3a.html">3-a. 피할 수 없다면 이용해라</a>
+  </div>
+  <div class="article-nav__next">
+    <div class="article-nav__label">다음 →</div>
+    <a class="article-nav__title" href="article-4a.html">4-a. 스스로 생각하고 달리는 차가 온다</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer__main">
+    <div>
+      <div class="site-footer__brand-name">dots mag</div>
+      <div class="site-footer__brand-desc">everything starts from a dot</div>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Pages</div>
+      <nav class="site-footer__nav">
+        <a class="site-footer__nav-link" href="issues.html">Issues</a>
+        <a class="site-footer__nav-link" href="masthead.html">Masthead</a>
+        <a class="site-footer__nav-link" href="about.html">About</a>
+      </nav>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Contact</div>
+      <div class="site-footer__contact-email">contact@dotsmag.kr</div>
+      <div class="site-footer__contact-note"><span class="ko">협력 제안, 인터뷰 요청,<br>산학 파트너십 문의</span><span class="en">Collaboration, interview requests,<br>industry partnership inquiries</span></div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="site-footer__copy"><span class="ko">© 2026 dots mag · 반기 발간</span><span class="en">© 2026 dots mag · Semi-annual</span></div>
+    <div class="site-footer__origin"><span class="ko">GRU Alumni · 성균관대학교 서비스디자인 연구실 협력</span><span class="en">GRU Alumni · Sungkyunkwan University</span></div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

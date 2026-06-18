@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4-a. 스스로 생각하고 달리는 차가 온다 — dots mag Issue 01</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body { background: #ffffff; font-family: 'Inter', sans-serif; }
+  .article-header { max-width: 1280px; margin: 0 auto; padding: 80px 60px 64px; border-bottom: 1px solid #ddd; }
+  .article-header__section { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 20px; }
+  .article-header__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 400; color: #1a1a1a; line-height: 1.1; margin-bottom: 16px; }
+  .article-header__subtitle { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: #888; margin-bottom: 40px; }
+  .article-meta { display: flex; gap: 40px; align-items: baseline; }
+  .article-meta__authors { font-size: 14px; color: #1a1a1a; }
+  .article-meta__date, .article-meta__time { font-size: 13px; color: #888; }
+  .article-body { max-width: 720px; margin: 0 auto; padding: 72px 60px; }
+  .article-body p { font-size: 17px; line-height: 1.9; color: #333; margin-bottom: 28px; }
+  .article-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: #1a1a1a; margin: 56px 0 24px; border-top: 1px solid #ddd; padding-top: 40px; }
+  .article-body h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+  .article-body h3 { font-size: 16px; font-weight: 600; color: #1a1a1a; margin: 32px 0 12px; }
+  .pullquote { margin: 48px -120px; padding: 40px 0; border-top: 2px solid #1a1a1a; border-bottom: 2px solid #1a1a1a; }
+  .pullquote__text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-style: italic; color: #1a1a1a; line-height: 1.45; }
+  .dataviz { margin: 48px -60px; background: #f5f5f3; border: 1px dashed #ddd; padding: 48px; text-align: center; }
+  .dataviz__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .dataviz__title { font-size: 15px; color: #444; }
+  .data-table { width: 100%; border-collapse: collapse; margin: 32px 0; font-size: 14px; }
+  .data-table th { text-align: left; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #888; padding: 12px 16px 12px 0; border-bottom: 1.5px solid #1a1a1a; }
+  .data-table td { padding: 12px 16px 12px 0; border-bottom: 1px solid #f0f0f0; color: #333; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .insight-block { background: #1a1a1a; color: #fff; padding: 40px; margin: 40px -60px; }
+  .insight-block__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+  .insight-block__text { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: #fff; line-height: 1.45; }
+  .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin: 32px 0; }
+  .tech-card { border: 1px solid #ddd; padding: 24px; }
+  .tech-card__icon { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 10px; }
+  .tech-card__name { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #1a1a1a; margin-bottom: 12px; }
+  .tech-card__desc { font-size: 13px; color: #555; line-height: 1.7; }
+  .footnotes { border-top: 1px solid #ddd; margin-top: 56px; padding-top: 32px; }
+  .footnotes__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+  .footnote { font-size: 12px; color: #888; line-height: 1.7; margin-bottom: 6px; }
+  .article-nav { max-width: 1280px; margin: 0 auto; padding: 48px 60px; border-top: 1px solid #ddd; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .article-nav__next { text-align: right; }
+  .article-nav__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .article-nav__title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #1a1a1a; text-decoration: none; }
+  .article-nav__title:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="../index.html">← dots mag</a>
+  <div class="nav__links">
+    <a class="nav__link" href="issues.html">issues</a>
+    <a class="nav__link" href="masthead.html">masthead</a>
+    <a class="nav__link" href="about.html">about</a>
+  </div>
+  <div class="nav__lang">
+    <button class="nav__lang-btn active" data-lang="ko">KO</button>
+    <span class="nav__lang-sep">/</span>
+    <button class="nav__lang-btn" data-lang="en">EN</button>
+  </div>
+</nav>
+
+<div class="article-header">
+  <div class="article-header__section">Section 4-a · Business × Engineering · Issue 01</div>
+  <div class="article-header__title">스스로 생각하고 달리는 차가 온다</div>
+  <div class="article-header__subtitle">SDV · 자율주행 · 플랫폼 전쟁 — 자동차 산업 100년, 다음 마일스톤</div>
+  <div class="article-meta">
+    <div class="article-meta__authors">신지우, 양대현</div>
+    <div class="article-meta__date">2026.06</div>
+    <div class="article-meta__time">16 min read</div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <h2><span class="ko">Part 1. 연차보고서가 먼저 말했다</span><span class="en">[EN] Part 1. 연차보고서가 먼저 말했다</span></h2>
+  <p><span class="ko">자동차 회사가 자신을 설명하는 방식이 달라지고 있다. 예전의 자동차 산업을 말할 때 중심에 있던 단어는 비교적 분명했다. 제조, 공장, 엔진, 생산 능력, 공급망.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">그런데 최근 몇 년 사이, 가장 보수적이고 딱딱한 문서 안에서 다른 단어들이 늘어나기 시작했다. 소프트웨어, OTA, 자율주행, AI, 커넥티드. 광고 문구라면 그저 유행어처럼 넘길 수 있다. 하지만 연차보고서라면 이야기가 다르다. SEC에 제출되는 법적 문서다. 투자자에게 책임지는 언어이고, 기업이 가장 신중하게 고른 단어들의 집합이다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">Tesla·GM·BMW 3개사의 연차보고서를 직접 파싱했다. SDV 키워드(software, OTA, autonomous, AI, connected)와 제조 키워드(manufacturing, assembly, powertrain)의 비율로 SDV 지향도를 측정했다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>기업</th>
+        <th>2021년 SDV%</th>
+        <th>2024년 SDV%</th>
+        <th>변화</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Tesla</td><td>21.6%</td><td>32.8%</td><td><strong>+11.2pp</strong></td></tr>
+      <tr><td>GM</td><td>33.6%</td><td>35.4%</td><td>+1.8pp</td></tr>
+      <tr><td>BMW</td><td>19.8%</td><td>24.8%</td><td>+5.0pp</td></tr>
+    </tbody>
+  </table>
+
+  <div class="pullquote">
+    <div class="pullquote__text"><span class="ko">방향이 갈렸다. 전략 발표회에서가 아니라, 보고서 언어에서 먼저 갈렸다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></div>
+  </div>
+
+  <h2><span class="ko">Part 2. 하드웨어가 레드오션이 된 이유</span><span class="en">[EN] Part 2. 하드웨어가 레드오션이 된 이유</span></h2>
+  <p><span class="ko">전기차는 내연기관의 구조를 해체했다. 엔진을 구성하던 6,900개 부품이 사라지고, 구동 전달 체계 부품은 5,700개에서 3,600개로 줄었다. 내연기관차 약 3만 개의 부품에서 전기차는 약 2만 개로 달린다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">배터리 셀 원가는 2015년 kWh당 350달러에서 2024년 100달러 아래로 떨어졌다(BloombergNEF). LG에너지솔루션, CATL, 삼성SDI 같은 기업들이 글로벌 완성차 회사들에 셀을 공급한다. 브랜드는 달라도, 그 안에 들어가는 핵심 부품은 점점 표준화되고 있다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="insight-block">
+    <div class="insight-block__label">Key Insight</div>
+    <div class="insight-block__text">하드웨어가 차의 기본기를 만들었다면, 소프트웨어는 앞으로 그 차가 어떻게 살아 움직일지를 결정한다.</div>
+  </div>
+
+  <h2><span class="ko">Part 3. SDV: 차량이 소프트웨어로 정의되다</span><span class="en">[EN] Part 3. SDV: 차량이 소프트웨어로 정의되다</span></h2>
+  <p><span class="ko">SDV(Software Defined Vehicle)는 주행 성능, 편의 기능, 안전 사양, 감성 품질까지 차량 소프트웨어를 통해 지속적으로 업데이트되는 차다. 차를 사는 순간이 끝이 아니라 시작이 된다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">소프트웨어는 차를 판 이후에도 구독, 업데이트, 데이터 기반 서비스 수익이 발생한다. Tesla FSD는 월 99달러 구독이다. GM의 OnStar와 Super Cruise 구독은 이미 수십억 달러 규모의 반복 수익을 만들어낸다. 자동차 제조업의 수익 모델이 일회성 판매에서 구독형 소프트웨어 모델에 가까워지고 있다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="tech-grid">
+    <div class="tech-card">
+      <div class="tech-card__icon">① E/E 아키텍처</div>
+      <div class="tech-card__name">중앙 집중화</div>
+      <div class="tech-card__desc">수십 개의 분산 제어기를 고성능 중앙 컴퓨터 하나로 통합. OTA 업데이트가 가능해지는 구조적 기반.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tech-card__icon">② Data</div>
+      <div class="tech-card__name">차량이 센서가 되다</div>
+      <div class="tech-card__desc">커넥티드카 한 대가 시간당 25GB 데이터 생성. 2030년 차 한 대에 센서 200개. Tesla FSD 신경망 학습, 보험사 UBI 상품 설계.</div>
+    </div>
+    <div class="tech-card">
+      <div class="tech-card__icon">③ OS & OTA</div>
+      <div class="tech-card__name">살아있는 시스템</div>
+      <div class="tech-card__desc">Tesla OS: 드라이브 유닛·BMS·자율주행 모듈 통합. 현대차 ccOS: HDP·RPP 등 레벨 3 기술을 OTA로 확대 적용.</div>
+    </div>
+  </div>
+
+  <h2><span class="ko">Part 4. 자율주행: 기술이 아니라 허가의 문제</span><span class="en">[EN] Part 4. 자율주행: 기술이 아니라 허가의 문제</span></h2>
+  <p><span class="ko">샌프란시스코 미션 디스트릭트, 새벽 2시. 핸들 없는 차가 골목을 돌아 나온다. Waymo가 2023년 캘리포니아에서 24시간 무인 운행 허가를 받은 뒤 벌어지고 있는 일상이다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">SAE는 자율주행을 레벨 0에서 5까지 나눈다. 레벨 3부터는 차가 판단한 상황에서 사고가 나면 제조사가 책임을 진다. 여기서부터는 단순히 기술의 문제가 아니다. 보험사, 법원, 입법자가 함께 움직여야 한다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <h3>차가 세상을 보는 세 가지 방법</h3>
+
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>기술</th>
+        <th>방식</th>
+        <th>대표 사례</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>LiDAR</td><td>초당 수백만 레이저 빔 → 3D 공간 매핑. 야간·악천후 강인함. 비용 高.</td><td>Waymo (다중 센서)</td></tr>
+      <tr><td>Camera Vision</td><td>카메라 다각 배치 + 딥러닝. 비용 低. 대규모 학습 데이터 필요.</td><td>Tesla Vision (600만 대 플릿)</td></tr>
+      <tr><td>SLAM</td><td>주행 중 실시간 자기 위치 파악 + 지도 생성. GPS 단절 환경 대응.</td><td>전 자율주행 시스템 공통</td></tr>
+    </tbody>
+  </table>
+
+  <p><span class="ko">V2X(Vehicle-to-Everything)가 완성되면 차는 혼자 달리는 기계가 아니다. 신호등, 도로, 보행자 기기, 전력망과 연결된 도시 인프라의 하나의 노드가 된다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <h2><span class="ko">Part 5. 판이 바뀌면 돈이 먼저 움직인다</span><span class="en">[EN] Part 5. 판이 바뀌면 돈이 먼저 움직인다</span></h2>
+  <p><span class="ko">2023년 글로벌 자율주행 시장 투자 규모는 약 130억 달러. 2030년 예상치는 6,000억 달러 수준이다. 이 산업에서 더 중요한 것은 단기 수익보다 데이터 규모다. 데이터가 많이 쌓일수록 자율주행 모델은 더 많은 상황을 학습할 수 있고, 그만큼 경쟁자가 따라잡기 어려운 격차가 생긴다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="dataviz">
+    <div class="dataviz__label">시각화</div>
+    <div class="dataviz__title">완성차·빅테크·반도체·한국의 2030 자율주행 지형도<br><span style="font-size:12px; color:#aaa;">투자 규모 / 기술 포지션 / 규제 환경별 비교</span></div>
+  </div>
+
+  <h2><span class="ko">결론: 경쟁 기준이 바뀌고 있다</span><span class="en">[EN] 결론: 경쟁 기준이 바뀌고 있다</span></h2>
+  <p><span class="ko">겉으로 보면 서로 다른 이야기처럼 보이지만, 결국 하나의 방향으로 이어진다. 자동차 산업의 경쟁 기준이 바뀌고 있다는 것이다. 예전에는 더 잘 달리고, 더 오래 버티고, 더 강한 브랜드 정체성을 만드는 것이 중요했다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="insight-block">
+    <div class="insight-block__label">결론</div>
+    <div class="insight-block__text">차를 팔면 끝이었던 산업에서 차를 팔면 시작되는 산업으로.</div>
+  </div>
+
+  <p><span class="ko">소프트웨어 시장은 아직 아무도 완전히 장악하지 못했다. 내연기관 엔진 시장은 100년의 역사가 있다. 배터리도 CATL이 앞서 있다. 그런데 차량 OS 시장은 아직 절대적인 1등이 없다. 이 말은 지금 들어오는 기업이 그 자리를 가져갈 수 있다는 뜻이기도 하다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="footnotes">
+    <div class="footnotes__label">출처</div>
+    <div class="footnote">SEC EDGAR 10-K (Tesla·GM), BMW IR PDF — 키워드 분석 2021–2024</div>
+    <div class="footnote">BloombergNEF — 배터리 셀 원가 추이 2015–2024</div>
+    <div class="footnote">Tesla 연차보고서 2021/2024 — software 키워드 빈도 (278 → 419)</div>
+    <div class="footnote">SAE J3016 — 자율주행 레벨 분류 기준</div>
+    <div class="footnote">Waymo — 2023 캘리포니아 24시간 무인 운행 허가</div>
+    <div class="footnote">현대차 ccOS 공식 발표 — HDP/RPP OTA 확대 적용</div>
+    <div class="footnote">Tesla FSD 구독 요금: 월 99달러 (2025 기준)</div>
+    <div class="footnote">글로벌 자율주행 투자 규모: 130억 달러(2023) → 6,000억 달러(2030 추정)</div>
+  </div>
+
+</div>
+
+<div class="article-nav">
+  <div>
+    <div class="article-nav__label">← 이전</div>
+    <a class="article-nav__title" href="article-3b.html">3-b. AI 모빌리티</a>
+  </div>
+  <div class="article-nav__next">
+    <div class="article-nav__label">이슈 목차로 →</div>
+    <a class="article-nav__title" href="issue01.html">Issue 01 목차</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer__main">
+    <div>
+      <div class="site-footer__brand-name">dots mag</div>
+      <div class="site-footer__brand-desc">everything starts from a dot</div>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Pages</div>
+      <nav class="site-footer__nav">
+        <a class="site-footer__nav-link" href="issues.html">Issues</a>
+        <a class="site-footer__nav-link" href="masthead.html">Masthead</a>
+        <a class="site-footer__nav-link" href="about.html">About</a>
+      </nav>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Contact</div>
+      <div class="site-footer__contact-email">contact@dotsmag.kr</div>
+      <div class="site-footer__contact-note"><span class="ko">협력 제안, 인터뷰 요청,<br>산학 파트너십 문의</span><span class="en">Collaboration, interview requests,<br>industry partnership inquiries</span></div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="site-footer__copy"><span class="ko">© 2026 dots mag · 반기 발간</span><span class="en">© 2026 dots mag · Semi-annual</span></div>
+    <div class="site-footer__origin"><span class="ko">GRU Alumni · 성균관대학교 서비스디자인 연구실 협력</span><span class="en">GRU Alumni · Sungkyunkwan University</span></div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Appendix — Issue 01 — dots mag</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body { background: #F7F6F2; font-family: 'Inter', sans-serif; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 60px; }
+
+  .appendix-header { padding: 80px 0 48px; border-bottom: 1px solid #ddd; }
+  .appendix-header__eyebrow { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 20px; }
+  .appendix-header__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 5vw, 56px); font-weight: 400; color: #1a1a1a; line-height: 1.1; margin-bottom: 16px; }
+  .appendix-header__sub { font-size: 15px; color: #888; }
+
+  .case-section { padding: 64px 0; border-bottom: 1px solid #ddd; }
+  .case-section:last-of-type { border-bottom: none; }
+  .case-num { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 12px; }
+  .case-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 400; color: #1a1a1a; margin-bottom: 8px; }
+  .case-subtitle { font-size: 15px; color: #888; font-style: italic; margin-bottom: 40px; }
+
+  .placeholder-block { border: 2px dashed #ddd; padding: 80px 40px; text-align: center; background: rgba(255,255,255,0.6); }
+  .placeholder-block__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #bbb; margin-bottom: 12px; }
+  .placeholder-block__title { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #ccc; margin-bottom: 8px; }
+  .placeholder-block__note { font-size: 13px; color: #bbb; }
+
+  .outline-block { padding: 32px; border: 1px solid #ddd; margin-top: 32px; background: #fff; }
+  .outline-block__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+  .outline-item { font-size: 15px; color: #444; line-height: 1.8; padding: 8px 0; border-bottom: 1px solid #f5f5f5; }
+  .outline-item:last-child { border-bottom: none; }
+  .outline-item::before { content: '·'; margin-right: 10px; color: #bbb; }
+
+  .back-link { display: inline-block; margin: 48px 0 0; font-size: 14px; color: #888; text-decoration: none; border-bottom: 1px solid #ddd; padding-bottom: 2px; }
+  .back-link:hover { color: #1a1a1a; border-color: #1a1a1a; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="../index.html">← dots mag</a>
+  <div class="nav__links">
+    <a class="nav__link" href="issues.html">issues</a>
+    <a class="nav__link" href="masthead.html">masthead</a>
+    <a class="nav__link" href="about.html">about</a>
+  </div>
+  <div class="nav__lang">
+    <button class="nav__lang-btn active" data-lang="ko">KO</button>
+    <span class="nav__lang-sep">/</span>
+    <button class="nav__lang-btn" data-lang="en">EN</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <div class="appendix-header">
+    <div class="appendix-header__eyebrow">Appendix · Issue 01</div>
+    <div class="appendix-header__title">부록</div>
+    <div class="appendix-header__sub">본문 아티클의 배경이 되는 케이스 스터디 · 심층 분석</div>
+  </div>
+
+  <!-- Case 1 -->
+  <div class="case-section" id="case1">
+    <div class="case-num">Case 1</div>
+    <div class="case-title">지쿠</div>
+    <div class="case-subtitle">공유 킥보드 플랫폼의 수익 구조와 생존 전략 분석 · PM 스타트업 산학협력</div>
+
+    <div class="placeholder-block">
+      <div class="placeholder-block__label">Content Placeholder</div>
+      <div class="placeholder-block__title">Case Study 작성 예정</div>
+      <div class="placeholder-block__note">내용이 완성되면 이 공간에 채워집니다</div>
+    </div>
+
+    <div class="outline-block">
+      <div class="outline-block__label">예정 내용 개요</div>
+      <div class="outline-item">지쿠 플랫폼 비즈니스 모델 분석 — 수익 구조, 단가, 마진</div>
+      <div class="outline-item">도심 공유 킥보드 시장의 경쟁 구도 — 킥고잉·씽씽·빔 비교</div>
+      <div class="outline-item">PM 관점 서비스 분석 — UX, 온보딩, 리텐션 전략</div>
+      <div class="outline-item">수익성의 한계와 생존 전략 — 규제, 사고 책임, 수익화 경로</div>
+      <div class="outline-item">모빌리티 플랫폼이 직면하는 구조적 과제</div>
+    </div>
+  </div>
+
+  <!-- Case 2 -->
+  <div class="case-section" id="case2">
+    <div class="case-num">Case 2</div>
+    <div class="case-title">모빌리티 플랫폼 3개 비교</div>
+    <div class="case-subtitle">카카오T · 쏘카 · 타다 — 구조·경험·전략 비교 분석</div>
+
+    <div class="placeholder-block">
+      <div class="placeholder-block__label">Content Placeholder</div>
+      <div class="placeholder-block__title">Case Study 작성 예정</div>
+      <div class="placeholder-block__note">내용이 완성되면 이 공간에 채워집니다</div>
+    </div>
+
+    <div class="outline-block">
+      <div class="outline-block__label">예정 내용 개요</div>
+      <div class="outline-item">카카오T: 플랫폼 락인 전략 — 가맹 택시, 카풀, 블랙 라인업</div>
+      <div class="outline-item">쏘카: 카셰어링에서 모빌리티 슈퍼앱으로 — 타다 인수, VCNC</div>
+      <div class="outline-item">타다: 규제와의 전쟁, 그리고 피벗 — 여객법 개정 이후의 생존</div>
+      <div class="outline-item">3개 플랫폼 비교 매트릭스: 수익 구조 / UX / 드라이버 관계 / 규제 대응</div>
+      <div class="outline-item">한국 모빌리티 플랫폼이 글로벌과 다른 이유</div>
+    </div>
+  </div>
+
+  <a class="back-link" href="issue01.html">← Issue 01 목차로 돌아가기</a>
+
+</div>
+
+<footer class="site-footer" style="margin-top: 64px;">
+  <div class="site-footer__main">
+    <div>
+      <div class="site-footer__brand-name">dots mag</div>
+      <div class="site-footer__brand-desc">everything starts from a dot</div>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Pages</div>
+      <nav class="site-footer__nav">
+        <a class="site-footer__nav-link" href="issues.html">Issues</a>
+        <a class="site-footer__nav-link" href="masthead.html">Masthead</a>
+        <a class="site-footer__nav-link" href="about.html">About</a>
+      </nav>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Contact</div>
+      <div class="site-footer__contact-email">contact@dotsmag.kr</div>
+      <div class="site-footer__contact-note"><span class="ko">협력 제안, 인터뷰 요청,<br>산학 파트너십 문의</span><span class="en">Collaboration, interview requests,<br>industry partnership inquiries</span></div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="site-footer__copy"><span class="ko">© 2026 dots mag · 반기 발간</span><span class="en">© 2026 dots mag · Semi-annual</span></div>
+    <div class="site-footer__origin"><span class="ko">GRU Alumni · 성균관대학교 서비스디자인 연구실 협력</span><span class="en">GRU Alumni · Sungkyunkwan University</span></div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2-a. Feeling Luxury — dots mag Issue 01</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body { background: #ffffff; font-family: 'Inter', sans-serif; }
+  .article-header { max-width: 1280px; margin: 0 auto; padding: 80px 60px 64px; border-bottom: 1px solid #ddd; }
+  .article-header__section { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 20px; }
+  .article-header__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 400; color: #1a1a1a; line-height: 1.1; margin-bottom: 16px; }
+  .article-header__subtitle { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: #888; margin-bottom: 40px; }
+  .article-meta { display: flex; gap: 40px; align-items: baseline; }
+  .article-meta__authors { font-size: 14px; color: #1a1a1a; }
+  .article-meta__date, .article-meta__time { font-size: 13px; color: #888; }
+  .article-body { max-width: 720px; margin: 0 auto; padding: 72px 60px; }
+  .article-body p { font-size: 17px; line-height: 1.9; color: #333; margin-bottom: 28px; }
+  .article-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 400; color: #1a1a1a; margin: 56px 0 24px; border-top: 1px solid #ddd; padding-top: 40px; }
+  .article-body h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+  .pullquote { margin: 48px -120px; padding: 40px 0; border-top: 2px solid #1a1a1a; border-bottom: 2px solid #1a1a1a; }
+  .pullquote__text { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-style: italic; color: #1a1a1a; line-height: 1.45; }
+  .dataviz { margin: 48px -60px; background: #f5f5f3; border: 1px dashed #ddd; padding: 48px; text-align: center; }
+  .dataviz__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .dataviz__title { font-size: 15px; color: #444; }
+  .brand-compare { margin: 48px 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .brand-card { border: 1px solid #ddd; padding: 28px; }
+  .brand-card__name { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #1a1a1a; margin-bottom: 6px; }
+  .brand-card__tag { font-size: 11px; color: #888; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; }
+  .brand-card__price { font-size: 13px; color: #555; border-top: 1px solid #f0f0f0; padding-top: 16px; margin-top: 16px; }
+  .quote-block { background: #f5f5f3; padding: 32px; margin: 40px 0; border-left: 3px solid #1a1a1a; }
+  .quote-block__text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-style: italic; color: #1a1a1a; line-height: 1.6; margin-bottom: 12px; }
+  .quote-block__attr { font-size: 12px; color: #888; }
+  .footnotes { border-top: 1px solid #ddd; margin-top: 56px; padding-top: 32px; }
+  .footnotes__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+  .footnote { font-size: 12px; color: #888; line-height: 1.7; margin-bottom: 6px; }
+  .article-nav { max-width: 1280px; margin: 0 auto; padding: 48px 60px; border-top: 1px solid #ddd; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .article-nav__next { text-align: right; }
+  .article-nav__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .article-nav__title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #1a1a1a; text-decoration: none; }
+  .article-nav__title:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="../index.html">← dots mag</a>
+  <div class="nav__links">
+    <a class="nav__link" href="issues.html">issues</a>
+    <a class="nav__link" href="masthead.html">masthead</a>
+    <a class="nav__link" href="about.html">about</a>
+  </div>
+  <div class="nav__lang">
+    <button class="nav__lang-btn active" data-lang="ko">KO</button>
+    <span class="nav__lang-sep">/</span>
+    <button class="nav__lang-btn" data-lang="en">EN</button>
+  </div>
+</nav>
+
+<div class="article-header">
+  <div class="article-header__section">Section 2-a · Business × Design · Issue 01</div>
+  <div class="article-header__title">Feeling Luxury</div>
+  <div class="article-header__subtitle">자동차 브랜드가 '좋은 차'를 정의하는 방식의 변화</div>
+  <div class="article-meta">
+    <div class="article-meta__authors">강다연, 신지우</div>
+    <div class="article-meta__date">2026.06</div>
+    <div class="article-meta__time">12 min read</div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <h2><span class="ko">좋은 차의 기준이 바뀌고 있다</span><span class="en">[EN] 좋은 차의 기준이 바뀌고 있다</span></h2>
+  <p><span class="ko">처음에는 단순했다. 엔진이 크고, 빠르고, 배기음이 묵직하면 좋은 차였다. 2000년대를 지나면서 기준이 한 번 바뀌었다. 독일 브랜드만 가능하던 승차감과 안전 기술이 국산 중형 세단에도 기본으로 들어왔다. 지금은 또 다르다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">전시장에 들어온 사람들은 핸들을 오래 잡아보지 않는다. 디스플레이를 손가락으로 훑어보고, 뒷좌석에 앉아 리클라이닝 버튼을 찾는다. "뱅앤올룹슨이에요?" "안마 강도 몇 단계까지 돼요?" 자율주행 보조가 확산되면서 운전의 비중이 줄었다. 차 안에서 보내는 시간이 늘어날수록, 그 시간을 어떻게 경험하느냐가 중요해진다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">McKinsey가 2024년 10월–12월 럭셔리카 구매자 150여 명에게 가장 중요한 구매 요인을 물었다. 1위는 '퍼펙션' — 물리적 품질과 내구성. 2위는 브랜드 헤리티지. 기술과 커넥티비티는 그보다 낮았다. 기술이 넘쳐날수록 오히려 감각이 럭셔리를 결정한다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <h2><span class="ko">럭셔리 인식은 두 단계로 쌓인다</span><span class="en">[EN] 럭셔리 인식은 두 단계로 쌓인다</span></h2>
+  <p><span class="ko">럭셔리 인식은 두 단계로 쌓인다. 먼저 심미적 충격 — 눈에 보이고 손에 잡히는 것들이 만드는 첫인상이다. 소재의 질감, 빛이 흐르는 방식, 형태가 만드는 공간감. 이것들이 "이 차는 다르다"는 직관을 만든다. 그다음은 경험적 확신 — 그 차 안에서 시간을 보내며 쌓이는 감각이다. 공간의 조용함, 시트가 몸을 감싸는 방식, 향기.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="pullquote">
+    <div class="pullquote__text"><span class="ko">심미적 요소가 럭셔리의 문을 열고, 경험적 요소가 그 문 안에 사람을 머물게 한다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span></div>
+  </div>
+
+  <p><span class="ko">Nielsen의 조사에서 럭셔리카 구매자의 56%가 "차의 섹스 어필이 중요하다"고 답했다. 일반 구매자보다 3배 더 "이 차가 나를 반영한다"고 믿었다. 사람들은 스펙표를 읽는 게 아니라 감각으로 반응한다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <h2><span class="ko">세 브랜드, 세 가지 설계 방식</span><span class="en">[EN] 세 브랜드, 세 가지 설계 방식</span></h2>
+
+  <div class="brand-compare">
+    <div class="brand-card">
+      <div class="brand-card__name">그랜저</div>
+      <div class="brand-card__tag">사회적 감각</div>
+      <p style="font-size:14px; color:#555; line-height:1.7; margin:0 0 0 0;">Seamless Horizon 대시보드, G90 전용 MLA 헤드램프, 글레오 AI. "이 차 탈 때 내가 뭔가 됐다는 느낌." 1986년 서울올림픽 의전차에서 이어진 사회적 위계의 감각.</div>
+      <div class="brand-card__price">3,800–5,637만원 (더 뉴 그랜저 FL)</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-card__name">테슬라</div>
+      <div class="brand-card__tag">소프트웨어 경험</div>
+      <p style="font-size:14px; color:#555; line-height:1.7; margin:0;">그릴 없음. 물리 버튼 없음. Cd 0.24. OTA 무선 업데이트로 밤사이 새 기능 추가. "업데이트가 뜨면 솔직히 좀 설레거든요."</p>
+      <div class="brand-card__price">6,499만원~ (Model Y 주니퍼, 2026.04 한국 출시)</div>
+    </div>
+    <div class="brand-card">
+      <div class="brand-card__name">제네시스 G80</div>
+      <div class="brand-card__tag">4감각 설계</div>
+      <p style="font-size:14px; color:#555; line-height:1.7; margin:0;">시각(G-Matrix 패턴), 청각(헬름홀츠 공명기), 촉각(크리스탈 다이얼 햅틱), 후각(공조 연동 향기 디퓨저). 헤리티지 없이 시작한 브랜드가 4감각으로 쌓은 럭셔리.</p>
+      <div class="brand-card__price">5,899–8,666만원</div>
+    </div>
+  </div>
+
+  <h2><span class="ko">그랜저: 사회적 감각을 설계하다</span><span class="en">[EN] 그랜저: 사회적 감각을 설계하다</span></h2>
+  <p><span class="ko">그랜저 차주에게 이 차 어디가 좋냐고 물으면 스펙을 먼저 말하지 않는다. "이 차 타면 왠지 내가 뭔가 된 것 같은 느낌." 이게 그랜저가 40년간 설계해온 것이다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">7세대 GN7의 Seamless Horizon 대시보드는 센터페시아와 조수석 패널을 끊김 없이 하나의 수평선으로 잇는다. 수평선은 공간을 넓어 보이게 만드는 가장 오래된 건축 문법이다. 차세대 인포테인먼트 '플레오스 커넥트'에 AI 에이전트 '글레오 AI', 개방형 앱마켓, 영상·음악·게임 스트리밍. "바퀴 달린 스마트 디바이스"를 선언한 것이다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <h2><span class="ko">테슬라: 소프트웨어가 경험을 정의한다</span><span class="en">[EN] 테슬라: 소프트웨어가 경험을 정의한다</span></h2>
+  <p><span class="ko">테슬라는 럭셔리해 보이려 애쓰지 않는다. 그런데 사람들은 이 차를 프리미엄으로 인식한다. J.D. Power의 2023년 미국 프리미엄 브랜드 만족도 조사에서 테슬라는 기술·연결성 항목 상위권을 차지했다. 기술 경험이 럭셔리 인식을 만든 사례다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">OTA 무선 업데이트로 밤사이에 새 기능이 추가된다. 펫 모드, 캠핑 모드, 자동 차선 변경 — 차를 샀는데 계속 새로운 차가 되는 경험이다. 다만 이 철학이 규제와 충돌했다. Euro NCAP은 2026년부터 경적·와이퍼·방향지시등에 물리 버튼이 없으면 5성 등급을 주지 않기로 했다. 없앰으로써 만든 정체성의 한계선이다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <h2><span class="ko">제네시스 G80: 헤리티지 없이 럭셔리를 만드는 법</span><span class="en">[EN] 제네시스 G80: 헤리티지 없이 럭셔리를 만드는 법</span></h2>
+  <div class="quote-block">
+    <div class="quote-block__text">"In Genesis there is no genetic inheritance — giving huge responsibility, since every design step creates the brand's lineage."</div>
+    <div class="quote-block__attr">— Luc Donckerwolke, 제네시스 수석 부사장 (Car Design News, 2020)</div>
+  </div>
+  <p><span class="ko">제네시스는 2015년 독립할 때 아무것도 없었다. 100년의 역사도, 독일 프리미엄이라는 인증도 없었다. 그래서 택한 전략이 하나의 감각 언어를 처음부터 끝까지 일관되게 설계하는 것이었다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">G80은 네 감각을 동시에 설계한 차다. 시각 — G-Matrix 패턴이 그릴에서 도어 트림까지 이어진다. 청각 — 도어를 3중 웨더스트립으로 밀봉하고 200Hz 대역 노면 공진을 흡수하는 헬름홀츠 공명기를 적용했다. 촉각 — 크리스탈 다이얼 SBW는 후진 전환 시 햅틱 진동으로 기어 변경을 손에 알려준다. 후각 — 글로브박스 천장의 향기 카트리지 디퓨저가 공조 시스템과 연동돼 실내를 채운다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <h2><span class="ko">시장은 어떻게 반응했나</span><span class="en">[EN] 시장은 어떻게 반응했나</span></h2>
+  <p><span class="ko">제네시스는 2020년 GV80·G80을 연이어 내놓으면서 국내 판매량이 전년 대비 90.8% 성장해 108,384대 — 브랜드 사상 첫 연간 10만 대를 돌파했다. GV80 출시 이후 G80 세단의 검색량은 출시 전 6개월 평균 4.6에서 출시 후 6개월 13.2로 189% 급등했다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">미국에서도 가파르다. 2022년 56,410대에서 2025년 77,666대(+9.67% YoY)로 매년 최고치를 경신 중이다. 헤리티지 없는 한국 브랜드가 세계 최대 하이엔드 시장에서 매년 기록을 갈아치우고 있다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="dataviz">
+    <div class="dataviz__label">시각화</div>
+    <div class="dataviz__title">그랜저 vs 제네시스 G80 네이버 검색량 10년 추이 (2016.05–2026.05)<br><span style="font-size:12px; color:#aaa;">출처: 네이버 데이터랩 · 최근 1년 비중 29% : 29%로 수렴</span></div>
+  </div>
+
+  <h2><span class="ko">결론: 럭셔리는 이동하는 시간의 기억이다</span><span class="en">[EN] 결론: 럭셔리는 이동하는 시간의 기억이다</span></h2>
+  <p><span class="ko">좋은 차의 기준은 세 번 바뀌었다. 성능에서 안전으로, 안전에서 경험으로. 그 경험을 어떻게 설계하느냐가 브랜딩이 됐다. 기술이 평준화될수록, 차이는 다시 사소한 감각에서 난다. 화면이 얼마나 큰지가 아니라 그 화면이 얼마나 자연스럽게 사라지는지. 기능이 얼마나 많은지가 아니라 그 기능이 내 시간을 얼마나 덜 방해하는지.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+  <p><span class="ko">자동차는 오랫동안 목적지에 도달하기 위한 수단이었다. 어쩌면 앞으로의 럭셔리는 더 빨리 도착하는 차가 아니라, 도착하기 전의 시간을 더 오래 기억하게 만드는 차일지도 모른다.</span><span class="en">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></p>
+
+  <div class="footnotes">
+    <div class="footnotes__label">출처</div>
+    <div class="footnote">McKinsey, "Shifting Gears", 2025.03</div>
+    <div class="footnote">Nielsen, "Making Buyers' Hearts Race", 2019</div>
+    <div class="footnote">현대자동차그룹 공식 발표, 2026 (플레오스 커넥트)</div>
+    <div class="footnote">카이즈유데이터연구소, 그랜저 연령별 구매자 분석, 2022</div>
+    <div class="footnote">Electrek, Tesla 비건 인테리어 전환, 2019.08</div>
+    <div class="footnote">paultan.org, Euro NCAP 2026 물리 버튼 규정, 2024.03</div>
+    <div class="footnote">오재호, 제네시스 인테리어 디자인 노트, 2023</div>
+    <div class="footnote">The Korea Herald, 제네시스 연간 판매량, 2021</div>
+    <div class="footnote">네이버 데이터랩 (2025.05–2026.05), GRU 3팀 자체 분석</div>
+    <div class="footnote">KAIDA / Genesis Motors USA 공식 발표</div>
+    <div class="footnote">Autocar, 고든 바게너 인터뷰, 2025</div>
+  </div>
+
+</div>
+
+<div class="article-nav">
+  <div>
+    <div class="article-nav__label">← 이전</div>
+    <a class="article-nav__title" href="article-intro.html">서론: 레드라인 너머의 산업 지도</a>
+  </div>
+  <div class="article-nav__next">
+    <div class="article-nav__label">다음 →</div>
+    <a class="article-nav__title" href="article-2b.html">2-b. 전기차 과연 경제적인가</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer__main">
+    <div>
+      <div class="site-footer__brand-name">dots mag</div>
+      <div class="site-footer__brand-desc">everything starts from a dot</div>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Pages</div>
+      <nav class="site-footer__nav">
+        <a class="site-footer__nav-link" href="issues.html">Issues</a>
+        <a class="site-footer__nav-link" href="masthead.html">Masthead</a>
+        <a class="site-footer__nav-link" href="about.html">About</a>
+      </nav>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Contact</div>
+      <div class="site-footer__contact-email">contact@dotsmag.kr</div>
+      <div class="site-footer__contact-note"><span class="ko">협력 제안, 인터뷰 요청,<br>산학 파트너십 문의</span><span class="en">Collaboration, interview requests,<br>industry partnership inquiries</span></div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="site-footer__copy"><span class="ko">© 2026 dots mag · 반기 발간</span><span class="en">© 2026 dots mag · Semi-annual</span></div>
+    <div class="site-footer__origin"><span class="ko">GRU Alumni · 성균관대학교 서비스디자인 연구실 협력</span><span class="en">GRU Alumni · Sungkyunkwan University</span></div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

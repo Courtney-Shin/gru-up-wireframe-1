@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>서론: 레드라인 너머의 산업 지도 — dots mag Issue 01</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body { background: #ffffff; font-family: 'Inter', sans-serif; }
+
+  /* Article header */
+  .article-header { max-width: 1280px; margin: 0 auto; padding: 80px 60px 64px; border-bottom: 1px solid #ddd; }
+  .article-header__section { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 20px; }
+  .article-header__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 400; color: #1a1a1a; line-height: 1.1; margin-bottom: 16px;
+  }
+  .article-header__subtitle { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-style: italic; color: #888; margin-bottom: 40px; }
+  .article-meta { display: flex; gap: 40px; align-items: baseline; }
+  .article-meta__authors { font-size: 14px; color: #1a1a1a; }
+  .article-meta__date { font-size: 13px; color: #888; }
+  .article-meta__time { font-size: 13px; color: #888; }
+
+  /* Article body */
+  .article-body { max-width: 720px; margin: 0 auto; padding: 72px 60px; }
+  .article-body p { font-size: 17px; line-height: 1.9; color: #333; margin-bottom: 28px; }
+  .article-body h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 400; color: #1a1a1a;
+    margin: 56px 0 24px; border-top: 1px solid #ddd; padding-top: 40px;
+  }
+  .article-body h2:first-of-type { margin-top: 0; border-top: none; padding-top: 0; }
+
+  /* Pullquote */
+  .pullquote {
+    margin: 48px -120px;
+    padding: 40px 0;
+    border-top: 2px solid #1a1a1a;
+    border-bottom: 2px solid #1a1a1a;
+  }
+  .pullquote__text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-style: italic; color: #1a1a1a; line-height: 1.45;
+  }
+
+  /* Data viz placeholder */
+  .dataviz {
+    margin: 48px -60px;
+    background: #f5f5f3;
+    border: 1px dashed #ddd;
+    padding: 48px;
+    text-align: center;
+  }
+  .dataviz__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .dataviz__title { font-size: 15px; color: #444; }
+
+  /* Footnotes */
+  .footnotes { border-top: 1px solid #ddd; margin-top: 56px; padding-top: 32px; }
+  .footnotes__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+  .footnote { font-size: 12px; color: #888; line-height: 1.7; margin-bottom: 6px; }
+
+  /* Nav between articles */
+  .article-nav { max-width: 1280px; margin: 0 auto; padding: 48px 60px; border-top: 1px solid #ddd; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .article-nav__prev, .article-nav__next { }
+  .article-nav__next { text-align: right; }
+  .article-nav__label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .article-nav__title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #1a1a1a; text-decoration: none; }
+  .article-nav__title:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="../index.html">← dots mag</a>
+  <div class="nav__links">
+    <a class="nav__link" href="issues.html">issues</a>
+    <a class="nav__link" href="masthead.html">masthead</a>
+    <a class="nav__link" href="about.html">about</a>
+  </div>
+  <div class="nav__lang">
+    <button class="nav__lang-btn active" data-lang="ko">KO</button>
+    <span class="nav__lang-sep">/</span>
+    <button class="nav__lang-btn" data-lang="en">EN</button>
+  </div>
+</nav>
+
+<!-- Article Header -->
+<div class="article-header">
+  <div class="article-header__section">서론 · Issue 01</div>
+  <div class="article-header__title">레드라인 너머의 산업 지도</div>
+  <div class="article-header__subtitle">F1이 먼저 달린 모빌리티의 세계</div>
+  <div class="article-meta">
+    <div class="article-meta__authors">이채경, 강다연</div>
+    <div class="article-meta__date">2026.06</div>
+    <div class="article-meta__time">10 min read</div>
+  </div>
+</div>
+
+<!-- Article Body -->
+<div class="article-body">
+
+  <h2>서킷 위의 모빌리티 축소판</h2>
+  <p>2025년 여름, 브래드 피트가 주연한 영화 F1 더 무비가 전 세계 극장을 강타했다. 포뮬러 1의 서킷을 배경으로 펼쳐진 이 영화는 단순한 액션 블록버스터를 넘어, 수백만 명의 새로운 팬들을 카레이싱의 세계로 끌어들이는 데 성공했다. 실제로 F1의 글로벌 누적 시청자 수는 2008년 약 6억 명에서 2017년 3억 5,200만 명으로 저점을 찍은 후, 드라이브 투 서바이브 방영과 함께 반등해 2018년 4억 9,000만 명으로 회복되었다. 미국 ESPN 기준으로는 2018년 이후 시청자가 두 배 이상 성장해 2022년에는 경기당 평균 121만 명을 기록, 역대 최고치를 경신했다.</p>
+  <p>그러나 카레이싱의 매력은 스크린 위에만 있지 않다. 시속 300킬로미터를 넘나드는 머신이 코너를 파고드는 순간, 관중은 단순한 스피드 이상의 무언가를 목격한다. 인간과 기계가 물리적 한계를 함께 밀어붙이는 그 장면은, 우리가 '자동차'라고 부르는 문명의 도구가 얼마나 멀리까지 진화할 수 있는지를 보여주는 살아있는 증거다.</p>
+
+  <div class="pullquote">
+    <div class="pullquote__text">F1은 단순한 스포츠가 아니라, 오늘날 모빌리티 산업 전체의 축소판이다.</div>
+  </div>
+
+  <p>브랜드가 '럭셔리'를 어떻게 설계하는지, 자율주행 시대에 차 안의 경험이 왜 중요해지는지, 소프트웨어가 하드웨어를 어떻게 대체하는지, AI가 이동의 경제학을 어떻게 바꾸는지 — 이 모든 질문의 원형이 서킷 위에 이미 펼쳐져 있다. 이 글은 그 축소판을 먼저 들여다보는 일종의 지도다.</p>
+
+  <h2>경주는 어떻게 산업이 되었는가</h2>
+  <p>카레이싱의 기원을 살펴보면, 그것은 처음부터 '스포츠'라기보다 '경쟁'이었다. 19세기 말 유럽에서 등장한 초기 자동차 레이스는 제조사들이 자사 엔진의 우월함을 공개적으로 증명하는 무대였다. 포뮬러 1이 공식 출범한 1950년, 알파 로메오와 페라리, 마세라티가 그란프리 서킷에서 맞붙었을 때 — 그건 스포츠 이벤트인 동시에 유럽 자동차 산업의 자존심을 건 기술 전쟁이었다.</p>
+  <p>그 본질은 지금도 달라지지 않았다. F1 팀은 단 한 시즌을 위해 수천억 원을 쏟아붓는다. 메르세데스 AMG 페트로나스의 2023년 연간 매출은 5억 4,650만 파운드(약 9,200억 원)를 기록하며 F1 역사상 처음으로 '5억'을 돌파했으며, 레이싱 운영 비용만 4억 1,360만 파운드에 달했다. 이 막대한 비용을 단지 '레이스에서 이기기 위해' 지출한다고 보기는 어렵다. 더 정확히 말하면, 그들은 서킷을 일종의 초고속 연구개발 실험실로 사용하고 있다.</p>
+  <p>F1 머신 한 대에는 약 2만 개의 부품이 들어간다. 시즌 중 주행하는 거리는 고작 수천 킬로미터에 불과하지만, 그 짧은 주행에서 쌓이는 데이터와 기술 검증의 밀도는 일반 도로 주행과 비교가 되지 않는다. 극한의 온도, 진동, 하중 — 레이싱 환경은 양산차가 평생 맞닥뜨릴 수 없는 조건들을 단 몇 시간 안에 시뮬레이션한다. 그 과정에서 살아남은 기술만이 다음 단계로 이행된다.</p>
+
+  <h2>서킷에서 도로로: 기술의 낙수효과</h2>
+  <p>카레이싱이 자동차 기술 발전에 기여한 방식 중 가장 직접적인 것은 기술의 이전이다. 오늘날 우리가 타는 일반 차량에는 레이싱 경험에서 비롯된 기술들이 곳곳에 스며들어 있다.</p>
+  <p>차체를 감싸는 탄소섬유, 급정거를 가능하게 하는 고성능 브레이크, 연료를 아끼면서도 더 강한 힘을 내는 하이브리드 에너지 회수 시스템 — 이 모두가 처음엔 레이싱카를 위해 개발된 기술이다. F1이라는 극한의 환경에서 살아남은 기술만이 양산차로 내려온다.</p>
+  <p>가장 최근의 사례는 에너지 회수 시스템(ERS, Energy Recovery System)이다. 브레이크를 밟을 때 버려지던 에너지를 전기로 바꿔 다시 쓰는 이 기술은, F1이 2014년 하이브리드 엔진을 의무화하면서 본격적으로 발전했다. 지금은 우리가 흔히 타는 하이브리드카에도 같은 원리가 적용된다. 서킷이 10년 앞서 실험한 것을, 도로가 뒤따라오는 셈이다.</p>
+  <p>그리고 기술 이전의 흐름은 이제 하드웨어를 넘어 소프트웨어로 향하고 있다. 차량의 성능이 엔진이 아닌 소프트웨어 업데이트로 결정되는 SDV(Software Defined Vehicle)의 개념이 F1 피트레인에서 먼저 현실이 되었고, 지금 현대자동차와 테슬라가 그 개념을 도로 위로 끌어내리고 있다.</p>
+
+  <h2>브랜드는 서킷에서 만들어진다</h2>
+  <p>기술 전이만큼이나 중요한 것이 브랜드의 이야기다. 카레이싱은 자동차 제조사들에게 광고판 그 이상의 역할을 한다. 그것은 '브랜드 서사'를 구축하는 가장 강렬한 무대다.</p>
+  <p>페라리를 생각해보자. 붉은 색의 SF-23이 모나코 그란프리 터널을 통과하는 이미지는, 어떤 광고 카피도 대체할 수 없는 감정적 각인을 남긴다. 페라리의 F1 참가는 단지 레이스에서 이기기 위한 것이 아니다. 그들의 로드카(296 GTB, SF90 스트라달레)가 왜 그 가격표를 정당화할 수 있는지를 세계에 증명하는 과정이다.</p>
+  <p>메르세데스 역시 2010년대 F1에서 거둔 압도적인 성적을 AMG 라인업의 프리미엄 포지셔닝에 직접 연결했다. 메르세데스 팀의 2023년 광고 가치 환산액(AVE)은 53억 달러에 달했다.</p>
+
+  <div class="dataviz">
+    <div class="dataviz__label">시각화</div>
+    <div class="dataviz__title">메르세데스 F1 우승 횟수 vs. 글로벌 판매량 (2010–2023)<br><span style="font-size:12px; color:#aaa;">출처: gpracingstats.com · 다임러/메르세데스-벤츠 공식 연간 보고서</span></div>
+  </div>
+
+  <p>F1 우승 횟수와 메르세데스 벤츠 글로벌 판매량을 2010년부터 2023년까지 매칭해 R로 분석한 결과, 두 변수 사이의 피어슨 상관계수는 r = 0.73으로 나타났다 — 통계적으로 강한 양의 상관관계다. 메르세데스가 F1에서 존재감이 없었던 2010–2013년, 판매량은 127만 대에서 185만 대 수준에 머물렀다. 그러나 2014년 하이브리드 파워유닛(PU) 규정이 도입되고 메르세데스가 시즌 16승을 쓸어담기 시작하면서 흐름이 바뀐다. 2019년에는 282만 대로 2013년 대비 약 52% 급증했다.</p>
+
+  <h2>데이터의 전쟁터: 관제 시스템과 미래 모빌리티</h2>
+  <p>F1의 무게중심이 드라이버에서 데이터로 이동하고 있다. 현대 F1 머신에는 약 300개의 센서가 부착되어 있으며, 초당 110만 개의 데이터 포인트를 생성해 실시간으로 팀에 전송된다. 한 레이스 주말 동안 차량 한 대가 생성하는 데이터는 영상 포함 1테라바이트를 상회한다.</p>
+  <p>이 구조는 놀랍도록 익숙한 무언가를 닮아 있다. 바로 모빌리티 서비스(MaaS, Mobility as a Service)의 관제 시스템이다. 수천 대의 택시와 버스, 공유 킥보드가 실시간으로 위치와 상태 데이터를 클라우드로 전송하고, 알고리즘은 최적의 배차와 경로를 계산한다. 카카오모빌리티의 배차 엔진이든, 우버의 서지 프라이싱 알고리즘이든 — 그 근저에는 F1이 1990년대부터 발전시켜 온 실시간 텔레메트리와 데이터 기반 의사결정의 철학이 흐른다.</p>
+
+  <h2>서킷이 가리키는 방향</h2>
+  <p>카레이싱은 언제나 현재보다 한발 앞에 있었다. 1980년대 F1이 터보차저를 탑재했을 때, 도로 위 터보 차량은 아직 소수였다. 2014년 하이브리드 파워유닛이 의무화됐을 때, 대부분의 소비자들은 여전히 하이브리드차를 낯설어했다. 그리고 지금, F1은 2026년 규정 변경을 통해 100% 지속 가능 연료(SAF) 도입 의무화와 전동화 비중 확대를 동시에 추구하고 있다.</p>
+  <p>전동화와 디지털화라는 대전환기 속에서 자동차 기업들은 어떻게 기술 권위를 증명하고 생존할 것인가? 소비자는 이 새로운 이동 수단의 변화를 어떻게 받아들이고, 어떤 가치에 기꺼이 돈을 지불할 것인가? 레드라인은 엔진이 더 이상 버틸 수 없는 한계를 뜻한다. 그러나 카레이싱은 항상 그 선을 넘어 진화해왔다.</p>
+
+  <div class="footnotes">
+    <div class="footnotes__label">출처</div>
+    <div class="footnote">1. F1 글로벌 시청자 수 — Formula 1 공식 보고서 2022</div>
+    <div class="footnote">2. ESPN F1 시청자 통계 — ESPN Media Relations 2022</div>
+    <div class="footnote">3. 메르세데스 AMG F1 연간 매출 — Mercedes-AMG Petronas Annual Report 2023</div>
+    <div class="footnote">4. F1 머신 부품 수 — FIA Technical Regulations 2024</div>
+    <div class="footnote">5. 메르세데스 F1 팀 전략 — Toto Wolff, 2022 Press Conference</div>
+    <div class="footnote">6. 메르세데스 AVE — Nielsen Sports 2023</div>
+    <div class="footnote">7. F1 센서 데이터 — McLaren Applied Technologies White Paper</div>
+    <div class="footnote">8. 레이스 데이터 용량 — AWS F1 Partnership Report 2023</div>
+    <div class="footnote">9. F1 2026 규정 — FIA 2026 Technical Regulations</div>
+  </div>
+
+</div>
+
+<!-- Article navigation -->
+<div class="article-nav">
+  <div class="article-nav__prev">
+    <div class="article-nav__label">← 이전</div>
+    <a class="article-nav__title" href="issue01.html">Issue 01 목차로 돌아가기</a>
+  </div>
+  <div class="article-nav__next">
+    <div class="article-nav__label">다음 →</div>
+    <a class="article-nav__title" href="article-2a.html">2-a. Feeling Luxury</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer__main">
+    <div>
+      <div class="site-footer__brand-name">dots mag</div>
+      <div class="site-footer__brand-desc">everything starts from a dot</div>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Pages</div>
+      <nav class="site-footer__nav">
+        <a class="site-footer__nav-link" href="issues.html">Issues</a>
+        <a class="site-footer__nav-link" href="masthead.html">Masthead</a>
+        <a class="site-footer__nav-link" href="about.html">About</a>
+      </nav>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Contact</div>
+      <div class="site-footer__contact-email">contact@dotsmag.kr</div>
+      <div class="site-footer__contact-note"><span class="ko">협력 제안, 인터뷰 요청,<br>산학 파트너십 문의</span><span class="en">Collaboration, interview requests,<br>industry partnership inquiries</span></div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="site-footer__copy"><span class="ko">© 2026 dots mag · 반기 발간</span><span class="en">© 2026 dots mag · Semi-annual</span></div>
+    <div class="site-footer__origin"><span class="ko">GRU Alumni · 성균관대학교 서비스디자인 연구실 협력</span><span class="en">GRU Alumni · Sungkyunkwan University</span></div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

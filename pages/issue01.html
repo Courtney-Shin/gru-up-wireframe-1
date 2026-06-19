@@ -335,87 +335,11 @@
     </div>
   </div>
 
-  <!-- Contributors -->
-  <div class="contributors-section">
+  <!-- Contributors (rendered from js/data.js) -->
+  <div class="contributors-section" id="contributors-section">
     <div class="contributors-section__label">Contributors — Issue 01</div>
-
-    <!-- Editor in Chief -->
-    <div style="margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid #e8e8e8; display: flex; gap: 32px; align-items: flex-start; max-width: 640px;">
-      <div class="contributor__photo" style="width: 160px; flex-shrink: 0; aspect-ratio: 1/1; background: #e8e6e0;">
-        <div class="contributor__photo-placeholder" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:32px; color:#aaa;">이</div>
-      </div>
-      <div>
-        <div class="contributor__name">이상윤</div>
-        <div class="contributor__role">Editor in Chief</div>
-        <div class="contributor__bio" style="margin-top: 12px;">약력 placeholder — 학교, 전공, 관심 분야 등</div>
-        <div class="contributor__articles">전체 총괄</div>
-      </div>
-    </div>
-
-    <!-- Writers -->
-    <div class="contributors-grid">
-
-      <div class="contributor">
-        <div class="contributor__photo">
-          <div class="contributor__photo-placeholder">신</div>
-        </div>
-        <div class="contributor__name">신지우</div>
-        <div class="contributor__role">Managing Editor</div>
-        <div class="contributor__bio">약력 placeholder — 학교, 전공, 관심 분야 등</div>
-        <div class="contributor__articles">Section 4 · 전체 운영</div>
-      </div>
-
-      <div class="contributor">
-        <div class="contributor__photo">
-          <div class="contributor__photo-placeholder">강</div>
-        </div>
-        <div class="contributor__name">강다연</div>
-        <div class="contributor__role">Writer</div>
-        <div class="contributor__bio">약력 placeholder — 학교, 전공, 관심 분야 등</div>
-        <div class="contributor__articles">서론 · Section 2-a</div>
-      </div>
-
-      <div class="contributor">
-        <div class="contributor__photo">
-          <div class="contributor__photo-placeholder">양</div>
-        </div>
-        <div class="contributor__name">양대현</div>
-        <div class="contributor__role">Writer</div>
-        <div class="contributor__bio">약력 placeholder — 학교, 전공, 관심 분야 등</div>
-        <div class="contributor__articles">Section 2-b · Section 4</div>
-      </div>
-
-      <div class="contributor">
-        <div class="contributor__photo">
-          <div class="contributor__photo-placeholder">유</div>
-        </div>
-        <div class="contributor__name">유지영</div>
-        <div class="contributor__role">Writer</div>
-        <div class="contributor__bio">약력 placeholder — 학교, 전공, 관심 분야 등</div>
-        <div class="contributor__articles">Section 2-b · Section 3-b</div>
-      </div>
-
-      <div class="contributor">
-        <div class="contributor__photo">
-          <div class="contributor__photo-placeholder">이</div>
-        </div>
-        <div class="contributor__name">이채경</div>
-        <div class="contributor__role">Writer</div>
-        <div class="contributor__bio">약력 placeholder — 학교, 전공, 관심 분야 등</div>
-        <div class="contributor__articles">서론 · Section 3-a</div>
-      </div>
-
-      <div class="contributor">
-        <div class="contributor__photo">
-          <div class="contributor__photo-placeholder">한</div>
-        </div>
-        <div class="contributor__name">한미지</div>
-        <div class="contributor__role">Writer</div>
-        <div class="contributor__bio">약력 placeholder — 학교, 전공, 관심 분야 등</div>
-        <div class="contributor__articles">Section 3-a · Section 3-b</div>
-      </div>
-
-    </div>
+    <div id="contributor-featured"></div>
+    <div class="contributors-grid" id="contributors-grid"></div>
   </div>
 
   <!-- Appendix -->
@@ -466,6 +390,77 @@
   </div>
 </footer>
 
+<script src="../js/data.js"></script>
 <script src="../js/main.js"></script>
+<script>
+(function() {
+  function renderContributors() {
+    const lang = document.documentElement.lang || 'ko';
+    const contributors = DOTSMAG.getIssueContributors('issue01');
+    const featured = contributors.find(c => c.featured);
+    const writers = contributors.filter(c => !c.featured);
+
+    // Featured (Editor in Chief)
+    const featuredEl = document.getElementById('contributor-featured');
+    if (featured && featuredEl) {
+      const photoHtml = featured.photo
+        ? `<img src="${featured.photo}" alt="${featured.nameKo}">`
+        : `<div class="contributor__photo-placeholder" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:32px;color:#aaa;">${featured.initial}</div>`;
+      const featArticleLinks = featured.articleIds.map(aid => {
+        const a = DOTSMAG.getArticle(aid);
+        if (!a) return '';
+        return `<a class="writer-article-link" href="${a.url}" style="display:block; margin-top:6px;"><span class="ko">${a.titleKo}</span><span class="en">${a.titleEn}</span></a>`;
+      }).join('');
+      const featArticlesHtml = featArticleLinks
+        ? `<a href="issue01.html" style="display:block; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#bbb; margin-bottom:4px; text-decoration:none;">Issue 01 →</a>${featArticleLinks}`
+        : `<span class="ko">${featured.contributionKo}</span><span class="en">${featured.contributionEn}</span>`;
+      featuredEl.innerHTML = `
+        <div style="margin-bottom:48px;padding-bottom:48px;border-bottom:1px solid #e8e8e8;display:flex;gap:32px;align-items:flex-start;max-width:640px;">
+          <div class="contributor__photo" style="width:160px;flex-shrink:0;aspect-ratio:1/1;background:#e8e6e0;overflow:hidden;">${photoHtml}</div>
+          <div>
+            <div class="contributor__name"><span class="ko">${featured.nameKo}</span><span class="en">${featured.nameEn}</span></div>
+            <div class="contributor__role">${featured.role}</div>
+            <div class="contributor__bio" style="margin-top:12px;"><span class="ko">${featured.bioKo}</span><span class="en">${featured.bioEn}</span></div>
+            <div class="contributor__articles" style="border-top:1px solid #eee;padding-top:10px;margin-top:10px;">${featArticlesHtml}</div>
+          </div>
+        </div>`;
+    }
+
+    // Writers grid
+    const gridEl = document.getElementById('contributors-grid');
+    if (gridEl) {
+      gridEl.innerHTML = writers.map(c => {
+        const photoHtml = c.photo
+          ? `<img src="${c.photo}" alt="${c.nameKo}">`
+          : `<div class="contributor__photo-placeholder">${c.initial}</div>`;
+        const articleLinks = c.articleIds.map(aid => {
+          const a = DOTSMAG.getArticle(aid);
+          if (!a) return '';
+          return `<a class="writer-article-link" href="${a.url}" style="display:block; margin-top:6px;"><span class="ko">${a.titleKo}</span><span class="en">${a.titleEn}</span></a>`;
+        }).join('');
+        const articlesHtml = articleLinks
+          ? `<a href="issue01.html" style="display:block; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#bbb; margin-bottom:4px; text-decoration:none;">Issue 01 →</a>${articleLinks}`
+          : `<span class="ko">${c.contributionKo}</span><span class="en">${c.contributionEn}</span>`;
+        return `
+          <div class="contributor">
+            <div class="contributor__photo">${photoHtml}</div>
+            <div class="contributor__name"><span class="ko">${c.nameKo}</span><span class="en">${c.nameEn}</span></div>
+            <div class="contributor__role">${c.role}</div>
+            <div class="contributor__bio"><span class="ko">${c.bioKo}</span><span class="en">${c.bioEn}</span></div>
+            <div class="contributor__articles">${articlesHtml}</div>
+          </div>`;
+      }).join('');
+    }
+  }
+
+  // Re-render when language changes so names update
+  document.addEventListener('DOMContentLoaded', renderContributors);
+  document.addEventListener('click', e => {
+    if (e.target.classList.contains('nav__lang-btn')) {
+      setTimeout(renderContributors, 0);
+    }
+  });
+})();
+</script>
 </body>
 </html>

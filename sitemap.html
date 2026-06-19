@@ -17,9 +17,7 @@
     min-height: 100vh;
   }
 
-  .header {
-    margin-bottom: 80px;
-  }
+  .header { margin-bottom: 80px; }
   .header__eyebrow {
     font-size: 11px;
     letter-spacing: 0.12em;
@@ -34,11 +32,7 @@
     line-height: 1;
     margin-bottom: 12px;
   }
-  .header__sub {
-    font-size: 14px;
-    color: #888;
-    margin-top: 8px;
-  }
+  .header__sub { font-size: 14px; color: #888; margin-top: 8px; }
   .header__meta {
     display: flex;
     gap: 32px;
@@ -46,10 +40,7 @@
     padding-top: 24px;
     border-top: 1px solid #ddd;
   }
-  .header__meta-item {
-    font-size: 12px;
-    color: #888;
-  }
+  .header__meta-item { font-size: 12px; color: #888; }
   .header__meta-item span {
     display: block;
     font-size: 11px;
@@ -57,282 +48,6 @@
     text-transform: uppercase;
     color: #bbb;
     margin-bottom: 4px;
-  }
-
-  /* Tree */
-  .tree {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .tree-root {
-    display: inline-flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 48px;
-  }
-  .node {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 20px;
-    border: 1.5px solid #1a1a1a;
-    background: #1a1a1a;
-    color: #fff;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-  }
-  .node--accent {
-    background: #371e9c;
-    border-color: #371e9c;
-  }
-  .node--outline {
-    background: transparent;
-    color: #1a1a1a;
-    border-color: #1a1a1a;
-  }
-  .node--light {
-    background: transparent;
-    color: #888;
-    border-color: #ddd;
-    font-weight: 400;
-  }
-  .node__label {
-    font-size: 10px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.5);
-    margin-left: 8px;
-  }
-  .node--outline .node__label { color: #bbb; }
-  .node--light .node__label { color: #ccc; }
-
-  /* Level layout */
-  .level {
-    display: flex;
-    align-items: flex-start;
-    gap: 0;
-    margin-bottom: 0;
-  }
-  .level-connector {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 1px;
-    margin: 0 40px;
-  }
-  .level-connector__line {
-    width: 1px;
-    background: #ddd;
-    flex: 1;
-    min-height: 40px;
-  }
-
-  /* Grid layout for the full tree */
-  .sitemap-grid {
-    display: grid;
-    grid-template-columns: 200px 40px 1fr;
-    gap: 0;
-    align-items: start;
-  }
-
-  /* Vertical sections */
-  .sections {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-  }
-
-  .section-block {
-    display: grid;
-    grid-template-columns: 180px 48px 1fr;
-    align-items: start;
-  }
-  .section-block__connector {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 44px;
-    position: relative;
-  }
-  .section-block__connector::before {
-    content: '';
-    position: absolute;
-    left: 0; right: 0;
-    top: 50%;
-    height: 1px;
-    background: #ddd;
-  }
-  .section-block__children {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  /* Full sitemap layout */
-  .sitemap {
-    position: relative;
-  }
-
-  /* Row-based layout */
-  .sm-row {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    margin-bottom: 12px;
-  }
-  .sm-row--child {
-    padding-left: 248px;
-    margin-bottom: 8px;
-  }
-  .sm-row--grandchild {
-    padding-left: 496px;
-    margin-bottom: 6px;
-  }
-
-  .sm-line-h {
-    width: 40px;
-    height: 1px;
-    background: #ddd;
-    flex-shrink: 0;
-  }
-  .sm-line-v-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-right: 0;
-  }
-
-  /* Actual clean tree */
-  .tree-wrap {
-    position: relative;
-  }
-
-  .t-row {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  .t-indent-1 { padding-left: 260px; }
-  .t-indent-2 { padding-left: 520px; }
-
-  .t-hline {
-    width: 40px;
-    height: 1px;
-    background: #ccc;
-    flex-shrink: 0;
-    margin-right: 0;
-  }
-
-  .t-vline-group {
-    position: relative;
-  }
-
-  /* Legend */
-  .legend {
-    margin-top: 64px;
-    padding-top: 32px;
-    border-top: 1px solid #ddd;
-    display: flex;
-    gap: 32px;
-    align-items: center;
-  }
-  .legend__label {
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #bbb;
-    margin-right: 8px;
-  }
-  .legend__item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: #888;
-  }
-  .legend__dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-  }
-  .legend__dot--accent { background: #371e9c; }
-  .legend__dot--dark { background: #1a1a1a; }
-  .legend__dot--light { background: #ddd; border: 1px solid #ccc; }
-
-  /* Clean visual tree using SVG + HTML */
-  .vis-tree {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .vis-row {
-    display: flex;
-    align-items: stretch;
-    min-height: 52px;
-  }
-
-  .vis-spacer {
-    width: 220px;
-    flex-shrink: 0;
-    position: relative;
-  }
-  .vis-spacer--has-vline::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 1px;
-    background: #ddd;
-  }
-
-  .vis-connector {
-    width: 40px;
-    flex-shrink: 0;
-    position: relative;
-  }
-  .vis-connector--h::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: #ddd;
-  }
-  .vis-connector--corner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 50%;
-    left: 0;
-    width: 1px;
-    background: #ddd;
-  }
-  .vis-connector--corner::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: #ddd;
-  }
-  .vis-connector--vonly::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    width: 1px;
-    background: #ddd;
-  }
-  .vis-node-wrap {
-    display: flex;
-    align-items: center;
   }
 
   .nd {
@@ -351,28 +66,10 @@
     font-size: 15px;
     padding: 12px 24px;
   }
-  .nd--section {
-    background: #1a1a1a;
-    color: #fff;
-    font-weight: 500;
-  }
-  .nd--page {
-    background: #fff;
-    color: #1a1a1a;
-    border: 1px solid #ddd;
-  }
-  .nd--article {
-    background: transparent;
-    color: #555;
-    border: 1px solid #e8e8e8;
-    font-size: 12px;
-  }
-  .nd--placeholder {
-    background: transparent;
-    color: #bbb;
-    border: 1px dashed #ddd;
-    font-size: 12px;
-  }
+  .nd--section { background: #1a1a1a; color: #fff; font-weight: 500; }
+  .nd--page { background: #fff; color: #1a1a1a; border: 1px solid #ddd; }
+  .nd--article { background: transparent; color: #555; border: 1px solid #e8e8e8; font-size: 12px; }
+  .nd--placeholder { background: transparent; color: #bbb; border: 1px dashed #ddd; font-size: 12px; }
   .nd__tag {
     font-size: 10px;
     letter-spacing: 0.06em;
@@ -380,6 +77,26 @@
     opacity: 0.5;
     font-weight: 400;
   }
+
+  .legend {
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+  }
+  .legend__label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #bbb;
+    margin-right: 8px;
+  }
+  .legend__item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #888; }
+  .legend__dot { width: 10px; height: 10px; border-radius: 50%; }
+  .legend__dot--accent { background: #371e9c; }
+  .legend__dot--dark { background: #1a1a1a; }
 </style>
 </head>
 <body>
@@ -387,131 +104,11 @@
 <div class="header">
   <div class="header__eyebrow">dots mag — Site Structure</div>
   <div class="header__title">Sitemap</div>
-  <div class="header__sub">Issue 01 기준 · 2026.06</div>
-  <div class="header__meta">
-    <div class="header__meta-item"><span>Pages</span>13</div>
-    <div class="header__meta-item"><span>Articles</span>8</div>
-    <div class="header__meta-item"><span>Contributors</span>7</div>
-    <div class="header__meta-item"><span>Cadence</span>반기 발간</div>
-  </div>
+  <div class="header__sub" id="sitemap-sub">Issue 01 기준 · 2026.06</div>
+  <div class="header__meta" id="sitemap-meta"></div>
 </div>
 
-<div class="vis-tree">
-
-  <!-- Root -->
-  <div class="vis-row">
-    <div class="vis-node-wrap">
-      <div class="nd nd--home">dots mag <span class="nd__tag">Home</span></div>
-    </div>
-  </div>
-
-  <!-- L1 connector row -->
-  <div style="display:flex; height:32px; padding-left:120px;">
-    <div style="width:1px; background:#ddd; margin-right:159px;"></div>
-    <div style="width:1px; background:#ddd; margin-right:179px;"></div>
-    <div style="width:1px; background:#ddd; margin-right:0;"></div>
-  </div>
-
-  <!-- L1 horizontal bar -->
-  <div style="display:flex; align-items:center; padding-left:120px;">
-    <div style="height:1px; background:#ddd; width:480px;"></div>
-  </div>
-
-  <!-- L1 nodes -->
-  <div style="display:flex; gap:0; padding-left:120px; margin-top:0;">
-    <div style="display:flex; flex-direction:column; align-items:center; margin-right:100px;">
-      <div style="width:1px; height:16px; background:#ddd;"></div>
-      <div class="nd nd--section">Issues <span class="nd__tag">Archive</span></div>
-    </div>
-    <div style="display:flex; flex-direction:column; align-items:center; margin-right:100px;">
-      <div style="width:1px; height:16px; background:#ddd;"></div>
-      <div class="nd nd--section">Masthead <span class="nd__tag">Team</span></div>
-    </div>
-    <div style="display:flex; flex-direction:column; align-items:center;">
-      <div style="width:1px; height:16px; background:#ddd;"></div>
-      <div class="nd nd--section">About <span class="nd__tag">Magazine</span></div>
-    </div>
-  </div>
-
-  <!-- Space -->
-  <div style="height:32px; display:flex; padding-left:120px;">
-    <div style="width:1px; background:#ddd;"></div>
-  </div>
-
-  <!-- Issues → Issue 01 -->
-  <div style="display:flex; align-items:center; padding-left:120px;">
-    <div style="width:40px; height:1px; background:#ddd;"></div>
-    <div class="nd nd--page">Issue 01 · 차량 산업 패러다임의 변화 <span class="nd__tag">2026.06</span></div>
-  </div>
-
-  <div style="height:24px; display:flex; padding-left:160px;">
-    <div style="width:1px; background:#ddd;"></div>
-  </div>
-
-  <!-- Articles header -->
-  <div style="padding-left:160px;">
-    <div style="font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:#bbb; margin-bottom:16px;">Articles</div>
-  </div>
-
-  <!-- Article rows -->
-  <div style="display:flex; flex-direction:column; gap:6px; padding-left:160px;">
-
-    <div style="display:flex; align-items:center;">
-      <div style="width:40px; height:1px; background:#ddd; flex-shrink:0;"></div>
-      <div class="nd nd--article">Intro — 레드라인 너머의 산업 지도</div>
-    </div>
-
-    <div style="display:flex; align-items:center;">
-      <div style="width:40px; height:1px; background:#ddd; flex-shrink:0;"></div>
-      <div style="display:flex; flex-direction:column; gap:4px;">
-        <div style="font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:#bbb; padding-left:18px; margin-bottom:2px;">Section 1 · Business</div>
-        <div style="display:flex; gap:6px;">
-          <div class="nd nd--placeholder">1-a. 대량생산에서 플랫폼으로 <span class="nd__tag">WIP</span></div>
-          <div class="nd nd--placeholder">1-b. 기업혁신 — 브랜딩·EV·플랫폼 <span class="nd__tag">WIP</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div style="display:flex; align-items:center;">
-      <div style="width:40px; height:1px; background:#ddd; flex-shrink:0;"></div>
-      <div style="display:flex; flex-direction:column; gap:4px;">
-        <div style="font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:#bbb; padding-left:18px; margin-bottom:2px;">Section 2 · Business × Design</div>
-        <div style="display:flex; gap:6px;">
-          <div class="nd nd--article">2-a. Feeling Luxury</div>
-          <div class="nd nd--article">2-b. 전기차 과연 경제적인가</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="display:flex; align-items:center;">
-      <div style="width:40px; height:1px; background:#ddd; flex-shrink:0;"></div>
-      <div style="display:flex; flex-direction:column; gap:4px;">
-        <div style="font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:#bbb; padding-left:18px; margin-bottom:2px;">Section 3 · Business × Engineering</div>
-        <div style="display:flex; gap:6px;">
-          <div class="nd nd--article">3-a. 피할 수 없다면 이용해라</div>
-          <div class="nd nd--article">3-b. AI 모빌리티</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="display:flex; align-items:center;">
-      <div style="width:40px; height:1px; background:#ddd; flex-shrink:0;"></div>
-      <div style="display:flex; flex-direction:column; gap:4px;">
-        <div style="font-size:10px; letter-spacing:0.06em; text-transform:uppercase; color:#bbb; padding-left:18px; margin-bottom:2px;">Section 4 · 최종 제언</div>
-        <div style="display:flex; gap:6px;">
-          <div class="nd nd--article">4-a. 스스로 생각하고 달리는 차가 온다</div>
-        </div>
-      </div>
-    </div>
-
-    <div style="display:flex; align-items:center;">
-      <div style="width:40px; height:1px; background:#ddd; flex-shrink:0;"></div>
-      <div class="nd nd--article">Appendix — 케이스 스터디 (지쿠 · 카카오T · 쏘카 · 타다)</div>
-    </div>
-
-  </div>
-
-</div>
+<div id="vis-tree"></div>
 
 <div class="legend">
   <span class="legend__label">Legend</span>
@@ -522,5 +119,168 @@
   <div class="legend__item"><div class="legend__dot" style="background:transparent; border:1px dashed #ccc;"></div> Articles (WIP)</div>
 </div>
 
+<script src="js/data.js"></script>
+<script>
+(function () {
+  const issue = DOTSMAG.issues[0];
+  const contributors = DOTSMAG.getIssueContributors(issue.id);
+  const articles = DOTSMAG.getIssueArticles(issue.id);
+
+  /* group articles by section */
+  const sections = {};
+  articles.forEach(a => {
+    const key = a.section;
+    if (!sections[key]) sections[key] = [];
+    sections[key].push(a);
+  });
+
+  /* static page count: index + sitemap + issues + issue01 + masthead + about + appendix + articles */
+  const staticPages = 2; /* index + sitemap */
+  const mainPages  = 4; /* issues, issue01, masthead, about */
+  const pageCount  = staticPages + mainPages + articles.length + 1; /* +1 appendix */
+
+  /* ── meta bar ── */
+  document.getElementById('sitemap-meta').innerHTML = `
+    <div class="header__meta-item"><span>Pages</span>${pageCount}</div>
+    <div class="header__meta-item"><span>Articles</span>${articles.length}</div>
+    <div class="header__meta-item"><span>Contributors</span>${contributors.length}</div>
+    <div class="header__meta-item"><span>Cadence</span>반기 발간</div>
+  `;
+
+  /* ── tree helpers ── */
+  function vline(h) {
+    return `<div style="width:1px;height:${h}px;background:#ddd;"></div>`;
+  }
+  function hline(w) {
+    return `<div style="width:${w}px;height:1px;background:#ddd;flex-shrink:0;"></div>`;
+  }
+  function sectionLabel(text) {
+    return `<div style="font-size:10px;letter-spacing:0.06em;text-transform:uppercase;color:#bbb;padding-left:18px;margin-bottom:4px;">${text}</div>`;
+  }
+
+  /* ── build article rows grouped by section ── */
+  function buildArticleRows() {
+    const sectionOrder = ['intro', '1', '2', '3', '4'];
+    const sectionMeta = {
+      'intro': null,
+      '1': 'Section 1 · Business — 역사 및 기업 사례',
+      '2': 'Section 2 · Business × Design — 소비자 선택 국면',
+      '3': 'Section 3 · Business × Engineering — 기술적 측면',
+      '4': 'Section 4 · 최종 제언',
+    };
+
+    let html = '';
+    sectionOrder.forEach(sec => {
+      const group = sections[sec];
+      if (!group) return;
+      const isWip = group.every(a => !a.readMin);
+      const ndClass = isWip ? 'nd--placeholder' : 'nd--article';
+      const tag = isWip ? '<span class="nd__tag">WIP</span>' : '';
+
+      let inner = '';
+      if (group.length === 1) {
+        inner = `<div class="nd ${ndClass}">${group[0].titleKo} ${tag}</div>`;
+      } else {
+        const cards = group.map(a => `<div class="nd ${ndClass}">${a.titleKo} ${tag}</div>`).join('\n          ');
+        inner = `
+          ${sectionMeta[sec] ? sectionLabel(sectionMeta[sec]) : ''}
+          <div style="display:flex;gap:6px;">
+            ${cards}
+          </div>`;
+      }
+
+      if (group.length === 1 && sec === 'intro') {
+        html += `
+    <div style="display:flex;align-items:center;">
+      ${hline(40)}
+      ${inner}
+    </div>`;
+      } else {
+        html += `
+    <div style="display:flex;align-items:flex-start;">
+      ${hline(40)}
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        ${sectionMeta[sec] ? sectionLabel(sectionMeta[sec]) : ''}
+        <div style="display:flex;gap:6px;">
+          ${group.map(a => `<div class="nd ${ndClass}">${a.titleKo}${isWip ? ' <span class="nd__tag">WIP</span>' : ''}</div>`).join('\n          ')}
+        </div>
+      </div>
+    </div>`;
+      }
+    });
+
+    /* appendix — static */
+    html += `
+    <div style="display:flex;align-items:center;">
+      ${hline(40)}
+      <div class="nd nd--article">Appendix — 케이스 스터디 (지쿠 · 카카오T · 쏘카 · 타다)</div>
+    </div>`;
+
+    return html;
+  }
+
+  /* ── render full tree ── */
+  document.getElementById('vis-tree').innerHTML = `
+  <!-- Root -->
+  <div style="display:flex;align-items:center;margin-bottom:0;">
+    <div class="nd nd--home">dots mag <span class="nd__tag">Home</span></div>
+  </div>
+
+  <!-- L1 stem -->
+  <div style="display:flex;height:32px;padding-left:120px;">
+    <div style="width:1px;background:#ddd;margin-right:159px;"></div>
+    <div style="width:1px;background:#ddd;margin-right:179px;"></div>
+    <div style="width:1px;background:#ddd;"></div>
+  </div>
+
+  <!-- L1 horizontal bar -->
+  <div style="display:flex;align-items:center;padding-left:120px;">
+    <div style="height:1px;background:#ddd;width:480px;"></div>
+  </div>
+
+  <!-- L1 nodes: Issues / Masthead / About -->
+  <div style="display:flex;gap:0;padding-left:120px;margin-top:0;">
+    <div style="display:flex;flex-direction:column;align-items:center;margin-right:100px;">
+      ${vline(16)}
+      <div class="nd nd--section">Issues <span class="nd__tag">Archive</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;margin-right:100px;">
+      ${vline(16)}
+      <div class="nd nd--section">Masthead <span class="nd__tag">Team</span></div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;">
+      ${vline(16)}
+      <div class="nd nd--section">About <span class="nd__tag">Magazine</span></div>
+    </div>
+  </div>
+
+  <!-- Issues → Issue 01 stem -->
+  <div style="height:32px;display:flex;padding-left:120px;">
+    <div style="width:1px;background:#ddd;"></div>
+  </div>
+
+  <!-- Issue 01 node -->
+  <div style="display:flex;align-items:center;padding-left:120px;">
+    ${hline(40)}
+    <div class="nd nd--page">Issue 01 · ${issue.titleKo} <span class="nd__tag">${issue.date}</span></div>
+  </div>
+
+  <!-- Issue 01 → Articles stem -->
+  <div style="height:24px;display:flex;padding-left:160px;">
+    <div style="width:1px;background:#ddd;"></div>
+  </div>
+
+  <!-- Articles label -->
+  <div style="padding-left:160px;">
+    <div style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#bbb;margin-bottom:16px;">Articles (${articles.length})</div>
+  </div>
+
+  <!-- Article rows -->
+  <div style="display:flex;flex-direction:column;gap:8px;padding-left:160px;">
+    ${buildArticleRows()}
+  </div>
+  `;
+})();
+</script>
 </body>
 </html>

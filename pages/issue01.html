@@ -10,11 +10,22 @@
 
   /* Cover */
   .issue-cover {
-    min-height: 80vh;
-    background: #1a1a1a;
+    min-height: 90vh;
+    background: #0a0a0a;
     display: flex; flex-direction: column; justify-content: flex-end;
     padding: 80px 60px;
     position: relative; overflow: hidden;
+  }
+  .issue-cover__bg {
+    position: absolute; inset: 0;
+    background-image: url('../assets/hero-car.png');
+    background-size: cover;
+    background-position: center 40%;
+    opacity: 0.55;
+  }
+  .issue-cover__gradient {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%);
   }
   .issue-cover__watermark {
     position: absolute; right: -10px; top: 50%; transform: translateY(-50%);
@@ -166,11 +177,15 @@
 
 <!-- Cover -->
 <div class="issue-cover">
+  <div class="issue-cover__bg"></div>
+  <div class="issue-cover__gradient"></div>
   <div class="issue-cover__watermark">01</div>
-  <div class="cover__issue">dots mag · Issue 01 · 2026.06</div>
-  <div class="cover__title">차량 산업<br>패러다임의 변화</div>
-  <div class="cover__sub">레드라인 너머의 세계: 카레이싱이 자동차 산업을 달리는 방식</div>
-  <div class="cover__meta">7 Contributors · Section 1–4</div>
+  <div style="position:relative; z-index:2;">
+    <div class="cover__issue">dots mag · Issue 01 · 2026.06</div>
+    <div class="cover__title">차량 산업<br>패러다임의 변화</div>
+    <div class="cover__sub">레드라인 너머의 세계: 카레이싱이 자동차 산업을 달리는 방식</div>
+    <div class="cover__meta">7 Contributors · Section 1–4</div>
+  </div>
 </div>
 
 <!-- Editor's Note -->

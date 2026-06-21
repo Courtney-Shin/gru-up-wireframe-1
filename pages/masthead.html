@@ -153,26 +153,16 @@
     <button class="issue-tab-btn" style="color:#bbb; cursor:default;">Issue 02 · TBD</button>
   </div>
 
-  <!-- Featured (Editor in Chief) — rendered from js/data.js -->
-  <div id="masthead-featured"></div>
+  <!-- Advisors — rendered from js/data.js + static professor card -->
+  <div class="advisors-section">
+    <div class="advisors-section__label">Advisors</div>
+    <div class="advisors-grid" id="masthead-advisors-grid"></div>
+  </div>
 
   <!-- Writers — rendered from js/data.js -->
   <div class="writers-section">
-    <div class="writers-section__label">Issue 01 Contributors</div>
+    <div class="writers-section__label">Issue 01 Writers</div>
     <div class="writers-grid" id="masthead-writers-grid"></div>
-  </div>
-
-  <!-- Advisors -->
-  <div class="advisors-section">
-    <div class="advisors-section__label">Advisors</div>
-    <div class="advisors-grid">
-      <div class="advisor-card">
-        <div class="advisor-name">교수님 성함 TBD</div>
-        <div class="advisor-title"><span class="ko">성균관대학교 서비스디자인 연구실</span><span class="en">Service Design Lab, Sungkyunkwan University</span></div>
-        <div class="advisor-research">연구 분야 placeholder — 서비스 디자인, 사용자 경험, 산학 협력 등</div>
-        <div class="advisor-connection"><span class="ko">dots mag와의 연결: 리서치 자문 · 서비스디자인 연구실 협력</span><span class="en">Connection: Research advisory · Service Design Lab collaboration</span></div>
-      </div>
-    </div>
   </div>
 
 
@@ -209,68 +199,82 @@
 <script src="../js/main.js"></script>
 <script>
 (function() {
+  function writerCardHtml(c) {
+    const photoHtml = c.photo
+      ? `<img src="${c.photo}" alt="${c.nameKo}">`
+      : c.initial;
+    const articleLinks = c.articleIds.map(aid => {
+      const a = DOTSMAG.getArticle(aid);
+      if (!a) return '';
+      return `<a class="writer-article-link" href="${a.url}"><span class="ko">${a.titleKo}</span><span class="en">${a.titleEn}</span></a>`;
+    }).join('');
+    const quoteHtml = c.quote
+      ? `<div class="writer-quote" style="font-size:13px;color:#aaa;font-style:italic;margin-bottom:16px;">${c.quote}</div>`
+      : '';
+    return `
+      <div class="writer-card">
+        <div class="writer-photo">${photoHtml}</div>
+        <div class="writer-name"><span class="ko">${c.nameKo}</span><span class="en">${c.nameEn}</span></div>
+        <div class="writer-role" style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:8px;">${c.role}</div>
+        <div class="writer-bio"><span class="ko">${c.bioKo}</span><span class="en">${c.bioEn}</span></div>
+        ${quoteHtml}
+        <div class="writer-links">
+          <a class="person-link" href="${c.linkedin}" target="_blank">LinkedIn →</a>
+        </div>
+        <div class="writer-articles">${articleLinks}</div>
+      </div>`;
+  }
+
+  function advisorCardHtml(c) {
+    const photoHtml = c.photo
+      ? `<img src="${c.photo}" alt="${c.nameKo}">`
+      : c.initial;
+    return `
+      <div class="advisor-card">
+        <div style="display:flex;align-items:center;gap:20px;margin-bottom:16px;">
+          <div class="writer-photo" style="width:56px;height:56px;flex-shrink:0;">${photoHtml}</div>
+          <div>
+            <div class="advisor-name"><span class="ko">${c.nameKo}</span><span class="en">${c.nameEn}</span></div>
+            <div class="advisor-title">${c.role}</div>
+          </div>
+        </div>
+        <div class="advisor-bio" style="font-size:14px;color:#444;line-height:1.7;margin-bottom:12px;">
+          <span class="ko">${c.bioKo}</span><span class="en">${c.bioEn}</span>
+        </div>
+        <div class="advisor-connection" style="font-size:12px;color:#bbb;padding-top:12px;border-top:1px solid #f0f0f0;">
+          <span class="ko">${c.contributionKo}</span><span class="en">${c.contributionEn}</span>
+        </div>
+        ${c.linkedin && c.linkedin !== '#' ? `<div style="margin-top:12px;"><a class="person-link" href="${c.linkedin}" target="_blank">LinkedIn →</a></div>` : ''}
+      </div>`;
+  }
+
   function renderMasthead() {
     const contributors = DOTSMAG.getIssueContributors('issue01');
-    const featured = contributors.find(c => c.featured);
-    const writers = contributors.filter(c => !c.featured);
+    const advisors = contributors.filter(c => c.advisor);
+    const writers  = contributors.filter(c => !c.advisor);
 
-    // Featured (Editor in Chief)
-    const featuredEl = document.getElementById('masthead-featured');
-    if (featured && featuredEl) {
-      const photoHtml = featured.photo
-        ? `<img src="${featured.photo}" alt="${featured.nameKo}">`
-        : featured.initial;
-      const articleLinks = featured.articleIds.map(aid => {
-        const a = DOTSMAG.getArticle(aid);
-        if (!a) return '';
-        return `<a class="person-article-link" href="${a.url}"><span class="ko">${a.titleKo}</span><span class="en">${a.titleEn}</span></a>`;
-      }).join('');
-      featuredEl.innerHTML = `
-        <div class="person-featured">
-          <div class="person-featured__photo">${photoHtml}</div>
-          <div>
-            <div class="person-featured__name"><span class="ko">${featured.nameKo}</span><span class="en">${featured.nameEn}</span></div>
-            <div class="person-featured__role">${featured.role}</div>
-            <div class="person-featured__bio"><span class="ko">${featured.bioKo}</span><span class="en">${featured.bioEn}</span></div>
-            <div class="person-featured__links">
-              <a class="person-link" href="${featured.linkedin}" target="_blank">LinkedIn →</a>
-            </div>
-            <div class="person-featured__articles-label"><span class="ko">이번 호 기여</span><span class="en">Contribution</span></div>
-            <div class="person-articles">
-              ${articleLinks || `<span style="font-size:13px;color:#bbb;"><span class="ko">${featured.contributionKo}</span><span class="en">${featured.contributionEn}</span></span>`}
+    // Advisors grid: data.js advisors + static professor card
+    const advisorsEl = document.getElementById('masthead-advisors-grid');
+    if (advisorsEl) {
+      const staticProfCard = `
+        <div class="advisor-card">
+          <div style="display:flex;align-items:center;gap:20px;margin-bottom:16px;">
+            <div class="writer-photo" style="width:56px;height:56px;flex-shrink:0;font-size:20px;">교</div>
+            <div>
+              <div class="advisor-name">교수님 성함 TBD</div>
+              <div class="advisor-title"><span class="ko">성균관대학교 서비스디자인 연구실</span><span class="en">Service Design Lab, Sungkyunkwan University</span></div>
             </div>
           </div>
+          <div class="advisor-bio" style="font-size:14px;color:#444;line-height:1.7;margin-bottom:12px;">연구 분야 placeholder — 서비스 디자인, 사용자 경험, 산학 협력 등</div>
+          <div class="advisor-connection" style="font-size:12px;color:#bbb;padding-top:12px;border-top:1px solid #f0f0f0;"><span class="ko">dots mag와의 연결: 리서치 자문 · 서비스디자인 연구실 협력</span><span class="en">Connection: Research advisory · Service Design Lab collaboration</span></div>
         </div>`;
+      advisorsEl.innerHTML = advisors.map(advisorCardHtml).join('') + staticProfCard;
     }
 
     // Writers grid
-    const gridEl = document.getElementById('masthead-writers-grid');
-    if (gridEl) {
-      gridEl.innerHTML = writers.map(c => {
-        const photoHtml = c.photo
-          ? `<img src="${c.photo}" alt="${c.nameKo}">`
-          : c.initial;
-        const articleLinks = c.articleIds.map(aid => {
-          const a = DOTSMAG.getArticle(aid);
-          if (!a) return '';
-          return `<a class="writer-article-link" href="${a.url}"><span class="ko">${a.titleKo}</span><span class="en">${a.titleEn}</span></a>`;
-        }).join('');
-        const quoteHtml = c.quote
-          ? `<div class="writer-quote" style="font-size:13px;color:#aaa;font-style:italic;margin-bottom:16px;">${c.quote}</div>`
-          : '';
-        return `
-          <div class="writer-card">
-            <div class="writer-photo">${photoHtml}</div>
-            <div class="writer-name"><span class="ko">${c.nameKo}</span><span class="en">${c.nameEn}</span></div>
-            <div class="writer-role" style="font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:#888;margin-bottom:8px;">${c.role}</div>
-            <div class="writer-bio"><span class="ko">${c.bioKo}</span><span class="en">${c.bioEn}</span></div>
-            ${quoteHtml}
-            <div class="writer-links">
-              <a class="person-link" href="${c.linkedin}" target="_blank">LinkedIn →</a>
-            </div>
-            <div class="writer-articles">${articleLinks}</div>
-          </div>`;
-      }).join('');
+    const writersEl = document.getElementById('masthead-writers-grid');
+    if (writersEl) {
+      writersEl.innerHTML = writers.map(writerCardHtml).join('');
     }
   }
 

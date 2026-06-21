@@ -162,7 +162,7 @@ const DOTSMAG = {
       contributionKo: '전체 총괄',
       contributionEn: 'Editorial oversight',
       articleIds: [],
-      featured: true,
+      advisor: true,
     },
     {
       id: 'jiwooshin',

@@ -397,8 +397,8 @@
   function renderContributors() {
     const lang = document.documentElement.lang || 'ko';
     const contributors = DOTSMAG.getIssueContributors('issue01');
-    const featured = contributors.find(c => c.featured);
-    const writers = contributors.filter(c => !c.featured);
+    const featured = contributors.find(c => c.advisor);
+    const writers = contributors.filter(c => !c.advisor);
 
     // Featured (Editor in Chief)
     const featuredEl = document.getElementById('contributor-featured');

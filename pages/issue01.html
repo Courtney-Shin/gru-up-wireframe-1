@@ -35,7 +35,7 @@
   }
   .cover__issue { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
   .cover__title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Noto Serif KR', 'Cormorant Garamond', serif;
     font-size: clamp(48px, 8vw, 100px);
     font-weight: 400; color: #fff; line-height: 1.05;
     margin-bottom: 24px;
@@ -48,16 +48,17 @@
 
   /* Editor note */
   .editor-note {
-    padding: 72px 0 56px;
-    border-bottom: 1px solid #ddd;
+    padding: 72px 60px 56px;
+    background: #371E9C;
+    margin: 0 -60px;
   }
-  .editor-note__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 24px; }
+  .editor-note__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #FFF2AF; margin-bottom: 24px; opacity: 0.8; }
   .editor-note__text {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 22px; line-height: 1.75; color: #1a1a1a;
+    font-family: 'Noto Serif KR', 'Cormorant Garamond', serif;
+    font-size: 22px; line-height: 1.75; color: #fff;
     max-width: 720px;
   }
-  .editor-note__sig { font-size: 13px; color: #888; margin-top: 32px; }
+  .editor-note__sig { font-size: 13px; color: #FFF2AF; margin-top: 32px; opacity: 0.75; }
 
   /* TOC */
   .toc { padding: 56px 0; }
@@ -71,7 +72,7 @@
   }
   .section-header:first-of-type { margin-top: 0; }
   .section-header__num { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: #888; }
-  .section-header__title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #1a1a1a; }
+  .section-header__title { font-family: 'Noto Serif KR', 'Cormorant Garamond', serif; font-size: 20px; color: #1a1a1a; }
 
   /* Article row */
   .article-row {
@@ -86,7 +87,7 @@
   }
   .article-row:hover { background: rgba(0,0,0,0.02); }
   .article-row:last-child { border-bottom: none; }
-  .article-row__title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #1a1a1a; line-height: 1.3; }
+  .article-row__title { font-family: 'Noto Serif KR', 'Cormorant Garamond', serif; font-size: 20px; color: #1a1a1a; line-height: 1.3; }
   .article-row__title small { display: block; font-size: 13px; font-family: 'Inter', sans-serif; color: #888; margin-top: 3px; }
   .article-row__author { font-size: 13px; color: #888; }
   .article-row__time { font-size: 13px; color: #888; }
@@ -100,10 +101,10 @@
     letter-spacing: 0.08em; text-transform: uppercase;
     padding: 3px 8px; margin-right: 8px;
   }
-  .atag--research { background: #e8f0e8; color: #3a6b3a; }
-  .atag--execution { background: #e8eaf0; color: #3a3a6b; }
-  .atag--interview { background: #f5f0e8; color: #6b5a3a; }
-  .atag--intro { background: #eee; color: #555; }
+  .atag--research { background: var(--accent-side); color: var(--accent); }
+  .atag--execution { background: var(--accent-side); color: var(--accent); }
+  .atag--interview { background: var(--accent-side); color: var(--accent); }
+  .atag--intro { background: var(--accent-side); color: var(--accent); }
 
   /* Interview block */
   .interview-block {
@@ -114,7 +115,7 @@
     text-decoration: none; color: inherit;
   }
   .interview-block--placeholder { opacity: 0.4; cursor: default; }
-  .interview-block__title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #fff; }
+  .interview-block__title { font-family: 'Noto Serif KR', 'Cormorant Garamond', serif; font-size: 20px; color: #fff; }
   .interview-block__title small { display: block; font-size: 13px; font-family: 'Inter', sans-serif; color: rgba(255,255,255,0.5); margin-top: 3px; }
   .interview-block__author { font-size: 13px; color: rgba(255,255,255,0.5); }
   .interview-block__time { font-size: 13px; color: rgba(255,255,255,0.5); }
@@ -135,10 +136,10 @@
   .contributor__photo-placeholder {
     width: 100%; height: 100%;
     display: flex; align-items: center; justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: 'Noto Serif KR', 'Cormorant Garamond', serif;
     font-size: 32px; color: #aaa;
   }
-  .contributor__name { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #1a1a1a; margin-bottom: 4px; }
+  .contributor__name { font-family: 'Noto Serif KR', 'Cormorant Garamond', serif; font-size: 22px; color: #1a1a1a; margin-bottom: 4px; }
   .contributor__role { font-size: 12px; font-weight: 500; color: #555; margin-bottom: 8px; letter-spacing: 0.04em; }
   .contributor__bio { font-size: 13px; color: #888; line-height: 1.65; }
   .contributor__articles { font-size: 12px; color: #aaa; margin-top: 10px; line-height: 1.6; border-top: 1px solid #eee; padding-top: 10px; }
@@ -151,7 +152,7 @@
     padding: 16px 0; border-bottom: 1px solid #e8e8e8;
     text-decoration: none; color: inherit;
   }
-  .appendix-row__title { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: #1a1a1a; }
+  .appendix-row__title { font-family: 'Noto Serif KR', 'Cormorant Garamond', serif; font-size: 18px; color: #1a1a1a; }
   .appendix-row__title small { display: block; font-size: 12px; font-family: 'Inter', sans-serif; color: #888; margin-top: 2px; }
 
   /* Footer */
@@ -220,7 +221,6 @@
     </div>
     <a class="article-row" href="article-intro.html">
       <div class="article-row__title">
-        <span class="atag atag--intro">Intro</span>
         레드라인 너머의 산업 지도
         <small>F1이 먼저 달린 모빌리티의 세계</small>
       </div>
@@ -232,11 +232,10 @@
     <!-- Section 1 -->
     <div class="section-header">
       <span class="section-header__num">Section 1</span>
-      <span class="section-header__title">Business — 역사 및 기업 사례</span>
+      <span class="section-header__title">Business</span>
     </div>
     <a class="article-row" href="article-1a.html">
       <div class="article-row__title">
-        <span class="atag atag--research">Research</span>
         1-a. 대량생산에서 플랫폼으로
         <small>자동차 산업 구조 변화 · 공급망 · OEM</small>
       </div>
@@ -246,7 +245,6 @@
     </a>
     <a class="article-row" href="article-1b.html">
       <div class="article-row__title">
-        <span class="atag atag--research">Research</span>
         1-b. 기업혁신 — 브랜딩·EV·플랫폼
         <small>BMW·제네시스·현대·테슬라·우버 포지셔닝 비교</small>
       </div>
@@ -258,11 +256,10 @@
     <!-- Section 2 -->
     <div class="section-header">
       <span class="section-header__num">Section 2</span>
-      <span class="section-header__title">Business × Design — 소비자 선택 국면</span>
+      <span class="section-header__title">Business × Design</span>
     </div>
     <a class="article-row" href="article-2a.html">
       <div class="article-row__title">
-        <span class="atag atag--research">Research</span>
         2-a. Feeling Luxury
         <small>자동차 브랜드가 '좋은 차'를 정의하는 방식의 변화</small>
       </div>
@@ -272,7 +269,6 @@
     </a>
     <a class="article-row" href="article-2b.html">
       <div class="article-row__title">
-        <span class="atag atag--execution">Execution</span>
         2-b. 전기차 과연 경제적인가
         <small>하이브리드 및 전기차의 경제성 분석</small>
       </div>
@@ -284,11 +280,10 @@
     <!-- Section 3 -->
     <div class="section-header">
       <span class="section-header__num">Section 3</span>
-      <span class="section-header__title">Business × Engineering — 기술적 측면</span>
+      <span class="section-header__title">Business × Engineering</span>
     </div>
     <a class="article-row" href="article-3a.html">
       <div class="article-row__title">
-        <span class="atag atag--research">Research</span>
         3-a. 피할 수 없다면 이용해라
         <small>친환경 정책으로 돈 버는 기업들</small>
       </div>
@@ -298,7 +293,6 @@
     </a>
     <a class="article-row" href="article-3b.html">
       <div class="article-row__title">
-        <span class="atag atag--execution">Execution</span>
         3-b. AI 모빌리티
         <small>AI 기반 배차·가격·수요 예측</small>
       </div>
@@ -314,7 +308,6 @@
     </div>
     <a class="article-row" href="article-4a.html">
       <div class="article-row__title">
-        <span class="atag atag--research">Research</span>
         4-a. 스스로 생각하고 달리는 차가 온다
         <small>SDV · 자율주행 · 플랫폼 전쟁</small>
       </div>

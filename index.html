@@ -200,6 +200,13 @@
   }
   .cta-type__desc { font-size: 13px; color: rgba(255,255,255,0.9); line-height: 1.5; }
 
+  /* Issue table hover */
+  .issue-row { transition: background 0.15s; }
+  .issue-row:hover { background: #371E9C; }
+  .issue-row:hover td,
+  .issue-row:hover div { color: #fff !important; }
+  .issue-row:hover .issue-arrow { color: #FFF2AF !important; }
+
   @media (max-width: 900px) {
     .hero__inner { padding: 0 24px 64px; }
     .identity__cols { grid-template-columns: 1fr; }
@@ -232,7 +239,7 @@
 
 <!-- S01. Hero -->
 <section class="section hero">
-  <a href="index.html"><img src="assets/hero-00-4x.png" alt="everything starts from a dot — dots mag" style="width:100%; display:block;"></a>
+  <a href="index.html"><img src="assets/hero-0110.png" alt="everything starts from a dot — dots mag" style="width:100%; display:block;"></a>
   <div class="hero__bottom">
     <span>Issue 01: Mobility — Now Live</span>
     <a href="pages/issues.html">Explore Issues →</a>
@@ -242,7 +249,7 @@
 <!-- Issue 아카이브 -->
 <section style="max-width:1280px; margin:0 auto; padding:80px 60px;">
 
-  <table style="width:100%; border-collapse:collapse; font-family:'Cormorant Garamond', serif;">
+  <table style="width:100%; border-collapse:collapse; font-family:'Noto Serif KR', 'Cormorant Garamond', serif;">
     <thead>
       <tr style="border-bottom:1.5px solid #1a1a1a;">
         <th style="text-align:left; font-size:11px; font-family:'Inter',sans-serif; font-weight:500; letter-spacing:0.1em; text-transform:uppercase; color:#888; padding-bottom:16px; width:80px;">No.</th>
@@ -252,14 +259,14 @@
       </tr>
     </thead>
     <tbody>
-      <tr style="border-bottom:1px solid #ddd; cursor:pointer;" onclick="location.href='pages/issue01.html'">
+      <tr class="issue-row" style="border-bottom:1px solid #ddd; cursor:pointer;" onclick="location.href='pages/issue01.html'">
         <td style="padding:28px 0; font-size:20px; font-weight:400; color:#1a1a1a;">01</td>
         <td style="padding:28px 0;">
           <div style="font-size:24px; font-weight:400; color:#1a1a1a; margin-bottom:4px;"><span class="ko">차량 산업 패러다임의 변화</span><span class="en">The Paradigm Shift in the Automotive Industry</span></div>
           <div style="font-size:14px; font-family:'Inter',sans-serif; color:#888;">Mobility — from racing culture to SDV</div>
         </td>
         <td style="padding:28px 0; font-size:16px; font-family:'Inter',sans-serif; color:#1a1a1a;">2026.06</td>
-        <td style="padding:28px 0; font-size:20px; color:#1a1a1a;">→</td>
+        <td class="issue-arrow" style="padding:28px 0; font-size:20px; color:#1a1a1a;">→</td>
       </tr>
     </tbody>
   </table>

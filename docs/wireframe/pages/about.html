@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — dots mag</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  body { background: #ffffff; font-family: 'Inter', sans-serif; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 0 60px; }
+
+  /* ── 1. Hero ── */
+  .about-hero { padding: 80px 0 64px; border-bottom: 1px solid #ddd; }
+  .about-hero__eyebrow { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 32px; }
+  .about-hero__title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 400; color: #1a1a1a; line-height: 1.1;
+    max-width: 800px; margin-bottom: 48px;
+  }
+  .about-hero__body { font-size: 16px; line-height: 1.9; color: #444; max-width: 600px; margin-bottom: 48px; }
+  .meta-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid #ddd; }
+  .meta-item { padding: 24px 0 24px; border-right: 1px solid #ddd; padding-right: 32px; margin-right: 0; }
+  .meta-item:last-child { border-right: none; }
+  .meta-item + .meta-item { padding-left: 32px; }
+  .meta-item__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 8px; }
+  .meta-item__value { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: #1a1a1a; }
+
+  /* ── 2. Venn ── */
+  .venn-section { padding: 80px 0; border-bottom: 1px solid #ddd; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .venn-section__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 32px; }
+  .venn-diagram { position: relative; width: 300px; height: 260px; margin: 0 auto; }
+  .venn-circle {
+    position: absolute; width: 160px; height: 160px; border-radius: 50%;
+    opacity: 0.25;
+  }
+  .venn-circle--business { background: #a8c4e0; top: 0; left: 30px; }
+  .venn-circle--design { background: #c4a8e0; top: 0; right: 30px; }
+  .venn-circle--data { background: #a8e0c4; bottom: 10px; left: 50%; transform: translateX(-50%); }
+  .venn-labels { position: absolute; width: 100%; height: 100%; top: 0; left: 0; }
+  .venn-label {
+    position: absolute; font-size: 13px; font-weight: 500; color: #1a1a1a;
+    font-family: 'Inter', sans-serif;
+  }
+  .venn-label--business { top: 32px; left: 12px; }
+  .venn-label--design { top: 32px; right: 12px; }
+  .venn-label--data { bottom: 20px; left: 50%; transform: translateX(-50%); white-space: nowrap; }
+  .venn-center {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -44%);
+    font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 500;
+    color: #1a1a1a; text-align: center; white-space: nowrap;
+  }
+  .venn-desc { }
+  .venn-desc__item { margin-bottom: 28px; }
+  .venn-desc__title { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #1a1a1a; margin-bottom: 6px; }
+  .venn-desc__body { font-size: 14px; color: #666; line-height: 1.7; }
+
+  /* ── 3. Why ── */
+  .why-section { padding: 80px 0; border-bottom: 1px solid #ddd; }
+  .why-section__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 32px; }
+  .why-section__quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 36px); font-style: italic;
+    color: #1a1a1a; line-height: 1.45; max-width: 760px; margin-bottom: 40px;
+  }
+  .why-section__body { font-size: 16px; line-height: 1.9; color: #444; max-width: 620px; }
+  .why-section__body p + p { margin-top: 20px; }
+
+  /* ── 4. Process ── */
+  .process-section { padding: 80px 0; border-bottom: 1px solid #ddd; }
+  .process-section__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 12px; }
+  .process-section__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 48px); color: #1a1a1a; margin-bottom: 48px; }
+  .process-flow { display: flex; align-items: flex-start; gap: 0; }
+  .process-step { flex: 1; padding: 24px 20px; border: 1px solid #ddd; background: transparent; position: relative; }
+  .process-step + .process-step { border-left: none; }
+  .process-step--highlight { border-color: var(--accent); background: var(--accent); }
+  .process-step__num { font-size: 11px; color: #bbb; margin-bottom: 12px; font-family: 'Inter', sans-serif; }
+  .process-step__title { font-size: 13px; font-weight: 500; color: #1a1a1a; margin-bottom: 8px; }
+  .process-step__desc { font-size: 12px; color: #888; line-height: 1.6; }
+  .process-step--highlight .process-step__title { color: #fff; }
+  .process-step--highlight .process-step__desc { color: rgba(255,255,255,0.6); }
+  .process-step--highlight .process-step__num { color: rgba(255,255,255,0.4); }
+  .process-arrow { display: flex; align-items: center; padding: 0 4px; margin-top: 32px; color: #bbb; font-size: 16px; flex-shrink: 0; }
+
+  /* ── 5. From GRU ── */
+  .gru-section { padding: 80px 0; border-bottom: 1px solid #ddd; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .gru-section__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+  .gru-section__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 44px); color: #1a1a1a; margin-bottom: 28px; }
+  .gru-section__body { font-size: 16px; line-height: 1.9; color: #444; }
+  .gru-section__body p + p { margin-top: 20px; }
+  .gru-flow { display: flex; align-items: center; gap: 12px; }
+  .gru-box {
+    border: 1.5px solid #ddd; padding: 16px 24px; text-align: center; background: transparent;
+    min-width: 120px;
+  }
+  .gru-box--highlight { border-color: var(--accent); background: var(--accent); }
+  .gru-box__title { font-size: 13px; font-weight: 600; color: #1a1a1a; margin-bottom: 4px; }
+  .gru-box__sub { font-size: 11px; color: #888; }
+  .gru-box--highlight .gru-box__title { color: #fff; }
+  .gru-box--highlight .gru-box__sub { color: rgba(255,255,255,0.5); }
+  .gru-arrow { color: #bbb; font-size: 18px; }
+
+  /* ── 6. Graduate ── */
+  .grad-section { padding: 80px 0; }
+  .grad-section__label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; margin-bottom: 16px; }
+  .grad-section__title { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px, 4vw, 44px); color: #1a1a1a; margin-bottom: 28px; max-width: 560px; }
+  .grad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .grad-body { font-size: 16px; line-height: 1.9; color: #444; }
+  .grad-body p + p { margin-top: 20px; }
+  .grad-diagram { border: 1px solid #ddd; padding: 32px; background: transparent; font-size: 13px; color: #888; line-height: 2.2; }
+  .grad-diagram__line { display: flex; align-items: center; gap: 8px; }
+  .grad-diagram__indent { padding-left: 24px; }
+  .grad-diagram__arrow { color: #bbb; }
+  .grad-diagram__note { font-size: 11px; color: #bbb; margin-top: 20px; padding-top: 16px; border-top: 1px solid #eee; font-style: italic; }
+
+  /* ── Closing ── */
+  .closing-block { background: #1a1a1a; padding: 64px 60px; margin: 0 -60px; }
+  .closing-block__quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(24px, 3vw, 36px); color: #fff; line-height: 1.5; max-width: 720px; margin-bottom: 32px; }
+  .closing-block__meta { font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.06em; }
+
+  .page-footer { border-top: 1px solid #333; padding: 32px 60px; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #666; background: #1a1a1a; }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <a class="nav__logo" href="../index.html">← dots mag</a>
+  <div class="nav__links">
+    <a class="nav__link" href="issues.html">issues</a>
+    <a class="nav__link" href="masthead.html">masthead</a>
+    <a class="nav__link active" href="about.html">about</a>
+  </div>
+  <div class="nav__lang">
+    <button class="nav__lang-btn active" data-lang="ko">KO</button>
+    <span class="nav__lang-sep">/</span>
+    <button class="nav__lang-btn" data-lang="en">EN</button>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- 1. Hero -->
+  <div class="about-hero">
+    <div class="about-hero__eyebrow">About</div>
+    <div class="about-hero__title">everything starts from a dot</div>
+    <div class="about-hero__body">
+      <span class="ko">dots mag는 Business, Design, Engineering의 교차점에서 산업을 분석하는 리서치 매거진입니다. 성균관대학교 GRU 출신 멤버들이 만들며, 반기 단위로 하나의 주제를 구조적으로 파고듭니다.</span>
+      <span class="en">dots mag is a research magazine analyzing industries at the intersection of Business, Design, and Engineering. Made by GRU alumni at Sungkyunkwan University, published semi-annually around a single theme.</span>
+    </div>
+    <div class="meta-grid">
+      <div class="meta-item">
+        <div class="meta-item__label">Founded</div>
+        <div class="meta-item__value">2026</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-item__label">Cadence</div>
+        <div class="meta-item__value"><span class="ko">반기 발간</span><span class="en">Semi-annual</span></div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-item__label">Focus</div>
+        <div class="meta-item__value">Business · Design · Engineering</div>
+      </div>
+      <div class="meta-item">
+        <div class="meta-item__label">Origin</div>
+        <div class="meta-item__value"><span class="ko">GRU, 성균관대학교</span><span class="en">GRU, Sungkyunkwan Univ.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Why -->
+  <div class="why-section">
+    <div class="why-section__label"><span class="ko">왜 만들었나</span><span class="en">Why we started</span></div>
+    <div class="why-section__quote"><span class="ko">"대부분의 프로젝트는 완성되고, 발표되고, 잊혀진다."</span><span class="en">"Most projects are finished, presented, and forgotten."</span></div>
+    <div class="why-section__body">
+      <p class="ko-block">학회에서, 외부 프로젝트에서, 스타트업과의 협업에서 우리는 짧고 강한 실행을 경험했습니다. 하지만 프로젝트가 끝나면 사람은 흩어지고, 많은 생각들은 슬라이드 몇 장이나 드라이브 폴더 안에 남은 채 조용히 사라졌습니다.</p>
+      <p class="en-block">In student clubs, external projects, and startup collaborations, we experienced short, intense bursts of execution. But when projects ended, people scattered — and most of the thinking quietly disappeared into slide decks and drive folders.</p>
+      <p class="ko-block">dots mag는 그 반대편에 있습니다. 빠르게 끝나는 프로젝트가 아니라 조금 더 긴 호흡으로 생각을 밀고 나가는 곳 — 각 Issue는 단순한 발간물이 아니라, 앞으로 수년간 쌓여갈 지식 구조의 한 노드입니다.</p>
+      <p class="en-block">dots mag is the opposite. Not a fast project, but a place to push thinking further — each Issue is a node in a knowledge structure that will compound over years.</p>
+    </div>
+  </div>
+
+  <!-- 3. Three Axes -->
+  <div class="venn-section">
+    <div>
+      <div class="venn-section__label">Three Axes</div>
+      <div class="venn-diagram">
+        <div class="venn-circle venn-circle--business"></div>
+        <div class="venn-circle venn-circle--design"></div>
+        <div class="venn-circle venn-circle--data"></div>
+        <div class="venn-labels">
+          <span class="venn-label venn-label--business">Business</span>
+          <span class="venn-label venn-label--design">Design</span>
+          <span class="venn-label venn-label--data">Engineering</span>
+          <span class="venn-center">dots mag</span>
+        </div>
+      </div>
+    </div>
+    <div class="venn-desc">
+      <div class="venn-desc__item">
+        <div class="venn-desc__title">Business</div>
+        <div class="venn-desc__body"><span class="ko">전략, 시장 구조, 경쟁 역학. 비즈니스 로직이 실제 의사결정과 어떻게 연결되는지를 봅니다.</span><span class="en">Strategy, market structure, competitive dynamics. How business logic connects to real decisions.</span></div>
+      </div>
+      <div class="venn-desc__item">
+        <div class="venn-desc__title">Design</div>
+        <div class="venn-desc__body"><span class="ko">UX, 서비스 디자인, 브랜드 아키텍처. 디자인은 장식이 아니라 문제를 구조적으로 사고하는 방식입니다.</span><span class="en">UX, service design, brand architecture. Design is not decoration — it's a way of thinking structurally about problems.</span></div>
+      </div>
+      <div class="venn-desc__item">
+        <div class="venn-desc__title">Engineering</div>
+        <div class="venn-desc__body"><span class="ko">정량적 방법론, 데이터 모델링, AI 시스템. 분석을 근거 위에 세우고 방법을 명시적으로 만듭니다.</span><span class="en">Quantitative methods, data modeling, AI systems. Building analysis on evidence and making methods explicit.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Who -->
+  <div class="why-section" style="border-bottom: 1px solid #ddd;">
+    <div class="why-section__label"><span class="ko">누가 만드나</span><span class="en">Who makes it</span></div>
+    <div class="why-section__quote"><span class="ko">"같은 질문을 오래 붙잡아본 사람들."</span><span class="en">"People who stayed with the same question long enough."</span></div>
+    <div class="why-section__body">
+      <p class="ko-block">dots mag는 성균관대학교 GRU(실천경영전략학회) 출신 멤버들이 만듭니다. GRU는 학제를 넘어 비즈니스·디자인·엔지니어링을 함께 탐구해온 학회로, dots mag는 그 연장선 위에 있습니다.</p>
+      <p class="en-block">dots mag is made by alumni of GRU (Strategy & Management Society) at Sungkyunkwan University. GRU is a club that explores business, design, and engineering across disciplines — dots mag is a direct extension of that.</p>
+      <p class="ko-block">매 Issue마다 팀이 구성되고, 하나의 주제를 수개월에 걸쳐 리서치하고 쓰고 편집합니다. 독자는 같은 교차점에 관심 있는 누구든 환영합니다 — 학생이든, 실무자든, 그냥 궁금한 사람이든.</p>
+      <p class="en-block">Each Issue, a team forms and spends months researching, writing, and editing a single theme. Anyone curious about the same intersection is welcome — students, practitioners, or just the curious.</p>
+      <a href="https://www.skku-startup-gru.net/" target="_blank" style="display:inline-block; margin-top:24px; padding:12px 24px; border:1.5px solid #1a1a1a; font-size:13px; color:#1a1a1a; text-decoration:none; letter-spacing:0.04em; transition:background 0.15s;" onmouseover="this.style.background='#1a1a1a';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='#1a1a1a'"><span class="ko">성균관대학교 실천경영전략학회 GRU →</span><span class="en">GRU, Sungkyunkwan University →</span></a>
+    </div>
+  </div>
+
+  <!-- 5. Process -->
+  <div class="process-section">
+    <div class="process-section__label">Process</div>
+    <div class="process-section__title">From topic to archive</div>
+    <div class="process-flow">
+      <div class="process-step">
+        <div class="process-step__num">01</div>
+        <div class="process-step__title">Topic Selection</div>
+        <div class="process-step__desc"><span class="ko">주제 선정, 콘텍스트 프레이밍</span><span class="en">Topic framing & context</span></div>
+      </div>
+      <div class="process-step">
+        <div class="process-step__num">02</div>
+        <div class="process-step__title">Research</div>
+        <div class="process-step__desc"><span class="ko">데이터 분석, 인터뷰, 모델링</span><span class="en">Data analysis, interviews, modeling</span></div>
+      </div>
+      <div class="process-step">
+        <div class="process-step__num">03</div>
+        <div class="process-step__title">Production</div>
+        <div class="process-step__desc"><span class="ko">구조 설계, 에디토리얼, 시각화</span><span class="en">Structure, editorial, visualization</span></div>
+      </div>
+      <div class="process-step">
+        <div class="process-step__num">04</div>
+        <div class="process-step__title">Publication</div>
+        <div class="process-step__desc"><span class="ko">반기 단위 발행</span><span class="en">Semi-annual release</span></div>
+      </div>
+      <div class="process-step process-step--highlight">
+        <div class="process-step__num">05</div>
+        <div class="process-step__title">Archive</div>
+        <div class="process-step__desc"><span class="ko">영구적으로 쌓이는 지식 구조</span><span class="en">A knowledge structure that compounds</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Closing -->
+<div class="closing-block">
+  <div class="closing-block__quote"><span class="ko">dots mag는 관심 있는 이야기를 그냥 흘려보내지 않기 위해 만들어졌습니다. 하나의 점에서 시작해, 점들이 이어집니다.</span><span class="en">dots mag was made so that interesting ideas don't just pass by. It starts from a dot. Dots connect.</span></div>
+  <div class="closing-block__meta">반기 발간 · <a href="masthead.html" style="color:rgba(255,255,255,0.4); text-decoration:underline;">Masthead →</a></div>
+</div>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer__main">
+    <div>
+      <div class="site-footer__brand-name">dots mag</div>
+      <div class="site-footer__brand-desc">everything starts from a dot</div>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Pages</div>
+      <nav class="site-footer__nav">
+        <a class="site-footer__nav-link" href="issues.html">Issues</a>
+        <a class="site-footer__nav-link" href="masthead.html">Masthead</a>
+        <a class="site-footer__nav-link" href="about.html">About</a>
+      </nav>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Contact</div>
+      <div class="site-footer__contact-email">contact@dotsmag.kr</div>
+      <div class="site-footer__contact-note"><span class="ko">협력 제안, 인터뷰 요청,<br>산학 파트너십 문의</span><span class="en">Collaboration, interview requests,<br>industry partnership inquiries</span></div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="site-footer__copy"><span class="ko">© 2026 dots mag · 반기 발간</span><span class="en">© 2026 dots mag · Semi-annual</span></div>
+    <div class="site-footer__origin"><span class="ko">GRU Alumni · 성균관대학교 서비스디자인 연구실 협력</span><span class="en">GRU Alumni · Sungkyunkwan University</span></div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

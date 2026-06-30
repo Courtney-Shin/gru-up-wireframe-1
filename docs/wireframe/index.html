@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dots mag</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+  /* ── Hero (Bauhaus Collage) ── */
+  .hero {
+    min-height: 100vh;
+    background: #F7F6F2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero__nav-area {
+    display: flex;
+    justify-content: flex-end;
+    gap: 48px;
+    padding: 32px 48px 0;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: #1a1a1a;
+  }
+  .hero__nav-area a { text-decoration: none; color: #1a1a1a; }
+  .hero__logo {
+    position: absolute;
+    top: 24px;
+    left: 40px;
+    z-index: 10;
+  }
+  .hero__collage {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 40px 40px;
+    position: relative;
+  }
+  .hero__word {
+    display: inline-block;
+    font-size: clamp(60px, 9vw, 130px);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.04em;
+    font-family: 'Inter', sans-serif;
+  }
+  .hero__word--boxed {
+    background: #4466FF;
+    color: #fff;
+    padding: 4px 12px 8px;
+  }
+  .hero__word--outline {
+    color: transparent;
+    -webkit-text-stroke: 2px #1a1a1a;
+  }
+  .hero__word--plain {
+    color: #1a1a1a;
+  }
+  .hero__word--small {
+    font-size: clamp(40px, 6vw, 88px);
+  }
+  .hero__collage-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 900px;
+    width: 100%;
+  }
+  .hero__line {
+    display: flex;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .hero__line--indent { padding-left: 80px; }
+  .hero__line--indent2 { padding-left: 160px; }
+  .hero__badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a1a1a;
+    border: 1.5px solid #1a1a1a;
+    padding: 4px 10px;
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+  }
+  .hero__bottom {
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1.5px solid #1a1a1a;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #1a1a1a;
+  }
+  .hero__bottom a {
+    color: #1a1a1a;
+    text-decoration: underline;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* ── Identity ── */
+  .identity__cols {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--border);
+  }
+  .identity__col {
+    padding: 36px 40px 36px 0;
+    border-right: 1px solid var(--border);
+  }
+  .identity__col:last-child { border-right: none; padding-left: 40px; padding-right: 0; }
+  .identity__col:not(:first-child) { padding-left: 40px; }
+  .identity__label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-3); margin-bottom: 10px;
+  }
+  .identity__note {
+    margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border);
+    font-size: 13px; color: var(--text-3); font-style: italic;
+  }
+
+  /* ── Featured Issue ── */
+  .issue-feature {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .issue-cover-block {
+    background: #1A1A1A; border-radius: 4px;
+    aspect-ratio: 3/4; display: flex; flex-direction: column;
+    justify-content: flex-end; padding: 36px;
+    position: relative; overflow: hidden;
+  }
+  .issue-cover-block__num {
+    position: absolute; top: 28px; left: 32px;
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+  .issue-cover-block__title {
+    font-size: clamp(36px, 5vw, 60px); font-weight: 800;
+    letter-spacing: -0.03em; color: white; line-height: 0.95;
+    margin-bottom: 16px;
+  }
+  .issue-cover-block__year {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+  }
+  .issue-meta { display: flex; gap: 20px; font-size: 12px; color: var(--text-3); margin-bottom: 24px; }
+  .issue-articles { margin-bottom: 28px; }
+  .issue-article-item {
+    display: flex; align-items: baseline; gap: 10px;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 13px; color: var(--text-2);
+  }
+  .issue-article-item:last-child { border-bottom: none; }
+  .issue-article-item::before {
+    content: '↳'; color: var(--text-3); flex-shrink: 0; font-size: 12px;
+  }
+
+  /* ── Projects grid ── */
+  .projects-header {
+    display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px;
+  }
+
+  /* ── People preview ── */
+  .people-preview { display: flex; flex-direction: column; gap: 0; }
+  .people-row {
+    display: flex; gap: 60px; padding: 20px 0; border-bottom: 1px solid var(--border); align-items: baseline;
+  }
+  .people-row:last-child { border-bottom: none; }
+  .people-row__label {
+    flex-shrink: 0; width: 140px; font-size: 11px; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3);
+  }
+  .people-row__names { font-size: 14px; color: var(--text); }
+
+  /* ── Structure ── */
+  .structure-wrap { overflow-x: auto; padding: 40px 0 8px; }
+
+  /* ── Dark CTA ── */
+  .cta-dark {
+    background: #1A1A1A; border-bottom: none;
+  }
+  .cta-dark .label::before { background: rgba(255,255,255,0.9); }
+  .cta-dark .label { color: rgba(255,255,255,0.75); }
+  .cta-dark-types {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-bottom: 40px;
+  }
+  .cta-type__label {
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: rgba(255,255,255,0.75); margin-bottom: 6px;
+  }
+  .cta-type__desc { font-size: 13px; color: rgba(255,255,255,0.9); line-height: 1.5; }
+
+  /* Issue Editorial */
+  .issue-editorial {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+  }
+  .issue-editorial__inner {
+    max-width: 1280px; margin: 0 auto;
+    padding: 80px 60px 96px;
+  }
+  .issue-editorial__meta {
+    display: flex; gap: 24px;
+    font-size: 11px; font-family: 'Inter', sans-serif;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: #888; margin-bottom: 40px;
+  }
+  .issue-editorial__meta span + span::before {
+    content: '·'; margin-right: 24px; color: #ccc;
+  }
+  .issue-editorial__title-link {
+    display: block; text-decoration: none; margin-bottom: 64px;
+  }
+  .issue-editorial__title {
+    font-family: 'Noto Serif KR', 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 400; line-height: 1.05;
+    color: #1a1a1a; margin-bottom: 24px;
+    letter-spacing: -0.02em;
+  }
+  .issue-editorial__sub {
+    font-size: 15px; font-family: 'Inter', sans-serif;
+    color: #888; transition: color 0.15s;
+  }
+  .issue-editorial__title-link:hover .issue-editorial__sub { color: var(--accent); }
+  .issue-editorial__articles-label {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #bbb; margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+  }
+  .issue-editorial__articles-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0; border-top: 1px solid #e8e8e8;
+  }
+  .issue-editorial__article {
+    display: flex; flex-direction: column; gap: 6px;
+    padding: 20px 24px 20px 0;
+    border-bottom: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .issue-editorial__article:nth-child(3n) { border-right: none; padding-right: 0; }
+  .issue-editorial__article:hover { background: var(--accent-side); }
+  .issue-editorial__article-section {
+    font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: #bbb; font-family: 'Inter', sans-serif;
+  }
+  .issue-editorial__article-title {
+    font-family: 'Noto Serif KR', 'Cormorant Garamond', serif;
+    font-size: 17px; color: #1a1a1a; line-height: 1.4;
+  }
+
+  /* Issue table hover */
+  .issue-row { transition: background 0.15s; }
+  .issue-row:hover { background: #371E9C; }
+  .issue-row:hover td,
+  .issue-row:hover div { color: #fff !important; }
+  .issue-row:hover .issue-arrow { color: #FFF2AF !important; }
+
+  @media (max-width: 900px) {
+    .hero__inner { padding: 0 24px 64px; }
+    .identity__cols { grid-template-columns: 1fr; }
+    .identity__col { border-right: none; border-bottom: 1px solid var(--border); padding: 28px 0; }
+    .identity__col:last-child { border-bottom: none; }
+    .issue-feature { grid-template-columns: 1fr; gap: 40px; }
+    .issue-cover-block { aspect-ratio: 4/3; }
+    .people-row { flex-direction: column; gap: 6px; }
+    .people-row__label { width: auto; }
+    .cta-dark-types { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav class="nav">
+  <div></div>
+  <div class="nav__links">
+    <a class="nav__link" href="pages/issues.html">issues</a>
+    <a class="nav__link" href="pages/masthead.html">masthead</a>
+    <a class="nav__link" href="pages/about.html">about</a>
+  </div>
+  <div class="nav__lang">
+    <button class="nav__lang-btn active" data-lang="ko">KO</button>
+    <span class="nav__lang-sep">/</span>
+    <button class="nav__lang-btn" data-lang="en">EN</button>
+  </div>
+</nav>
+
+<!-- S01. Hero -->
+<section class="section hero">
+  <a href="index.html"><img src="assets/hero-0110.png" alt="everything starts from a dot — dots mag" style="width:100%; display:block;"></a>
+  <div class="hero__bottom">
+    <span>Issue 01: Mobility — Now Live</span>
+    <a href="pages/issues.html">Explore Issues →</a>
+  </div>
+</section>
+
+<!-- Issue 01 Editorial -->
+<section class="issue-editorial">
+  <div class="issue-editorial__inner">
+
+    <!-- 상단 메타 -->
+    <div class="issue-editorial__meta">
+      <span>Issue 01</span>
+      <span>2026.06</span>
+      <span>7 Contributors</span>
+    </div>
+
+    <!-- 메인 제목 -->
+    <a href="pages/issue01.html" class="issue-editorial__title-link">
+      <h2 class="issue-editorial__title">
+        <span class="ko">차량 산업<br>패러다임의 변화</span>
+        <span class="en">The Paradigm Shift<br>in the Automotive Industry</span>
+      </h2>
+      <div class="issue-editorial__sub">Mobility — from racing culture to SDV →</div>
+    </a>
+
+    <!-- 아티클 목록 -->
+    <div class="issue-editorial__articles">
+      <div class="issue-editorial__articles-label">In This Issue</div>
+      <div class="issue-editorial__articles-grid">
+        <a href="pages/article-intro.html" class="issue-editorial__article">
+          <span class="issue-editorial__article-section">서론</span>
+          <span class="issue-editorial__article-title"><span class="ko">레드라인 너머의 산업 지도</span><span class="en">Beyond the Redline</span></span>
+        </a>
+        <a href="pages/article-1a.html" class="issue-editorial__article">
+          <span class="issue-editorial__article-section">Section 1</span>
+          <span class="issue-editorial__article-title"><span class="ko">대량생산에서 플랫폼으로</span></span>
+        </a>
+        <a href="pages/article-1b.html" class="issue-editorial__article">
+          <span class="issue-editorial__article-section">Section 1</span>
+          <span class="issue-editorial__article-title"><span class="ko">기업혁신</span></span>
+        </a>
+        <a href="pages/article-2a.html" class="issue-editorial__article">
+          <span class="issue-editorial__article-section">Section 2</span>
+          <span class="issue-editorial__article-title">Feeling Luxury</span>
+        </a>
+        <a href="pages/article-2b.html" class="issue-editorial__article">
+          <span class="issue-editorial__article-section">Section 2</span>
+          <span class="issue-editorial__article-title"><span class="ko">전기차 과연 경제적인가</span><span class="en">Is the EV Actually Economical?</span></span>
+        </a>
+        <a href="pages/article-3a.html" class="issue-editorial__article">
+          <span class="issue-editorial__article-section">Section 3</span>
+          <span class="issue-editorial__article-title"><span class="ko">피할 수 없다면 이용해라</span><span class="en">If You Can't Avoid It, Use It</span></span>
+        </a>
+        <a href="pages/article-3b.html" class="issue-editorial__article">
+          <span class="issue-editorial__article-section">Section 3</span>
+          <span class="issue-editorial__article-title">AI Mobility</span>
+        </a>
+        <a href="pages/article-4a.html" class="issue-editorial__article">
+          <span class="issue-editorial__article-section">Section 4</span>
+          <span class="issue-editorial__article-title"><span class="ko">스스로 생각하고 달리는 차가 온다</span><span class="en">The Self-Driving Car Is Coming</span></span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer__main">
+    <div>
+      <div class="site-footer__brand-name">dots mag</div>
+      <div class="site-footer__brand-desc">everything starts from a dot</div>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Pages</div>
+      <nav class="site-footer__nav">
+        <a class="site-footer__nav-link" href="pages/issues.html">Issues</a>
+        <a class="site-footer__nav-link" href="pages/masthead.html">Masthead</a>
+        <a class="site-footer__nav-link" href="pages/about.html">About</a>
+      </nav>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Contact</div>
+      <div class="site-footer__contact-email">contact@dotsmag.kr</div>
+      <div class="site-footer__contact-note"><span class="ko">협력 제안, 인터뷰 요청,<br>산학 파트너십 문의</span><span class="en">Collaboration, interview requests,<br>industry partnership inquiries</span></div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="site-footer__copy"><span class="ko">© 2026 dots mag · 반기 발간</span><span class="en">© 2026 dots mag · Semi-annual</span></div>
+    <div class="site-footer__origin"><span class="ko">GRU Alumni · 성균관대학교 서비스디자인 연구실 협력</span><span class="en">GRU Alumni · Sungkyunkwan University</span></div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

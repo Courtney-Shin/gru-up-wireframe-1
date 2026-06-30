@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Gru-Up Sitemap</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #F7F6F2;
+    padding: 60px 40px;
+    color: #1a1a1a;
+  }
+  h1 {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 48px;
+  }
+
+  .tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* 노드 */
+  .node {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 20px;
+    border: 1.5px solid #1a1a1a;
+    background: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    min-width: 160px;
+    text-align: center;
+  }
+  .node .sub {
+    font-size: 11px;
+    font-weight: 400;
+    color: #888;
+  }
+  .node.root {
+    background: #1a1a1a;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 200px;
+  }
+  .node.issue {
+    background: #F7F6F2;
+    border-color: #1a1a1a;
+    font-weight: 600;
+  }
+  .node.article {
+    border-color: #bbb;
+    background: #fff;
+    font-size: 12px;
+    min-width: 220px;
+  }
+  .node.page {
+    border-color: #bbb;
+    background: #fff;
+  }
+  .node.fixed {
+    background: #f0ede6;
+    border-color: #aaa;
+    font-size: 12px;
+    min-width: 180px;
+  }
+
+  /* 수직선 */
+  .vline {
+    width: 1.5px;
+    height: 32px;
+    background: #bbb;
+  }
+  .vline.dark { background: #1a1a1a; }
+
+  /* 수평 row */
+  .row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    position: relative;
+  }
+
+  /* 수평선 연결 */
+  .hline-wrap {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+  }
+  .hline-wrap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    height: 1.5px;
+    background: #bbb;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .connector {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+  }
+  .connector-line {
+    position: absolute;
+    top: 0;
+    height: 1.5px;
+    background: #bbb;
+  }
+
+  /* 전체 레이아웃 */
+  .level {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .children-row {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+  }
+  .children-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(var(--first) + 80px);
+    right: calc(100% - var(--last) - 80px);
+    height: 1.5px;
+    background: #bbb;
+  }
+
+  .child-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 24px;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+  }
+
+  /* 아티클 내 네비 표시 */
+  .nav-note {
+    font-size: 11px;
+    color: #888;
+    border: 1px dashed #bbb;
+    padding: 6px 14px;
+    margin-top: 8px;
+    background: #fafaf7;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    background: #eee;
+    color: #555;
+    margin-top: 2px;
+  }
+  .tag.research { background: #e8f0e8; color: #3a6b3a; }
+  .tag.execution { background: #e8eaf0; color: #3a3a6b; }
+  .tag.interview { background: #f0e8e8; color: #6b3a3a; }
+
+  hr.divider {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 48px 0;
+  }
+
+  .legend {
+    display: flex;
+    gap: 24px;
+    font-size: 12px;
+    color: #888;
+    margin-top: 48px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .legend-box {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid #1a1a1a;
+  }
+  .legend-box.dark { background: #1a1a1a; }
+  .legend-box.light { background: #F7F6F2; }
+  .legend-box.white { background: #fff; border-color: #bbb; }
+  .legend-box.dashed { background: #fafaf7; border: 1px dashed #bbb; }
+</style>
+</head>
+<body>
+
+<h1>Gru-Up — Site Structure</h1>
+
+<div class="tree">
+
+  <!-- HOME -->
+  <div class="level">
+    <div class="node root">HOME</div>
+    <div class="vline dark"></div>
+  </div>
+
+  <!-- 1depth: 4개 메인 페이지 -->
+  <div style="display:flex; align-items:flex-start; position:relative;">
+    <!-- 수평 연결선 -->
+    <div style="position:absolute; top:0; left:80px; right:80px; height:1.5px; background:#1a1a1a;"></div>
+
+    <!-- PROJECTS -->
+    <div class="child-col">
+      <div class="vline dark"></div>
+      <div class="node issue">PROJECTS</div>
+      <div class="vline"></div>
+
+      <!-- Issue 목록 -->
+      <div style="display:flex; align-items:flex-start; position:relative;">
+        <div style="position:absolute; top:0; left:60px; right:60px; height:1.5px; background:#bbb;"></div>
+
+        <!-- Issue 00 -->
+        <div class="child-col" style="padding:0 16px;">
+          <div class="vline"></div>
+          <div class="node issue" style="min-width:180px;">
+            Issue 00
+            <span class="sub">Mobility · 2026.06</span>
+          </div>
+          <div class="vline"></div>
+
+          <!-- Issue 00 내부 구조 -->
+          <div style="display:flex; align-items:flex-start; position:relative;">
+            <div style="position:absolute; top:0; left:50px; right:50px; height:1.5px; background:#bbb;"></div>
+
+            <!-- 인터뷰 -->
+            <div class="child-col" style="padding:0 8px;">
+              <div class="vline"></div>
+              <div class="section-label">Interview</div>
+              <div class="article-list">
+                <div class="node article">선배 인터뷰 오프닝<span class="tag interview">Interview</span></div>
+                <div class="node article">선배 인터뷰 클로징<span class="tag interview">Interview</span></div>
+              </div>
+            </div>
+
+            <!-- 아티클 -->
+            <div class="child-col" style="padding:0 8px;">
+              <div class="vline"></div>
+              <div class="section-label">Articles</div>
+              <div class="article-list">
+                <div class="node article">01. Racing as R&D<span class="tag research">Research</span></div>
+                <div class="node article">02. Feeling Luxury<span class="tag research">Research</span></div>
+                <div class="node article">03. 전기차 경제성<span class="tag execution">Execution</span></div>
+                <div class="node article">04. 친환경 정책<span class="tag research">Research</span></div>
+                <div class="node article">05. AI 모빌리티<span class="tag execution">Execution</span></div>
+                <div class="node article">06. SDV·자율주행<span class="tag research">Research</span></div>
+              </div>
+              <div class="nav-note">← 이전 아티클 · 다음 아티클 →<br>아티클 내 고정 네비게이션</div>
+            </div>
+
+            <!-- 부록 -->
+            <div class="child-col" style="padding:0 8px;">
+              <div class="vline"></div>
+              <div class="section-label">Appendix</div>
+              <div class="article-list">
+                <div class="node article">Case 1. 지쿠</div>
+                <div class="node article">Case 2. 플랫폼 비교</div>
+              </div>
+            </div>
+
+            <!-- Contributors -->
+            <div class="child-col" style="padding:0 8px;">
+              <div class="vline"></div>
+              <div class="section-label">Contributors</div>
+              <div class="article-list">
+                <div class="node article">이번 호 참여자</div>
+                <div class="node article">외부 인터뷰이</div>
+                <div class="node article">담당 섹션 · 역할</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Issue 01 -->
+        <div class="child-col" style="padding:0 16px;">
+          <div class="vline"></div>
+          <div class="node issue" style="min-width:180px; opacity:0.4;">
+            Issue 01
+            <span class="sub">TBD · 2026.12</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- NETWORK -->
+    <div class="child-col" style="padding:0 32px;">
+      <div class="vline dark"></div>
+      <div class="node page">NETWORK</div>
+      <div class="vline"></div>
+      <div class="article-list">
+        <div class="node article" style="min-width:140px;">대학원 협력 파트너</div>
+        <div class="node article" style="min-width:140px;">자문단</div>
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="child-col" style="padding:0 32px;">
+      <div class="vline dark"></div>
+      <div class="node page">ABOUT</div>
+      <div class="vline"></div>
+      <div class="article-list">
+        <div class="node article" style="min-width:140px;">플랫폼 소개</div>
+        <div class="node article" style="min-width:140px;">Issue 아카이브</div>
+        <div class="node article" style="min-width:140px;">협력/연락</div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+<!-- 범례 -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-box dark"></div> 메인 진입점</div>
+  <div class="legend-item"><div class="legend-box light"></div> Issue / 섹션</div>
+  <div class="legend-item"><div class="legend-box white"></div> 개별 페이지 / 아티클</div>
+  <div class="legend-item"><div class="legend-box dashed"></div> UI 컴포넌트 (고정 네비 등)</div>
+</div>
+
+</body>
+</html>

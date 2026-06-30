@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Racing as R&D — dots mag</title>
+<link rel="stylesheet" href="../css/style.css">
+<style>
+  /* Hero */
+  .article-hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
+  .article-hero__breadcrumb { font-size: 12px; color: var(--text-3); margin-bottom: 24px; display: flex; align-items: center; gap: 8px; }
+  .article-hero__breadcrumb a:hover { color: var(--text); }
+  .article-hero__tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .article-hero__title { font-size: clamp(28px, 4vw, 48px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 14px; max-width: 760px; }
+  .article-hero__subtitle { font-size: clamp(16px, 1.5vw, 19px); color: var(--text-2); font-style: italic; max-width: 640px; margin-bottom: 24px; line-height: 1.6; font-family: Georgia, serif; }
+  .article-hero__thesis {
+    border-left: 3px solid var(--accent); background: var(--accent-light);
+    padding: 16px 20px; border-radius: 0 4px 4px 0;
+    max-width: 640px; margin-bottom: 28px;
+  }
+  .article-hero__thesis-label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .article-hero__thesis-text { font-size: 15px; color: var(--text); line-height: 1.65; }
+  .article-hero__meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--text-3); align-items: center; }
+  .article-hero__meta strong { color: var(--text); font-weight: 600; }
+  .meta-dot { color: var(--border); }
+  .inline-tag { background: var(--bg); border: 1px solid var(--border); padding: 3px 8px; border-radius: 2px; font-size: 11px; color: var(--text-2); }
+
+  /* Summary block */
+  .summary-block {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 4px;
+    padding: 28px; margin-bottom: 48px;
+  }
+  .summary-block__title { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 20px; }
+  .summary-block__intro { font-size: 14px; color: var(--text); line-height: 1.7; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+  .summary-row { display: grid; grid-template-columns: 130px 1fr; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+  .summary-row:last-child { border-bottom: none; }
+  .summary-row__label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); padding-top: 2px; }
+  .summary-row__val { font-size: 13px; color: var(--text); line-height: 1.6; }
+
+  /* Body layout */
+  .article-layout {
+    display: grid; grid-template-columns: 200px 1fr; gap: 60px;
+    max-width: 1040px; padding: 56px 0;
+  }
+
+  /* TOC */
+  .toc { position: sticky; top: calc(60px + 24px); height: fit-content; }
+  .toc__label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 14px; }
+  .toc__item {
+    display: block; font-size: 12px; color: var(--text-3);
+    padding: 6px 0 6px 12px; border-left: 2px solid var(--border);
+    margin-bottom: 2px; transition: all 0.15s; cursor: pointer;
+  }
+  .toc__item:hover, .toc__item.active { color: var(--text); border-left-color: var(--accent); }
+  .toc__divider { height: 1px; background: var(--border); margin: 16px 0; }
+
+  /* Article body */
+  .article-body { max-width: 720px; }
+  .body-section { margin-bottom: 36px; }
+  .body-section h2 {
+    font-size: 20px; font-weight: 700; margin-bottom: 14px;
+    padding-top: 28px; border-top: 1px solid var(--border);
+    scroll-margin-top: 100px;
+  }
+  .body-section p { font-size: 16px; line-height: 1.8; color: var(--text); margin-bottom: 16px; }
+
+  .block-data {
+    background: var(--bg); border: 1.5px dashed var(--border); border-radius: 4px;
+    padding: 36px; margin: 28px 0; text-align: center;
+    color: var(--text-3); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .block-data__sub { font-size: 11px; color: var(--text-3); margin-top: 6px; font-style: italic; text-transform: none; letter-spacing: 0; }
+
+  .block-quote {
+    border-left: 3px solid var(--text); padding: 20px 28px;
+    margin: 32px 0;
+  }
+  .block-quote p { font-family: Georgia, serif; font-size: 20px; line-height: 1.5; font-style: italic; color: var(--text); margin: 0 0 10px; }
+  .block-quote footer { font-size: 12px; color: var(--text-3); }
+
+  .block-insight {
+    border-left: 3px solid var(--accent); background: var(--accent-light);
+    padding: 16px 20px; border-radius: 0 4px 4px 0; margin: 28px 0;
+  }
+  .block-insight__label { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .block-insight p { font-size: 14px; color: var(--text); line-height: 1.65; margin: 0; }
+
+  /* Methodology */
+  .method-section { background: var(--bg); border-radius: 4px; padding: 28px; margin: 36px 0; }
+  .method-section__title { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 20px; }
+  .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .method-item__label { font-size: 12px; font-weight: 700; margin-bottom: 5px; }
+  .method-item p { font-size: 13px; color: var(--text-2); line-height: 1.6; margin: 0; }
+
+  /* So What */
+  .so-what { background: var(--bg); border-top: 2px solid var(--text); padding: 36px; margin: 36px 0; border-radius: 0 0 4px 4px; }
+  .so-what__title { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 24px; }
+  .so-what__item { margin-bottom: 18px; }
+  .so-what__item-label { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-3); margin-bottom: 6px; }
+  .so-what__item p { font-size: 14px; color: var(--text); line-height: 1.65; margin: 0; }
+
+  /* Author + Sources */
+  .author-sources { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding: 48px 0; border-top: 1px solid var(--border); }
+  .author-block { display: flex; gap: 16px; }
+  .author-block__text { flex: 1; }
+  .author-block__name { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .author-block__role { font-size: 12px; color: var(--text-3); margin-bottom: 8px; }
+  .author-block__bio { font-size: 13px; color: var(--text-2); line-height: 1.6; }
+  .sources__label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); margin-bottom: 16px; }
+  .source-item { font-size: 12px; color: var(--text-2); line-height: 1.55; margin-bottom: 8px; }
+
+  @media (max-width: 900px) {
+    .article-layout { grid-template-columns: 1fr; }
+    .toc { display: none; }
+    .summary-row { grid-template-columns: 1fr; }
+    .method-grid { grid-template-columns: 1fr; }
+    .author-sources { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a class="nav__logo" href="../index.html">dots mag</a>
+  <div class="nav__links">
+    <a class="nav__link" href="../index.html">Main</a>
+    <a class="nav__link" href="issues.html">issues</a>
+    <a class="nav__link" href="masthead.html">Masthead</a>
+    <a class="nav__link" href="about.html">About</a>
+  </div>
+  <div class="nav__menu"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- S01. Hero -->
+<section class="section article-hero">
+  <div class="container">
+    <div class="article-hero__breadcrumb">
+      <a href="issues.html">Issues</a>
+      <span>→</span>
+      <a href="issue01.html">Issue 01: Mobility</a>
+      <span>→</span>
+      <span>Racing as R&D</span>
+    </div>
+    <div class="article-hero__tags">
+      <span class="tag tag--research">Research</span>
+      <span class="tag tag--issue">Issue 01</span>
+      <span style="font-size: 12px; color: var(--text-3);">Chapter 01 · Culture & Brand</span>
+    </div>
+    <h1 class="article-hero__title serif">Racing as R&D: How Motorsport Built the Modern Automobile</h1>
+    <p class="article-hero__subtitle">From lap times to showroom floors — the hidden transfer of technology, culture, and capital</p>
+    <div class="article-hero__thesis">
+      <div class="article-hero__thesis-label">Thesis</div>
+      <div class="article-hero__thesis-text">카레이싱은 단순 스포츠가 아니라 자동차 산업의 기술·마케팅·브랜딩 발전을 이끈 핵심 R&D 플랫폼이었다.</div>
+    </div>
+    <div class="article-hero__meta">
+      <span>By <strong>Kim Jiwon</strong></span>
+      <span class="meta-dot">·</span>
+      <span>May 2026</span>
+      <span class="meta-dot">·</span>
+      <span>12 min read</span>
+      <span class="meta-dot">·</span>
+      <span class="inline-tag">#Racing</span>
+      <span class="inline-tag">#Automotive</span>
+      <span class="inline-tag">#Technology</span>
+    </div>
+  </div>
+</section>
+
+<!-- S02. Summary -->
+<section class="section section--white" style="padding: 48px 0;">
+  <div class="container">
+    <div class="summary-block">
+      <div class="summary-block__title">Executive Summary</div>
+      <p class="summary-block__intro">카레이싱은 100년 이상 자동차 기술 혁신의 최전선이었으며, 타이어 기술부터 공기역학, 브레이크 시스템까지 트랙의 혁신이 양산차에 이전되어왔다. 그 과정에서 브랜드 아이덴티티와 마케팅 언어 역시 레이싱 문화와 깊이 결합되었다.</p>
+      <div class="summary-row"><div class="summary-row__label">Key Question</div><div class="summary-row__val">카레이싱이 자동차 산업에 미친 영향은 기술·마케팅·브랜딩 중 어디서 가장 크게 나타났는가?</div></div>
+      <div class="summary-row"><div class="summary-row__label">Hypothesis</div><div class="summary-row__val">레이싱 → 양산차 기술 이전은 의도적인 브랜드 전략과 결합된 구조적 채널이었다.</div></div>
+      <div class="summary-row"><div class="summary-row__label">Method</div><div class="summary-row__val">산업사 분석, 기업 연보 및 특허 데이터, 레이싱 기술 이전 사례 비교</div></div>
+      <div class="summary-row"><div class="summary-row__label">Conclusion</div><div class="summary-row__val">레이싱은 브랜딩과 기술의 교차점에서 자동차 산업 진화를 이끈 핵심 메커니즘이었다. EV 시대에 이 역할은 변형되고 있다.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- S03–06. Body -->
+<section class="section">
+  <div class="container">
+    <div class="article-layout">
+
+      <!-- TOC -->
+      <aside class="toc">
+        <div class="toc__label">Contents</div>
+        <a class="toc__item active" href="#intro">01 · Introduction</a>
+        <a class="toc__item" href="#lab">02 · Racing as a Laboratory</a>
+        <a class="toc__item" href="#transfer">03 · Technology Transfer</a>
+        <a class="toc__item" href="#brand">04 · Brand Architecture</a>
+        <a class="toc__item" href="#ev">05 · The EV Transition</a>
+        <a class="toc__item" href="#conclusion">06 · Conclusion</a>
+        <div class="toc__divider"></div>
+        <a class="toc__item" href="#method">Methodology</a>
+      </aside>
+
+      <!-- Body -->
+      <div class="article-body">
+
+        <div class="body-section" id="intro">
+          <p>When a car wins at Le Mans, something more than a trophy changes hands. The technology that shaved 0.3 seconds off a lap time typically finds its way into a production vehicle within seven years — not because of luck, but because of a deliberate industrial logic that has governed motorsport since the early twentieth century.</p>
+          <p>This essay argues that motorsport has functioned as the automotive industry's primary R&D platform — a proving ground where technical innovations are stress-tested under competitive pressure before being transferred to the mass market. More than that, it argues that this function has been deeply intentional, structured around both engineering necessity and brand strategy.</p>
+        </div>
+
+        <div class="body-section" id="lab">
+          <h2>02 · Racing as a Laboratory</h2>
+          <p>The relationship between motorsport and production vehicle technology is older than the industry itself. Early automobile manufacturers recognized that racing created conditions no ordinary R&D program could replicate: real-time competitive pressure, extreme operational demands, and a global audience watching the results.</p>
+
+          <div class="block-data">
+            Chart: F1 Team Budget vs. Production R&D Budget (2000–2024)
+            <div class="block-data__sub">Source: FIA, Company Annual Reports · Comparative analysis across top-5 manufacturers</div>
+          </div>
+
+          <p>The economics are counterintuitive at first glance. A top F1 team spends upward of $400 million per season on a program that produces zero saleable vehicles. Yet this investment has consistently delivered technology that reaches production vehicles — sometimes within a single model cycle.</p>
+        </div>
+
+        <div class="block-quote">
+          <p>"The racetrack is the world's greatest laboratory — the only place where engineers are forced to be right, immediately."</p>
+          <footer>— Attributed to Enzo Ferrari</footer>
+        </div>
+
+        <div class="body-section" id="transfer">
+          <h2>03 · Technology Transfer</h2>
+          <p>The most well-documented transfer channels are aerodynamics, tire technology, and braking systems. Each follows a similar pattern: extreme development under racing conditions, followed by engineered-down adaptation for road use.</p>
+
+          <div class="block-data" style="height: 180px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+            Diagram: Track → Road Technology Transfer Pathways
+            <div class="block-data__sub">Aerodynamics · Tires · Brakes · Powertrain · Materials</div>
+          </div>
+
+          <div class="block-insight">
+            <div class="block-insight__label">Key Finding</div>
+            <p>항공역학, 타이어 컴파운드, 브레이크 기술의 경우 F1 → 양산차 이전 주기가 평균 4–7년으로 단축되었다. 이는 1980년대 대비 절반 수준이다.</p>
+          </div>
+        </div>
+
+        <div class="body-section" id="brand">
+          <h2>04 · Brand Architecture</h2>
+          <p>The technical transfer story is well known. Less examined is the way racing has structured automotive brand identity at a fundamental level — creating a language of performance, heritage, and aspiration that persists long after specific technologies have become commoditized.</p>
+          <p>Ferrari's road car division has always been financially secondary to its racing program. Porsche built its entire brand identity on the 911's racing record. Toyota's luxury brand Lexus pointedly avoided motorsport for decades — and has struggled to build an emotional brand resonance that rivals with racing heritage command almost automatically.</p>
+        </div>
+
+        <div class="body-section" id="ev">
+          <h2>05 · The EV Transition</h2>
+          <p>The shift to electric powertrains is forcing a fundamental renegotiation of motorsport's role in automotive development. The engineering that made racing a useful R&D platform — high-rev combustion engines, complex gear systems, aerodynamic downforce for high-speed stability — is either irrelevant or requires complete reinvention.</p>
+          <p>Formula E has attempted to establish itself as the EV equivalent of F1, but the technology transfer story has been murkier. Battery management systems and regenerative braking have made the journey from track to road, but the pace of transfer has slowed as production EV technology has advanced independently of racing requirements.</p>
+        </div>
+
+        <div class="body-section" id="conclusion">
+          <h2>06 · Conclusion</h2>
+          <p>For over a century, motorsport served as automotive industry's most productive R&D program — not because it was designed that way, but because the competitive pressure of racing created conditions that no controlled laboratory could replicate. The result was a century of technology transfer that accelerated the development of the modern automobile while simultaneously constructing the brand narratives that define the industry today.</p>
+        </div>
+
+        <!-- Methodology -->
+        <div class="method-section" id="method">
+          <div class="method-section__title">Methodology</div>
+          <div class="method-grid">
+            <div class="method-item"><div class="method-item__label">Desk Research</div><p>FIA 기술 규정 변천사, 제조사 연보, 기술 특허 데이터베이스, 산업사 문헌</p></div>
+            <div class="method-item"><div class="method-item__label">Case Analysis</div><p>Mercedes, Ferrari, Toyota 3개 브랜드 레이싱 → 양산차 기술 이전 경로 추적</p></div>
+            <div class="method-item"><div class="method-item__label">Limitation</div><p>비공개 R&D 데이터 접근 불가. 브랜드별 이전 속도는 추정치 기반.</p></div>
+            <div class="method-item"><div class="method-item__label">Period</div><p>1950–2024, F1 / WEC / Rally 중심 분석</p></div>
+          </div>
+        </div>
+
+        <!-- So What -->
+        <div class="so-what">
+          <div class="so-what__title">So What?</div>
+          <div class="so-what__item">
+            <div class="so-what__item-label">For Industry</div>
+            <p>EV 시대에 레이싱의 기술 이전 역할은 Formula E를 통해 지속되지만, 형태는 배터리 및 소프트웨어 중심으로 재편되고 있다.</p>
+          </div>
+          <div class="so-what__item">
+            <div class="so-what__item-label">For Strategy & Brand</div>
+            <p>레이싱 DNA를 SDV 브랜드 언어로 전환하는 기업만이 EV 시대에도 퍼포먼스 헤리티지를 자산으로 유지할 수 있다.</p>
+          </div>
+          <div class="so-what__item">
+            <div class="so-what__item-label">Open Question</div>
+            <p>소프트웨어가 퍼포먼스의 중심이 될 때, 레이싱은 여전히 유효한 R&D 플랫폼으로 작동할 수 있는가?</p>
+          </div>
+        </div>
+
+        <!-- Author + Sources -->
+        <div class="author-sources">
+          <div class="author-block">
+            <div class="people-avatar">KJ</div>
+            <div class="author-block__text">
+              <div class="author-block__name">Kim Jiwon</div>
+              <div class="author-block__role">Lead Researcher · dots mag</div>
+              <p class="author-block__bio">Business strategy and automotive industry focus. Currently pursuing graduate studies in management.</p>
+            </div>
+          </div>
+          <div>
+            <div class="sources__label">Sources & Citations</div>
+            <div class="source-item">[1] FIA Technical Regulations Archive, 1950–2024</div>
+            <div class="source-item">[2] Mercedes-AMG Petronas F1 Team, Annual Report 2023</div>
+            <div class="source-item">[3] Ayres, R.U. (1988). "Technology as a driver of economic change." Futures.</div>
+            <div class="source-item" style="color: var(--text-3);">+ 14 more sources</div>
+          </div>
+        </div>
+
+      </div><!-- /article-body -->
+    </div><!-- /article-layout -->
+  </div>
+</section>
+
+<!-- Related -->
+<section class="section section--white section-pad">
+  <div class="container">
+    <p class="label" style="margin-bottom: 24px;">Related in Issue 01</p>
+    <div class="grid-3">
+      <a class="card" href="article.html">
+        <div class="card__meta"><span class="tag tag--research">Research</span></div>
+        <div class="card__title">The Luxury Pivot</div>
+        <div class="card__thesis">SDV 전환으로 럭셔리의 중심이 이동하고 있다.</div>
+        <div class="card__footer"><span class="card__author">Choi Dayeon · 10 min</span></div>
+      </a>
+      <a class="card" href="article.html">
+        <div class="card__meta"><span class="tag tag--execution">Execution</span></div>
+        <div class="card__title">The Real Math: EV vs Hybrid</div>
+        <div class="card__thesis">실제 구매 경제성은 더 복잡하다.</div>
+        <div class="card__footer"><span class="card__author">Park Soyeon · 14 min</span></div>
+      </a>
+      <a class="card" href="article.html">
+        <div class="card__meta"><span class="tag tag--research">Research</span></div>
+        <div class="card__title">Green by Design or Green by Marketing?</div>
+        <div class="card__thesis">친환경 전환의 실체를 해부한다.</div>
+        <div class="card__footer"><span class="card__author">Kim Jiwon · 10 min</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a class="footer__logo" href="../index.html">dots mag</a>
+  <div class="footer__links">
+    <a class="footer__link" href="../index.html">Main</a>
+    <a class="footer__link" href="issues.html">Issues</a>
+    <a class="footer__link" href="masthead.html">Masthead</a>
+    <a class="footer__link" href="about.html">About</a>
+  </div>
+  <span class="footer__copy">© 2026 dots mag</span>
+</footer>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="site-footer__main">
+    <div>
+      <div class="site-footer__brand-name">dots mag</div>
+      <div class="site-footer__brand-desc">everything starts from a dot</div>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Pages</div>
+      <nav class="site-footer__nav">
+        <a class="site-footer__nav-link" href="issues.html">Issues</a>
+        <a class="site-footer__nav-link" href="masthead.html">Masthead</a>
+        <a class="site-footer__nav-link" href="about.html">About</a>
+      </nav>
+    </div>
+    <div>
+      <div class="site-footer__col-label">Contact</div>
+      <div class="site-footer__contact-email">contact@dotsmag.kr</div>
+      <div class="site-footer__contact-note"><span class="ko">협력 제안, 인터뷰 요청,<br>산학 파트너십 문의</span><span class="en">Collaboration, interview requests,<br>industry partnership inquiries</span></div>
+    </div>
+  </div>
+  <div class="site-footer__bottom">
+    <div class="site-footer__copy"><span class="ko">© 2026 dots mag · 반기 발간</span><span class="en">© 2026 dots mag · Semi-annual</span></div>
+    <div class="site-footer__origin"><span class="ko">GRU Alumni · 성균관대학교 서비스디자인 연구실 협력</span><span class="en">GRU Alumni · Sungkyunkwan University</span></div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+  // TOC scroll tracking
+  const sections = document.querySelectorAll('[id]');
+  const tocItems = document.querySelectorAll('.toc__item');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    tocItems.forEach(t => {
+      t.classList.toggle('active', t.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>
